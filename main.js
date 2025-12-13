@@ -1,3 +1,10 @@
+async function loadGameList() {
+  const res = await fetch("games.json");
+  if (!res.ok) throw new Error("Failed to load game list");
+  const data = await res.json();
+  console.log("JSON loaded:", data);
+  return data;
+}
 
 
 
@@ -53,28 +60,30 @@ function renderHistory() {
   });
 }
 
-function renderQuickLinks() {
+function renderQuickLinks(links) {
+    console.log("renderQuickLinks called");
+
+    console.log("renderQuickLinks received:", links);
+
+    
   const grid = document.querySelector("#linkGrid .grid");
   grid.innerHTML = "";
 
-  quickLinks.forEach(link => {
-    const url = link.url;
-    
+  links.forEach(link => {
     const tile = document.createElement("div");
-    tile.className = "tile " + link.category.toLowerCase();
+    tile.className = "tile " + link.category;
 
-    // Include a new element with a specific class for the description
     tile.innerHTML = `
-      <img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(url).hostname}">
+      <img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(link.url).hostname}">
       <p class="link-name">${link.name}</p>
       <p class="link-description">${link.description}</p>
     `;
 
-    tile.onclick = () => loadURL(url);
-    
+    tile.onclick = () => loadURL(link.url);
     grid.appendChild(tile);
   });
 }
+
 
 
 
@@ -152,14 +161,18 @@ function applyLowEndMode(enabled) {
 
 
 /* INITIALIZATION */
-window.onload = ()=>{
+window.onload = async () => {
   const s = getSettings();
   applyTheme(s.theme);
-    applyLowEndMode(s.lowEndMode);
+  applyLowEndMode(s.lowEndMode);
   renderBookmarks(s.bookmarks);
-  renderQuickLinks();
   renderHistory();
-  /* if(s.audioWarning) alert("⚠️ Warning: you may have your audio turned on, please remember to turn it down joker."); */
+
+  const data = await loadGameList();
+  renderQuickLinks(data.items);
 };
+
+  /* if(s.audioWarning) alert("⚠️ Warning: you may have your audio turned on, please remember to turn it down joker."); */
+
   
 
