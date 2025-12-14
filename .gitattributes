@@ -1,0 +1,10 @@
+# Show all JSON files as data
+*.json linguist-detectable
+*.json linguist-language=JSON
+
+# Show all Markdown files as prose
+*.md linguist-detectable
+*.md linguist-language=Markdown
+
+# Ignore specific generated files, but show others
+*.min.js -linguist-generated
