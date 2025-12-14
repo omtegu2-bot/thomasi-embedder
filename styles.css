@@ -1,4 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/minecraftia');
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 
 html, body {
   margin: 0;
@@ -149,7 +155,7 @@ li {
 .grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit,minmax(300px,2fr));
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
 }
 
 .tile {
