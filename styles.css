@@ -368,7 +368,7 @@ body.purple .tile {
   border: 1px solid rgba(255,255,255,0.1); /* softened border */
 }
 
-/* Optional: adjust text color if needed */
+
 body.dark #history,
 body.dark #linkGrid,
 body.dark #about,
