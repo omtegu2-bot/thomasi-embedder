@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-<link rel="stylesheet" href="styles.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSON Search with Score Breakdown</title>
+<title>JSON Search with Tokenized Boost</title>
 <style>
 body { font-family: sans-serif; margin: 20px; }
 input { width: 100%; padding: 10px; font-size: 1em; margin-bottom: 10px; }
-.entry { padding: 10px; border-bottom: 1px solid #ddd; position: relative; }
+.entry { padding: 10px; border-bottom: 1px solid #ddd; position: relative; cursor: pointer; }
 .entry:hover { background-color: #f0f0f0; }
 .score { font-size: 0.9em; color: #555; margin-left: 5px; }
 .hamburger {
@@ -25,6 +23,10 @@ input { width: 100%; padding: 10px; font-size: 1em; margin-bottom: 10px; }
   background: #333; color: #fff; padding: 10px 20px; border-radius: 5px;
   opacity: 0; transition: opacity 0.3s; pointer-events: none;
 }
+#result-count {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -32,14 +34,12 @@ input { width: 100%; padding: 10px; font-size: 1em; margin-bottom: 10px; }
 <input type="text" id="search" placeholder="Search...">
 <div id="result-count"></div>
 <div id="results">Loading data...</div>
-
-<div id="results">Loading data...</div>
 <div id="popup">Copied to clipboard!</div>
 
 <script>
 let data = [];
 
-// Example JSON load (replace with fetch from file if needed)
+// Load JSON
 fetch('scraped_async.json')
   .then(response => response.json())
   .then(json => {
@@ -52,67 +52,94 @@ fetch('scraped_async.json')
       console.error(err);
   });
 
-const POINTS = {
-    title: 10, url: 9, description: 8, tag5: 7, tag1:6, tag2:6, tag3:6, tag4:6, common_word:5
-};
+// Debounce function
+function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
 
+// Compute score using tokenization + boosts
 function computeScore(entry, query) {
-    query = query.toLowerCase();
-    let breakdown = {};
+    query = query.toLowerCase().trim();
+    if (!query) return { score: 0, breakdown: {} };
+
+    const tokens = query.split(/\s+/);
     let score = 0;
+    let breakdown = {};
 
-    function match(field, key) {
-        if(!field) return 0;
-        if(typeof field !== "string") field = String(field);
-        if(field.toLowerCase().includes(query)) {
-            breakdown[key] = POINTS[key];
-            return POINTS[key];
+    const fields = [
+        { key: 'title', points: 10 },
+        { key: 'url', points: 9 },
+        { key: 'description', points: 8 },
+        { key: 'tag1', points: 6 },
+        { key: 'tag2', points: 6 },
+        { key: 'tag3', points: 6 },
+        { key: 'tag4', points: 6 },
+        { key: 'tag5', points: 7 },
+        { key: 'common_word', points: 5 }
+    ];
+
+    fields.forEach(field => {
+        let text = entry[field.key];
+        if (!text) return;
+        text = String(text).toLowerCase();
+        let matches = 0;
+        tokens.forEach(token => {
+            if (text.includes(token)) matches++;
+            // Extra boost for exact token match
+            if (text === token) matches += 2;
+        });
+        if (matches > 0) {
+            let fieldScore = field.points * matches;
+            // Boost longer queries slightly
+            fieldScore += Math.floor(query.length / 10);
+            breakdown[field.key] = fieldScore;
+            score += fieldScore;
         }
-        return 0;
-    }
+    });
 
-    score += match(entry.title, 'title');
-    let percents = (entry.url.match(/%/g) || []).length;
-    if(percents <= 3) score += match(entry.url, 'url');
-    score += match(entry.description, 'description');
-    score += match(entry.tag5, 'tag5');
-    score += match(entry.tag1, 'tag1');
-    score += match(entry.tag2, 'tag2');
-    score += match(entry.tag3, 'tag3');
-    score += match(entry.tag4, 'tag4');
-    score += match(entry.common_word, 'common_word');
-
-    return {score, breakdown};
+    return { score, breakdown };
 }
 
+// Highlight matched tokens
 function highlightMatch(text, query) {
-    if(!query) return text;
-    let regex = new RegExp(`(${query})`, 'gi');
-    return text.replace(regex, '<span class="highlight">$1</span>');
+    if (!query) return text;
+    const tokens = query.split(/\s+/);
+    tokens.forEach(token => {
+        const regex = new RegExp(`(${token})`, 'gi');
+        text = text.replace(regex, '<span class="highlight">$1</span>');
+    });
+    return text;
 }
 
+// Render search results
 function renderResults(query) {
-    let resultsDiv = document.getElementById("results");
-    let countDiv = document.getElementById("result-count");
+    const resultsDiv = document.getElementById("results");
+    const countDiv = document.getElementById("result-count");
     resultsDiv.innerHTML = "";
-    if(!data.length) {
+
+    if (!data.length) {
         countDiv.innerText = "No data loaded.";
         return;
     }
 
-    let filtered = data
-      .map(entry => ({entry, result: computeScore(entry, query)}))
-      .filter(e => e.result.score > 0)
-      .sort((a,b) => b.result.score - a.result.score);
+    const filtered = data
+        .map(entry => ({ entry, result: computeScore(entry, query) }))
+        .filter(e => e.result.score > 0)
+        .sort((a, b) => b.result.score - a.result.score);
 
-    // Update the count
-    countDiv.innerText = `Showing ${filtered.length} of ${data.length} entries`;
+    countDiv.innerText = filtered.length > 0
+        ? `Showing ${filtered.length} of ${data.length} entries`
+        : `No results found out of ${data.length} entries`;
 
     filtered.forEach(item => {
-        if(!item.entry.tag1) item.entry.tag1 = "none";
-        if(!item.entry.tag2) item.entry.tag2 = "none";
+        if (!item.entry.tag1) item.entry.tag1 = "none";
+        if (!item.entry.tag2) item.entry.tag2 = "none";
 
-        let div = document.createElement("div");
+        const div = document.createElement("div");
         div.className = "entry";
         div.innerHTML = `
             <strong>${highlightMatch(item.entry.title, query)}</strong>
@@ -136,9 +163,9 @@ function renderResults(query) {
         });
 
         div.addEventListener("click", (e) => {
-            if(e.target === hamburger) return;
+            if (e.target === hamburger) return;
             navigator.clipboard.writeText(item.entry.url).then(() => {
-                let popup = document.getElementById("popup");
+                const popup = document.getElementById("popup");
                 popup.style.opacity = 1;
                 setTimeout(() => popup.style.opacity = 0, 1500);
             });
@@ -148,11 +175,10 @@ function renderResults(query) {
     });
 }
 
-
-document.getElementById("search").addEventListener("input", (e) => {
-    let query = e.target.value.trim();
-    renderResults(query);
-});
+// Attach debounced search listener
+document.getElementById("search").addEventListener("input", debounce((e) => {
+    renderResults(e.target.value);
+}, 200));
 </script>
 
 </body>

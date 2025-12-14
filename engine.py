@@ -108,26 +108,28 @@ async def get_links(session, url, base_domain):
 
 
 # --- Scrape site with resuming ---
-async def scrape_site(start_url, visited_urls=None, existing_results=None):
+async def scrape_site(start_url, existing_results=None):
     """
-    Scrape a site starting from start_url, resuming from existing_results if provided.
+    Scrape a site starting from start_url, respecting MAX_PAGES_PER_SITE per site.
     """
     domain = urlparse(start_url).netloc
-    visited = visited_urls if visited_urls else set()
     results = existing_results if existing_results else []
 
-    # Start with URLs in the existing results for this domain
+    # Start with URLs already in existing_results for this domain
     to_visit = [r['url'] for r in results if urlparse(r['url']).netloc.endswith(domain)]
     if start_url not in to_visit:
         to_visit.append(start_url)
 
+    visited = set()  # Track pages visited in this run for this site
+    site_results = [r for r in results if urlparse(r['url']).netloc.endswith(domain)]
+
     async with aiohttp.ClientSession() as session:
-        while to_visit and len(results) < MAX_PAGES_PER_SITE:
+        while to_visit and len(site_results) < MAX_PAGES_PER_SITE:
             batch = to_visit[:MAX_CONCURRENT_REQUESTS]
             to_visit = to_visit[MAX_CONCURRENT_REQUESTS:]
 
             tasks = []
-            urls_for_tasks = []  # Keep track of which URL corresponds to each task
+            urls_for_tasks = []
 
             for url in batch:
                 if url not in visited:
@@ -136,35 +138,42 @@ async def scrape_site(start_url, visited_urls=None, existing_results=None):
                     urls_for_tasks.append(url)
 
             if not tasks:
-                continue  # Nothing to fetch in this batch
+                continue
 
-            # Run tasks concurrently
             pages = await asyncio.gather(*tasks)
 
             for i, data in enumerate(pages):
                 current_url = urls_for_tasks[i]
-
                 if data:
                     # Update existing entry if present
-                    existing_idx = next((idx for idx, r in enumerate(results) if r['url'] == current_url), None)
+                    existing_idx = next(
+                        (idx for idx, r in enumerate(site_results) if r['url'] == current_url),
+                        None
+                    )
                     if existing_idx is not None:
-                        results[existing_idx] = data
+                        site_results[existing_idx] = data
                     else:
-                        results.append(data)
+                        site_results.append(data)
 
                     # Save periodically
-                    if len(results) % SAVE_INTERVAL == 0:
+                    if len(site_results) % SAVE_INTERVAL == 0:
+                        all_results = [r for r in results if not urlparse(r['url']).netloc.endswith(domain)]
+                        all_results.extend(site_results)
                         with open("scraped_async.json", "w", encoding="utf-8") as f:
-                            json.dump(results, f, indent=2, ensure_ascii=False)
-                        print(f"Saved {len(results)} pages to file.")
+                            json.dump(all_results, f, indent=2, ensure_ascii=False)
+                        print(f"Saved {len(site_results)} pages for {domain}.")
 
-                # Fetch links from this page regardless of whether it was just scraped
+                # Fetch links regardless
                 links = await get_links(session, current_url, domain)
                 for link in links:
-                    if link not in visited and len(results) + len(to_visit) < MAX_PAGES_PER_SITE:
+                    if link not in visited and len(site_results) + len(to_visit) < MAX_PAGES_PER_SITE:
                         to_visit.append(link)
 
-    return results
+    # Merge site_results back into all_results
+    other_results = [r for r in results if not urlparse(r['url']).netloc.endswith(domain)]
+    final_results = other_results + site_results
+    return final_results
+
 
 # --- Main entry ---
 async def main(urls):
@@ -179,8 +188,9 @@ async def main(urls):
 
     for url in urls:
         print(f"Starting site: {url}")
-        site_results = await scrape_site(url, visited_urls=visited_urls, existing_results=all_results)
+        site_results = await scrape_site(url, existing_results=all_results)
         all_results = site_results  # update master list
+
 
     # Final save
     with open("scraped_async.json", "w", encoding="utf-8") as f:
@@ -192,7 +202,6 @@ if __name__ == "__main__":
         "https://example.com",
         "https://en.wikipedia.org/wiki/Main_Page",
         "https://minecraft.fandom.com/wiki/Minecraft_Wiki",
-        "https://ticalc.org",
-        "https://homestuck.com"
+            "https://homestuck.com"
     ]
     asyncio.run(main(urls))
