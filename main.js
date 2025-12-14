@@ -127,6 +127,7 @@ settingsBtn.onclick = ()=>{
   document.getElementById("bookmark3").value = s.bookmarks[2];
   modal.style.display="block";
 };
+document.getElementById('openEngine').onclick = loadEngine;
 
 closeSettings.onclick = ()=> modal.style.display="none";
 
@@ -157,6 +158,12 @@ document.getElementById('urlInput').addEventListener('keypress', e=>{
 function applyLowEndMode(enabled) {
   if (enabled) document.body.classList.add("low-end");
   else document.body.classList.remove("low-end");
+}
+function loadEngine() {
+  const container = document.getElementById('engineContainer');
+  const frame = document.getElementById('engineFrame');
+  frame.src = 'search.html'; // path to your engine page
+  container.style.display = 'block';
 }
 
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Search with Score Breakdown</title>
+<style>
+body { font-family: sans-serif; margin: 20px; }
+input { width: 100%; padding: 10px; font-size: 1em; margin-bottom: 10px; }
+.entry { padding: 10px; border-bottom: 1px solid #ddd; position: relative; }
+.entry:hover { background-color: #f0f0f0; }
+.score { font-size: 0.9em; color: #555; margin-left: 5px; }
+.hamburger {
+    position: absolute; right: 10px; top: 10px;
+    cursor: pointer; font-size: 1.2em; user-select: none;
+    border: none; background: none; padding: 5px;
+}
+.hamburger:focus { outline: 2px solid #333; }
+.breakdown { display: none; padding: 5px 10px; background: #eef; margin-top: 5px; border-radius: 4px; }
+.highlight { background-color: yellow; }
+#popup {
+  position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: #333; color: #fff; padding: 10px 20px; border-radius: 5px;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<input type="text" id="search" placeholder="Search...">
+<div id="result-count"></div>
+<div id="results">Loading data...</div>
+
+<div id="results">Loading data...</div>
+<div id="popup">Copied to clipboard!</div>
+
+<script>
+let data = [];
+
+// Example JSON load (replace with fetch from file if needed)
+fetch('scraped_async.json')
+  .then(response => response.json())
+  .then(json => {
+      data = json;
+      document.getElementById('results').innerHTML = '';
+      renderResults('');
+  })
+  .catch(err => {
+      document.getElementById('results').innerHTML = 'Failed to load JSON.';
+      console.error(err);
+  });
+
+const POINTS = {
+    title: 10, url: 9, description: 8, tag5: 7, tag1:6, tag2:6, tag3:6, tag4:6, common_word:5
+};
+
+function computeScore(entry, query) {
+    query = query.toLowerCase();
+    let breakdown = {};
+    let score = 0;
+
+    function match(field, key) {
+        if(!field) return 0;
+        if(typeof field !== "string") field = String(field);
+        if(field.toLowerCase().includes(query)) {
+            breakdown[key] = POINTS[key];
+            return POINTS[key];
+        }
+        return 0;
+    }
+
+    score += match(entry.title, 'title');
+    let percents = (entry.url.match(/%/g) || []).length;
+    if(percents <= 3) score += match(entry.url, 'url');
+    score += match(entry.description, 'description');
+    score += match(entry.tag5, 'tag5');
+    score += match(entry.tag1, 'tag1');
+    score += match(entry.tag2, 'tag2');
+    score += match(entry.tag3, 'tag3');
+    score += match(entry.tag4, 'tag4');
+    score += match(entry.common_word, 'common_word');
+
+    return {score, breakdown};
+}
+
+function highlightMatch(text, query) {
+    if(!query) return text;
+    let regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
+
+function renderResults(query) {
+    let resultsDiv = document.getElementById("results");
+    let countDiv = document.getElementById("result-count");
+    resultsDiv.innerHTML = "";
+    if(!data.length) {
+        countDiv.innerText = "No data loaded.";
+        return;
+    }
+
+    let filtered = data
+      .map(entry => ({entry, result: computeScore(entry, query)}))
+      .filter(e => e.result.score > 0)
+      .sort((a,b) => b.result.score - a.result.score);
+
+    // Update the count
+    countDiv.innerText = `Showing ${filtered.length} of ${data.length} entries`;
+
+    filtered.forEach(item => {
+        if(!item.entry.tag1) item.entry.tag1 = "none";
+        if(!item.entry.tag2) item.entry.tag2 = "none";
+
+        let div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = `
+            <strong>${highlightMatch(item.entry.title, query)}</strong>
+            <span class="score">(Point Value: ${item.result.score})</span>
+            <button class="hamburger" tabindex="0">☰</button>
+            <br>${highlightMatch(item.entry.url, query)}<br>
+            ${highlightMatch(item.entry.description, query)}
+            <div class="breakdown">
+                <strong>Score Breakdown:</strong>
+                <ul>
+                    ${Object.entries(item.result.breakdown).map(([k,v]) => `<li>${k}: +${v}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+
+        const hamburger = div.querySelector(".hamburger");
+        const breakdownDiv = div.querySelector(".breakdown");
+
+        hamburger.addEventListener("click", () => {
+            breakdownDiv.style.display = breakdownDiv.style.display === "block" ? "none" : "block";
+        });
+
+        div.addEventListener("click", (e) => {
+            if(e.target === hamburger) return;
+            navigator.clipboard.writeText(item.entry.url).then(() => {
+                let popup = document.getElementById("popup");
+                popup.style.opacity = 1;
+                setTimeout(() => popup.style.opacity = 0, 1500);
+            });
+        });
+
+        resultsDiv.appendChild(div);
+    });
+}
+
+
+document.getElementById("search").addEventListener("input", (e) => {
+    let query = e.target.value.trim();
+    renderResults(query);
+});
+</script>
+
+</body>
+</html>

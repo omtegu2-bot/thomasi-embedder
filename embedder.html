@@ -26,6 +26,8 @@
 
 <div class="controls">
   <button id="settingsBtn" title="Settings">⚙️</button>
+  <button id="openEngine">Open Search Engine</button>
+
   <input type="url" id="urlInput" placeholder="Enter website URL (https://example.com)">
   <button onclick="loadFromInput()">Load</button>
   <button onclick="toggleFullscreen()">Fullscreen</button>
@@ -33,6 +35,9 @@
 
 <div class="iframe-container" id="iframeContainer">
   <iframe id="embeddedSite" allow="fullscreen"></iframe>
+</div>
+<div id="engineContainer" style="width:100%; height:80vh; display:none;">
+  <iframe id="engineFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
 </div>
 
 <div id="history">
