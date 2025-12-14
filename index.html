@@ -114,6 +114,41 @@
             <li>cos(θ) = length of side adjacent to θ ÷ hypotenuse</li>
             <li>tan(θ) = length of side opposite θ ÷ side adjacent to θ</li>
         </ul>
+        <h2>Inverse Functions</h2>
+<p>Sometimes you know the ratio and want the angle:</p>
+<ul>
+    <li>θ = arcsin(opposite ÷ hypotenuse)</li>
+    <li>θ = arccos(adjacent ÷ hypotenuse)</li>
+    <li>θ = arctan(opposite ÷ adjacent)</li>
+</ul>
+<h2>Applications of Trigonometry</h2>
+<ul>
+    <li>Physics: calculating projectile motion</li>
+    <li>Engineering: designing ramps or bridges</li>
+    <li>Computer Graphics: rotating objects, calculating angles</li>
+    <li>Music: sound waves and frequencies (sinusoids)</li>
+</ul>
+<label>Angle (degrees): <input type="number" id="angle" value="30"></label>
+<p>sin(θ) = <span id="sine"></span></p>
+<p>cos(θ) = <span id="cosine"></span></p>
+<p>tan(θ) = <span id="tangent"></span></p>
+
+<script>
+const angleInput = document.getElementById('angle');
+const sineOutput = document.getElementById('sine');
+const cosineOutput = document.getElementById('cosine');
+const tangentOutput = document.getElementById('tangent');
+
+function updateTrig() {
+    let rad = angleInput.value * Math.PI / 180;
+    sineOutput.textContent = Math.sin(rad).toFixed(2);
+    cosineOutput.textContent = Math.cos(rad).toFixed(2);
+    tangentOutput.textContent = Math.tan(rad).toFixed(2);
+}
+
+angleInput.addEventListener('input', updateTrig);
+updateTrig();
+</script>
 
         <h2>Fun Fact</h2>
         <p>Trigonometry isn't just for triangles, it’s used in physics, engineering, computer graphics, and even music! (From what I've heard)</p>
