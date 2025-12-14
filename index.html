@@ -125,8 +125,39 @@
         </div>
 
         <div class="footer-links">
-            <a href="embedder.html">About</a>
-            <span>•</span>
+            <button onclick="openEmbedder()">About Us</button>
+
+<script>
+function openEmbedder() {
+  const win = window.open('about:blank', '_blank');
+
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Embedder</title>
+      <style>
+        html, body {
+          margin: 0;
+          width: 100%;
+          height: 100%;
+        }
+        iframe {
+          border: none;
+          width: 100%;
+          height: 100%;
+        }
+      </style>
+    </head>
+    <body>
+      <iframe src="embedder.html" allowfullscreen></iframe>
+    </body>
+    </html>
+  `);
+}
+</script>
+
             <a href="credits.html">Credits</a>
             <span>•</span>
             <a href="contact.html">Contact</a>
