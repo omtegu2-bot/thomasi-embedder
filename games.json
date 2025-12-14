@@ -5,97 +5,97 @@
   {
     "name": "Wikipedia",
     "url": "https://wikipedia.org",
-    "category": "Study",
+    "category": "study",
     "description": "The best thing ever made by humanity, second to only the MOSFET. Please, read this for hours."
   },
   {
     "name": "Hexanaut",
     "url": "https://hexanaut.io/",
-    "category": "Game",
+    "category": "game",
     "description": "An .io game where you capture territory."
   },
   {
-    "name": "Kodub",
+    "name": "Kodub (Polytrack)",
     "url": "https://www.kodub.com/",
-    "category": "Game",
+    "category": "game",
     "description": "A simple, fun game portal. Features Polytrack!"
   },
   {
     "name": "Krunker",
     "url": "https://krunker.io/",
-    "category": "Game",
+    "category": "game",
     "description": "Fast-paced browser FPS game."
   },
   {
     "name": "Defly",
     "url": "https://defly.io",
-    "category": "Game",
+    "category": "game",
     "description": "Fly a helicopter and capture points."
   },
   {
     "name": "Yorg",
     "url": "https://yorg.io",
-    "category": "Game",
+    "category": "game",
     "description": "A zombie tower defense .io game."
   },
   {
     "name": "Zombs",
     "url": "https://zombs.io",
-    "category": "Game",
+    "category": "game",
     "description": "Build a base and survive zombie waves."
   },
   {
     "name": "Bit Planes",
     "url": "https://medv.io/bit-planes/",
-    "category": "Game",
+    "category": "game",
     "description": "Simple airplane flying game."
   },
   {
     "name": "Goober Dash",
     "url": "https://gooberdash.winterpixel.io",
-    "category": "Game",
+    "category": "game",
     "description": "A fun running and racing game."
   },
   {
     "name": "Splatoon 2 Loadout Ability Chunk Calculator",
     "url": "https://selicia.github.io/en_US/",
-    "category": "Misc",
+    "category": "misc",
     "description": "Optimize your sploon gear."
   },
   {
     "name": "Bloxd",
     "url": "https://bloxd.io",
-    "category": "Game",
+    "category": "game",
     "description": "Minecraft-style .io games."
   },
   {
     "name": "MC Seed Map",
     "url": "https://mcseedmap.net",
-    "category": "Misc",
+    "category": "misc",
     "description": "Find structures in Minecraft seeds."
   },
   {
     "name": "Minecraft Wordle",
     "url": "https://mcdle.net",
-    "category": "Misc",
+    "category": "misc",
     "description": "A Wordle clone with Minecraft theming and items."
   },
   {
     "name": "TI-83+ Programs",
     "url": "https://www.ticalc.org/pub/83plus/basic/math/",
-    "category": "Misc",
+    "category": "misc",
     "description": "Basic math programs for the TI-83+ calculator."
   },
   {
     "name": "OpenFront",
     "url": "https://openfront.io/",
-    "category": "Game",
+    "category": "game",
     "description": "A tactical FPS game."
   },
   {
     "name": "Thomas 32x - Official Thomas Game!",
     "url": "https://html-classic.itch.zone/html/15749771/thms/index.html",
-    "category": "Thomas",
+    "category": "thomas",
     "description": "Thomas' original 3D platforming game, now released for web. ඞ."
   },
   {
@@ -119,19 +119,19 @@
   {
     "name": "Homestuck",
     "url": "https://homestuck.com",
-    "category": "Misc",
+    "category": "misc",
     "description": "Play the classic 2009 webcomic in-browser. ඞ!"
   },
   {
     "name": "Hollow Knight",
     "url": "https://lkarch.org/hollow-knight/",
-    "category": "Game",
+    "category": "game",
     "description": "It may not be silksong, but it is hollow knight."
   },
   {
     "name": "Celeste",
     "url": "https://lkarch.org/celeste/",
-    "category": "Game",
+    "category": "game",
     "description": "2d pixel platformer"
   }
 ] }

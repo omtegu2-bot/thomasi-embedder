@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IsoVoxel 3D Demo</title>
+<style>
+body { margin:0; overflow:hidden; background:#2b2b2b; }
+canvas { display:block; cursor:none; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<script>
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const TILE_W = 64, TILE_H = 32, BLOCK_H = 32;
+const GRAVITY = 0.5;
+
+// --- World JSON ---
+const world = { width:16, height:16, blocks:[] };
+for(let y=0;y<world.height;y++){
+    world.blocks[y]=[];
+    for(let x=0;x<world.width;x++){
+        let type = Math.random()<0.2?"stone":"grass";
+        let h = type==="stone"?2:1;
+        world.blocks[y][x] = {type, height:h};
+    }
+}
+
+// --- Player ---
+const player = {x:8, y:8, z:2, vy:0, facing:0};
+
+// --- Input ---
+const keys = {};
+document.addEventListener('keydown', e=>keys[e.key.toLowerCase()]=true);
+document.addEventListener('keyup', e=>keys[e.key.toLowerCase()]=false);
+let mouse = {x:0,y:0};
+canvas.addEventListener('mousemove', e=>{mouse.x=e.clientX; mouse.y=e.clientY});
+canvas.addEventListener('mousedown', e=>{
+    if(e.button===0) placeBlock();
+    if(e.button===2) breakBlock();
+});
+canvas.addEventListener('contextmenu', e=>e.preventDefault());
+
+// --- Utilities ---
+function gridToScreen(x,y,z){
+    return {
+        x: (x-y)*TILE_W/2 + canvas.width/2,
+        y: (x+y)*TILE_H/2 - z*BLOCK_H + canvas.height/2 - 100
+    };
+}
+
+function getLight(x,y,h){ // basic lightmap
+    let distance = Math.sqrt((x-player.x)**2 + (y-player.y)**2);
+    return Math.max(0.2,1-distance/12);
+}
+
+// --- Drawing ---
+function drawCube(x,y,h,type){
+    const pos = gridToScreen(x,y,h);
+    const light = getLight(x,y,h);
+    const topColor = type==="grass"?`rgba(${120*light},${200*light},${120*light},1)`:`rgba(${150*light},${150*light},${150*light},1)`;
+    const sideColor = type==="grass"?`rgba(${100*light},${180*light},${100*light},1)`:`rgba(${120*light},${120*light},${120*light},1)`;
+    const sideColor2 = type==="grass"?`rgba(${90*light},${160*light},${90*light},1)`:`rgba(${100*light},${100*light},100*light,1)`;
+
+    // Top
+    ctx.fillStyle=topColor;
+    ctx.beginPath();
+    ctx.moveTo(pos.x,pos.y);
+    ctx.lineTo(pos.x+TILE_W/2,pos.y+TILE_H/2);
+    ctx.lineTo(pos.x,pos.y+TILE_H);
+    ctx.lineTo(pos.x-TILE_W/2,pos.y+TILE_H/2);
+    ctx.closePath();
+    ctx.fill();
+
+    // Side right
+    ctx.fillStyle=sideColor;
+    ctx.beginPath();
+    ctx.moveTo(pos.x,pos.y);
+    ctx.lineTo(pos.x+TILE_W/2,pos.y+TILE_H/2);
+    ctx.lineTo(pos.x+TILE_W/2,pos.y+TILE_H/2+BLOCK_H);
+    ctx.lineTo(pos.x,pos.y+BLOCK_H);
+    ctx.closePath();
+    ctx.fill();
+
+    // Side left
+    ctx.fillStyle=sideColor2;
+    ctx.beginPath();
+    ctx.moveTo(pos.x,pos.y);
+    ctx.lineTo(pos.x,pos.y+BLOCK_H);
+    ctx.lineTo(pos.x-TILE_W/2,pos.y+TILE_H/2+BLOCK_H);
+    ctx.lineTo(pos.x-TILE_W/2,pos.y+TILE_H/2);
+    ctx.closePath();
+    ctx.fill();
+}
+
+// --- Render ---
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Find max block height in world
+    let maxHeight = 0;
+    for(let y=0;y<world.height;y++){
+        for(let x=0;x<world.width;x++){
+            maxHeight = Math.max(maxHeight, world.blocks[y][x].height);
+        }
+    }
+
+    // Render blocks layer by layer
+    for(let z=0; z<maxHeight; z++){
+        for(let y=0;y<world.height;y++){
+            for(let x=0;x<world.width;x++){
+                const block = world.blocks[y][x];
+                if(block.height > z){
+                    drawCube(x,y,z,block.type);
+                }
+            }
+        }
+    }
+
+    // Placement preview
+    let target = getTargetBlock();
+    if(target){
+        const pos = gridToScreen(target.x,target.y,target.z);
+        ctx.strokeStyle='yellow';
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(pos.x,pos.y);
+        ctx.lineTo(pos.x+TILE_W/2,pos.y+TILE_H/2);
+        ctx.lineTo(pos.x,pos.y+TILE_H);
+        ctx.lineTo(pos.x-TILE_W/2,pos.y+TILE_H/2);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    // Player
+    const pp = gridToScreen(player.x,player.y,player.z);
+    ctx.fillStyle='red';
+    ctx.beginPath();
+    ctx.arc(pp.x,pp.y-TILE_H/2,12,0,Math.PI*2);
+    ctx.fill();
+}
+
+
+// --- Target Block ---
+function getTargetBlock(){
+    const fx = Math.floor(player.x + Math.cos(player.facing));
+    const fy = Math.floor(player.y + Math.sin(player.facing));
+    const fz = Math.floor(player.z);
+    if(world.blocks[fy] && world.blocks[fy][fx]){
+        return {x:fx,y:fy,z:world.blocks[fy][fx].height};
+    }
+    return null;
+}
+
+// --- Game loop ---
+function update(){
+    // Movement
+    let dx=0,dy=0;
+    if(keys['w']){dx-=1;dy-=1;}
+    if(keys['s']){dx+=1;dy+=1;}
+    if(keys['a']){dx-=1;dy+=1;}
+    if(keys['d']){dx+=1;dy-=1;}
+    player.x+=dx*0.1;
+    player.y+=dy*0.1;
+
+    // Jumping with collision
+    if(keys[' '] && player.z<=getTopHeight(player.x,player.y)+0.01) player.vy=-1.5;
+    player.vy+=GRAVITY*-0.1;
+    player.z+=player.vy;
+    const topH = getTopHeight(player.x,player.y);
+    if(player.z<topH){player.z=topH;player.vy=0;}
+
+    // Facing
+    player.facing=Math.atan2(mouse.y-(canvas.height/2-100),mouse.x-canvas.width/2);
+
+    // Q/E replacements
+    if(keys['q']){breakBlock();keys['q']=false;}
+    if(keys['e']){placeBlock();keys['e']=false;}
+
+    draw();
+    requestAnimationFrame(update);
+}
+
+// --- Top surface for jump detection ---
+function getTopHeight(x,y){
+    const gx = Math.floor(x), gy = Math.floor(y);
+    if(world.blocks[gy] && world.blocks[gy][gx]) return world.blocks[gy][gx].height;
+    return 0;
+}
+
+// --- Block functions ---
+function breakBlock(){
+    let t = getTargetBlock();
+    if(t && world.blocks[t.y] && world.blocks[t.y][t.x]){
+        world.blocks[t.y][t.x].height = Math.max(0,world.blocks[t.y][t.x].height-1);
+    }
+}
+function placeBlock(){
+    let t = getTargetBlock();
+    if(t && world.blocks[t.y] && world.blocks[t.y][t.x]){
+        world.blocks[t.y][t.x].height+=1;
+    }
+}
+
+// --- Start ---
+update();
+</script>
+</body>
+</html>
