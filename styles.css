@@ -10,9 +10,13 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "minecraftia", cursive, sans-serif;
-  background: var(--bg);
+  background-color: var(--bg); /* all themes get their color */
   color: var(--fg);
   transition: background .2s, color .2s;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
 }
 
 
@@ -25,6 +29,7 @@ html, body {
   --accent: #4CAF50;
   --accent-hover: #45a049;
   --shadow: rgba(0,0,0,0.35);
+   background-image: none
 }
 
 body.dark {
@@ -36,6 +41,7 @@ body.dark {
   --accent: #2f855a;
   --accent-hover: #276746;
   --shadow: rgba(0,255,255,0.5);
+  background-image: url('bg.jpg');
 }
 
 body.purple {
@@ -47,6 +53,7 @@ body.purple {
   --accent: #660066;
   --accent-hover: #550055;
   --shadow: rgba(255,0,255,0.45);
+  background-image: url('bg.jpg');
 }
 
 body.yellow {
@@ -58,6 +65,7 @@ body.yellow {
   --accent: #f0e68c;
   --accent-hover: #e6d560;
   --shadow: rgba(255,200,0,0.45);
+   background-image: none;
 }
 body.magenta {
   --bg: #ff00ff;
@@ -68,6 +76,7 @@ body.magenta {
   --accent: #880088;
   --accent-hover: #ff00f5;
   --shadow: rgba(255,0,255,0.45);
+   background-image: none;
 }
 
    
@@ -337,4 +346,38 @@ body.low-end .glow-on-hover::before {
 body.low-end .flashing-text,
 body.low-end .animated-glow {
   animation: none; /* disables continuous animations */
+}
+
+/* Apply only to dark and purple themes */
+body.dark #history,
+body.dark #linkGrid,
+body.dark #about,
+body.dark #customBookmarks,
+body.dark #update,
+body.dark .iframe-container,
+body.dark .tile,
+body.purple #history,
+body.purple #linkGrid,
+body.purple #about,
+body.purple #customBookmarks,
+body.purple #update,
+body.purple .iframe-container,
+body.purple .tile {
+  background-color: rgba(30,30,30,0.6); /* semi-transparent */
+  backdrop-filter: blur(8px); /* subtle blur */
+  border: 1px solid rgba(255,255,255,0.1); /* softened border */
+}
+
+/* Optional: adjust text color if needed */
+body.dark #history,
+body.dark #linkGrid,
+body.dark #about,
+body.dark #customBookmarks,
+body.dark #update,
+body.purple #history,
+body.purple #linkGrid,
+body.purple #about,
+body.purple #customBookmarks,
+body.purple #update {
+  color: var(--fg);
 }
