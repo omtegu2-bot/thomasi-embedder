@@ -9,24 +9,30 @@ import re
 import os
 
 MAX_PAGES_PER_SITE = 30000
-MAX_CONCURRENT_REQUESTS = 500
-SAVE_INTERVAL = 500
+MAX_CONCURRENT_REQUESTS = 5
+SAVE_INTERVAL = 200
 SCRAPER_VERSION = "0.2.0"
 SCHEMA_VERSION = 2
 
 
 semaphore = Semaphore(MAX_CONCURRENT_REQUESTS)
 
-# --- Helper functions ---
 async def fetch(session, url):
     async with semaphore:
+        headers = {
+    "User-Agent": "OmteguSearchEngine/1.0 (https://github.com/omtegu2-bot/thomasi-embedder/; omegaomeg7@gmail.com)"
+}
+
         try:
-            async with session.get(url, timeout=10) as response:
+            async with session.get(url, timeout=10, headers=headers) as response:
+                print(f"Fetching {url} -> {response.status}")  # debug line
                 if response.status == 200:
                     return await response.text()
-        except:
+        except Exception as e:
+            print(f"Error fetching {url}: {e}")
             return None
     return None
+
 
 def clean_words(text):
     return re.findall(r'\b\w+\b', text.lower())
@@ -50,28 +56,68 @@ async def scrape_page(session, url, depth=0, discovered_from=None):
     import time
     start_fetch = time.perf_counter()
 
+    parsed = urlparse(url)
+
     try:
-        html = await fetch(session, url)
-        fetch_time_ms = int((time.perf_counter() - start_fetch) * 1000)
+        # Detect Wikipedia URLs
+        if "wikipedia.org" in parsed.netloc:
+            # Use Wikipedia API
+            api_url = f"https://{parsed.netloc}/w/api.php"
+            params = {
+                "action": "parse",
+                "page": parsed.path.split("/")[-1],
+                "format": "json",
+                "prop": "text|categories|links"
+            }
+            async with session.get(api_url, params=params, timeout=10) as response:
+                if response.status != 200:
+                    print(f"Wikipedia API error {response.status}: {url}")
+                    return None
+                data_json = await response.json()
 
-        if not html:
-            return None
+            page_data = data_json.get("parse", {})
+            title = page_data.get("title", "No Title")
+            html_content = page_data.get("text", {}).get("*", "")
+            description = ""  # Wikipedia pages rarely have meta description
 
-        start_process = time.perf_counter()
+            # Extract text from HTML
+            soup = BeautifulSoup(html_content, "html.parser")
+            full_text = soup.get_text(separator=" ", strip=True)
 
-        soup = BeautifulSoup(html, "html.parser")
-        title = soup.title.string.strip() if soup.title else "No Title"
+            # Extract outgoing links
+            links = []
+            for link_obj in page_data.get("links", []):
+                if "exists" in link_obj:
+                    link_title = link_obj["*"]
+                    link_url = urljoin(f"https://{parsed.netloc}", f"/wiki/{link_title.replace(' ', '_')}")
+                    links.append(link_url)
 
-        desc_tag = soup.find("meta", attrs={"name": "description"})
-        description = desc_tag["content"][:300] if desc_tag and desc_tag.get("content") else ""
+        else:
+            # Normal HTML scraping
+            html = await fetch(session, url)
+            if not html:
+                return None
 
-        full_text = soup.get_text(separator=" ", strip=True)
+            soup = BeautifulSoup(html, "html.parser")
+            title = soup.title.string.strip() if soup.title else "No Title"
+
+            desc_tag = soup.find("meta", attrs={"name": "description"})
+            description = desc_tag["content"][:300] if desc_tag and desc_tag.get("content") else ""
+
+            full_text = soup.get_text(separator=" ", strip=True)
+
+            # Extract links manually
+            links = []
+            for a in soup.find_all("a", href=True):
+                link = urljoin(url, a["href"])
+                parsed_link = urlparse(link)
+                if parsed_link.scheme in ("http", "https") and parsed_link.netloc.endswith(parsed.netloc):
+                    links.append(link)
+
         stats = word_stats(full_text)
         entities = extract_entities(full_text)
 
-        processing_time_ms = int((time.perf_counter() - start_process) * 1000)
-
-        parsed = urlparse(url)
+        processing_time_ms = int((time.perf_counter() - start_fetch) * 1000)
 
         data = {
             "_schema_version": SCHEMA_VERSION,
@@ -84,7 +130,7 @@ async def scrape_page(session, url, depth=0, discovered_from=None):
             "crawl": {
                 "discovered_from": discovered_from,
                 "depth": depth,
-                "fetch_time_ms": fetch_time_ms,
+                "fetch_time_ms": processing_time_ms,
                 "processing_time_ms": processing_time_ms,
                 "status": 200
             },
@@ -104,7 +150,7 @@ async def scrape_page(session, url, depth=0, discovered_from=None):
 
             "links": {
                 "incoming": 0,
-                "outgoing": 0
+                "outgoing": len(links)
             }
         }
 
@@ -114,6 +160,7 @@ async def scrape_page(session, url, depth=0, discovered_from=None):
     except Exception as e:
         print(f"Failed: {url} ({e})")
         return None
+
 
 
 async def get_links(session, url, base_domain):
@@ -286,11 +333,6 @@ if __name__ == "__main__":
     urls = [
         "https://example.com",
         "https://en.wikipedia.org/wiki/Main_Page",
-        "https://minecraft.fandom.com/wiki/Minecraft_Wiki",
-        "https://homestuck.com",
-        "https://lkarch.org",
-        "https://newnameful.com",
-        "https://en.wikipedia.org/wiki/Web_scraping",
-        "https://ticalc.org"
+        "https://boards.4chan.org/v/4"
     ]
     asyncio.run(main(urls))

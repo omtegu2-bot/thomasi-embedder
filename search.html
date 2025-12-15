@@ -183,10 +183,18 @@ function renderResults(query) {
         return;
     }
 
-    const filtered = data
-        .map(entry => ({ entry, result: computeScore(entry, query) }))
-        .filter(e => e.result.score > 0)
-        .sort((a, b) => b.result.score - a.result.score);
+const filtered = data
+    .map(entry => ({ entry, result: computeScore(entry, query) }))
+    .filter(e => {
+        const url = e.entry.url || "";
+        // Filter out URLs with '?' or more than 3 '%' symbols
+        if (url.includes('?')) return false;
+        const percentCount = (url.match(/%/g) || []).length;
+        if (percentCount > 3) return false;
+        return e.result.score > 0;
+    })
+    .sort((a, b) => b.result.score - a.result.score);
+
 
     countDiv.innerText = filtered.length > 0
         ? `Showing ${filtered.length} of ${data.length} entries`
