@@ -8,9 +8,12 @@ from collections import Counter
 import re
 import os
 
-MAX_PAGES_PER_SITE = 500
+MAX_PAGES_PER_SITE = 30000
 MAX_CONCURRENT_REQUESTS = 500
-SAVE_INTERVAL = 20
+SAVE_INTERVAL = 500
+SCRAPER_VERSION = "0.2.0"
+SCHEMA_VERSION = 2
+
 
 semaphore = Semaphore(MAX_CONCURRENT_REQUESTS)
 
@@ -43,72 +46,98 @@ def extract_tags_from_description(description):
         tags.append("none")
     return tags
 
-async def scrape_page(session, url):
-    html = await fetch(session, url)
-    if not html:
-        return None
+async def scrape_page(session, url, depth=0, discovered_from=None):
+    import time
+    start_fetch = time.perf_counter()
+
     try:
-        soup = BeautifulSoup(html, 'html.parser')
+        html = await fetch(session, url)
+        fetch_time_ms = int((time.perf_counter() - start_fetch) * 1000)
+
+        if not html:
+            return None
+
+        start_process = time.perf_counter()
+
+        soup = BeautifulSoup(html, "html.parser")
         title = soup.title.string.strip() if soup.title else "No Title"
 
-        desc_tag = soup.find('meta', attrs={'name':'description'})
-        if desc_tag and desc_tag.get('content'):
-            description = desc_tag['content'][:300]
-            desc_full = desc_tag['content']
-        else:
-            p = soup.find('p')
-            description = (p.get_text()[:300] if p else "")
-            desc_full = (p.get_text() if p else "")
+        desc_tag = soup.find("meta", attrs={"name": "description"})
+        description = desc_tag["content"][:300] if desc_tag and desc_tag.get("content") else ""
 
-        # Auto tags from title
-        title_words = [w.lower() for w in (title or "").split() if len(w) >= 5]
-        title_tags = title_words[:2]
-        while len(title_tags) < 2:
-            title_tags.append("none")
-        tag1, tag2 = title_tags
+        full_text = soup.get_text(separator=" ", strip=True)
+        stats = word_stats(full_text)
+        entities = extract_entities(full_text)
 
-        tag3, tag4 = extract_tags_from_description(desc_full)
-        tag5 = ""  # manual edit
+        processing_time_ms = int((time.perf_counter() - start_process) * 1000)
 
-        common_word = most_common_word(desc_full)
+        parsed = urlparse(url)
 
         data = {
+            "_schema_version": SCHEMA_VERSION,
+            "_scraper_version": SCRAPER_VERSION,
+
             "url": url,
-            "title": title,
-            "description": description,
-            "tag1": tag1,
-            "tag2": tag2,
-            "tag3": tag3,
-            "tag4": tag4,
-            "tag5": tag5,
-            "common_word": common_word
+            "domain": parsed.netloc,
+            "path": parsed.path or "/",
+
+            "crawl": {
+                "discovered_from": discovered_from,
+                "depth": depth,
+                "fetch_time_ms": fetch_time_ms,
+                "processing_time_ms": processing_time_ms,
+                "status": 200
+            },
+
+            "content": {
+                "title": title,
+                "description": description
+            },
+
+            "signals": {
+                "word_count": stats["word_count"],
+                "unique_words": stats["unique_words"],
+                "text_length": len(full_text)
+            },
+
+            "entities": entities,
+
+            "links": {
+                "incoming": 0,
+                "outgoing": 0
+            }
         }
 
         print(f"Scraped: {url}")
         return data
+
     except Exception as e:
         print(f"Failed: {url} ({e})")
         return None
+
 
 async def get_links(session, url, base_domain):
     html = await fetch(session, url)
     if not html:
         return []
-    soup = BeautifulSoup(html, 'html.parser')
+
+    soup = BeautifulSoup(html, "html.parser")
     links = set()
-    for a in soup.find_all('a', href=True):
-        link = urljoin(url, a['href'])
+
+    for a in soup.find_all("a", href=True):
+        link = urljoin(url, a["href"])
         parsed = urlparse(link)
-        # include any subdomain that ends with base_domain
-        if parsed.scheme in ["http", "https"] and parsed.netloc.endswith(base_domain):
-            # avoid fragments
-            clean_link = parsed._replace(fragment="").geturl()
-            links.add(clean_link)
+
+        if parsed.scheme in ("http", "https") and parsed.netloc.endswith(base_domain):
+            links.add(link)
+
     return list(links)
 
 
 # --- Scrape site with resuming ---
 async def scrape_site(start_url, existing_results=None):
+    incoming_counter = Counter()
+
     """
     Scrape a site starting from start_url, respecting MAX_PAGES_PER_SITE per site.
     """
@@ -116,9 +145,18 @@ async def scrape_site(start_url, existing_results=None):
     results = existing_results if existing_results else []
 
     # Start with URLs already in existing_results for this domain
-    to_visit = [r['url'] for r in results if urlparse(r['url']).netloc.endswith(domain)]
-    if start_url not in to_visit:
-        to_visit.append(start_url)
+    to_visit = []
+
+    # Seed existing pages (optional resume)
+    for r in results:
+        if urlparse(r["url"]).netloc.endswith(domain):
+            to_visit.append((r["url"], r.get("crawl", {}).get("depth", 0), None))
+
+    # Seed the start URL
+    if not any(u == start_url for u, _, _ in to_visit):
+        to_visit.append((start_url, 0, None))
+
+
 
     visited = set()  # Track pages visited in this run for this site
     site_results = [r for r in results if urlparse(r['url']).netloc.endswith(domain)]
@@ -131,11 +169,14 @@ async def scrape_site(start_url, existing_results=None):
             tasks = []
             urls_for_tasks = []
 
-            for url in batch:
+            for item in batch:
+                url, depth, parent = item
+
                 if url not in visited:
                     visited.add(url)
-                    tasks.append(scrape_page(session, url))
+                    tasks.append(scrape_page(session, url, depth, parent))
                     urls_for_tasks.append(url)
+
 
             if not tasks:
                 continue
@@ -155,24 +196,37 @@ async def scrape_site(start_url, existing_results=None):
                     else:
                         site_results.append(data)
 
+                    if data:
+                        links = await get_links(session, current_url, domain)
+                        data["links"]["outgoing"] = len(links)
+
+                        for link in links:
+                            incoming_counter[link] += 1
+
+                            if (
+                                link not in visited
+                                and len(site_results) + len(to_visit) < MAX_PAGES_PER_SITE
+                            ):
+                                to_visit.append((link, depth + 1, current_url))
+
                     # Save periodically
                     if len(site_results) % SAVE_INTERVAL == 0:
                         all_results = [r for r in results if not urlparse(r['url']).netloc.endswith(domain)]
                         all_results.extend(site_results)
                         with open("scraped_async.json", "w", encoding="utf-8") as f:
                             json.dump(all_results, f, indent=2, ensure_ascii=False)
-                        print(f"Saved {len(site_results)} pages for {domain}.")
+                            print(f"Saved {len(site_results)} pages for {domain}.")
 
-                # Fetch links regardless
-                links = await get_links(session, current_url, domain)
-                for link in links:
-                    if link not in visited and len(site_results) + len(to_visit) < MAX_PAGES_PER_SITE:
-                        to_visit.append(link)
+
+
 
     # Merge site_results back into all_results
     other_results = [r for r in results if not urlparse(r['url']).netloc.endswith(domain)]
     final_results = other_results + site_results
     return final_results
+    for entry in site_results:
+        entry["links"]["incoming"] = incoming_counter.get(entry["url"], 0)
+
 
 
 # --- Main entry ---
@@ -184,24 +238,59 @@ async def main(urls):
     else:
         all_results = []
 
-    visited_urls = set(r['url'] for r in all_results)
+    print(f"Launching {len(urls)} sites concurrently.")
 
-    for url in urls:
-        print(f"Starting site: {url}")
-        site_results = await scrape_site(url, existing_results=all_results)
-        all_results = site_results  # update master list
+    # Create one task per site
+    tasks = [
+        scrape_site(url, existing_results=all_results)
+        for url in urls
+    ]
 
+    # Run all sites at once
+    site_results_lists = await asyncio.gather(*tasks)
+
+    # Merge results (dedupe by URL)
+    merged = {}
+    for site_results in site_results_lists:
+        for entry in site_results:
+            merged[entry["url"]] = entry
+
+    final_results = list(merged.values())
 
     # Final save
     with open("scraped_async.json", "w", encoding="utf-8") as f:
-        json.dump(all_results, f, indent=2, ensure_ascii=False)
-    print(f"Done! Scraped {len(all_results)} pages.")
+        json.dump(final_results, f, indent=2, ensure_ascii=False)
+
+    print(f"Done! Scraped {len(final_results)} pages.")
+def word_stats(text):
+    words = clean_words(text)
+    return {
+        "word_count": len(words),
+        "unique_words": len(set(words))
+    }
+def extract_entities(text):
+    words = re.findall(r'\b\w+\b', text)
+    capitalized = sorted(set(w for w in words if w[0].isupper() and len(w) > 2))
+
+    years = sorted(set(int(y) for y in re.findall(r'\b(18|19|20)\d{2}\b', text)))
+    numbers = sorted(set(re.findall(r'\b\d+(\.\d+)?\b', text)))
+
+    return {
+        "capitalized_terms": capitalized[:20],
+        "years": years,
+        "numbers": numbers[:20]
+    }
+
 
 if __name__ == "__main__":
     urls = [
         "https://example.com",
         "https://en.wikipedia.org/wiki/Main_Page",
         "https://minecraft.fandom.com/wiki/Minecraft_Wiki",
-            "https://homestuck.com"
+        "https://homestuck.com",
+        "https://lkarch.org",
+        "https://newnameful.com",
+        "https://en.wikipedia.org/wiki/Web_scraping",
+        "https://ticalc.org"
     ]
     asyncio.run(main(urls))

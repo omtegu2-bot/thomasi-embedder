@@ -70,6 +70,7 @@ function computeScore(entry, query) {
     let score = 0;
     let breakdown = {};
 
+    // Unified fields for old + new format
     const fields = [
         { key: 'title', points: 10 },
         { key: 'url', points: 9 },
@@ -83,37 +84,93 @@ function computeScore(entry, query) {
     ];
 
     fields.forEach(field => {
-        let text = entry[field.key];
+        let text = null;
+        if (field.key === 'title') text = entry.title || (entry.content && entry.content.title);
+        else if (field.key === 'description') text = entry.description || (entry.content && entry.content.description);
+        else text = entry[field.key] || "";
+
         if (!text) return;
         text = String(text).toLowerCase();
         let matches = 0;
         tokens.forEach(token => {
             if (text.includes(token)) matches++;
-            // Extra boost for exact token match
             if (text === token) matches += 2;
         });
         if (matches > 0) {
-            let fieldScore = field.points * matches;
-            // Boost longer queries slightly
-            fieldScore += Math.floor(query.length / 10);
+            let fieldScore = field.points * matches + Math.floor(query.length / 10);
             breakdown[field.key] = fieldScore;
             score += fieldScore;
         }
     });
 
+    // --- New-format specific fields ---
+    if (entry.entities) {
+        // Capitalized terms
+        if (entry.entities.capitalized_terms && entry.entities.capitalized_terms.length) {
+            let capMatches = 0;
+            const lowerTerms = entry.entities.capitalized_terms.map(t => t.toLowerCase());
+            tokens.forEach(token => {
+                if (lowerTerms.includes(token)) capMatches++;
+            });
+            if (capMatches > 0) {
+                const points = 6; // similar to tag points
+                const fieldScore = points * capMatches + Math.floor(query.length / 10);
+                breakdown['capitalized_terms'] = fieldScore;
+                score += fieldScore;
+            }
+        }
+
+        // Years
+        if (entry.entities.years && entry.entities.years.length) {
+            let yearMatches = 0;
+            tokens.forEach(token => {
+                if (entry.entities.years.map(String).includes(token)) yearMatches++;
+            });
+            if (yearMatches > 0) {
+                const points = 4;
+                const fieldScore = points * yearMatches;
+                breakdown['years'] = fieldScore;
+                score += fieldScore;
+            }
+        }
+
+        // Numbers
+        if (entry.entities.numbers && entry.entities.numbers.length) {
+            let numMatches = 0;
+            tokens.forEach(token => {
+                if (entry.entities.numbers.includes(token)) numMatches++;
+            });
+            if (numMatches > 0) {
+                const points = 3;
+                const fieldScore = points * numMatches;
+                breakdown['numbers'] = fieldScore;
+                score += fieldScore;
+            }
+        }
+    }
+
     return { score, breakdown };
 }
 
-// Highlight matched tokens
-function highlightMatch(text, query) {
-    if (!query) return text;
+
+
+// Highlight matches in text or array fields
+function highlightMatch(entryField, query) {
+    if (!query) return entryField;
+
     const tokens = query.split(/\s+/);
+
+    // If entryField is an array (like capitalized_terms, numbers), join into string first
+    let text = Array.isArray(entryField) ? entryField.join(' ') : String(entryField);
+
     tokens.forEach(token => {
         const regex = new RegExp(`(${token})`, 'gi');
         text = text.replace(regex, '<span class="highlight">$1</span>');
     });
+
     return text;
 }
+
 
 // Render search results
 function renderResults(query) {
@@ -136,22 +193,45 @@ function renderResults(query) {
         : `No results found out of ${data.length} entries`;
 
     filtered.forEach(item => {
-        if (!item.entry.tag1) item.entry.tag1 = "none";
-        if (!item.entry.tag2) item.entry.tag2 = "none";
+        const entry = item.entry;
+
+        // Unified fields
+        const title = entry.title || (entry.content && entry.content.title) || "Untitled";
+        const description = entry.description || (entry.content && entry.content.description) || "";
+        const url = entry.url || "#";
+
+        // Old-format tags
+        const tags = [
+            entry.tag1 || "",
+            entry.tag2 || "",
+            entry.tag3 || "",
+            entry.tag4 || "",
+            entry.tag5 || "",
+            entry.common_word || ""
+        ].filter(t => t);
+
+        // New-format arrays
+        const capitalized = entry.entities?.capitalized_terms || [];
+        const years = entry.entities?.years || [];
+        const numbers = entry.entities?.numbers || [];
 
         const div = document.createElement("div");
         div.className = "entry";
         div.innerHTML = `
-            <strong>${highlightMatch(item.entry.title, query)}</strong>
+            <strong>${highlightMatch(title, query)}</strong>
             <span class="score">(Point Value: ${item.result.score})</span>
             <button class="hamburger" tabindex="0">☰</button>
-            <br>${highlightMatch(item.entry.url, query)}<br>
-            ${highlightMatch(item.entry.description, query)}
+            <br>${highlightMatch(url, query)}<br>
+            ${highlightMatch(description, query)}
             <div class="breakdown">
                 <strong>Score Breakdown:</strong>
                 <ul>
                     ${Object.entries(item.result.breakdown).map(([k,v]) => `<li>${k}: +${v}</li>`).join('')}
                 </ul>
+                ${tags.length ? `<p>Tags: ${highlightMatch(tags, query)}</p>` : ''}
+                ${capitalized.length ? `<p>Capitalized Terms: ${highlightMatch(capitalized, query)}</p>` : ''}
+                ${years.length ? `<p>Years: ${highlightMatch(years, query)}</p>` : ''}
+                ${numbers.length ? `<p>Numbers: ${highlightMatch(numbers, query)}</p>` : ''}
             </div>
         `;
 
@@ -164,7 +244,7 @@ function renderResults(query) {
 
         div.addEventListener("click", (e) => {
             if (e.target === hamburger) return;
-            navigator.clipboard.writeText(item.entry.url).then(() => {
+            navigator.clipboard.writeText(url).then(() => {
                 const popup = document.getElementById("popup");
                 popup.style.opacity = 1;
                 setTimeout(() => popup.style.opacity = 0, 1500);
@@ -174,6 +254,7 @@ function renderResults(query) {
         resultsDiv.appendChild(div);
     });
 }
+
 
 // Attach debounced search listener
 document.getElementById("search").addEventListener("input", debounce((e) => {
