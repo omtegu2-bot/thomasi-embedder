@@ -104,32 +104,71 @@ function renderBookmarks(bookmarks) {
   }
 }
 
-/* FULLSCREEN */
 function toggleFullscreen() {
     const iframe = document.getElementById('embeddedSite');
-    
-    // Open in a new blank tab for fullscreen
-    const newTab = window.open('', '_blank');
-    
-    // Inject the iframe full page
-    newTab.document.write(`
-        <html>
-        <head>
-            <title>Fullscreen View</title>
-            <style>
-                html, body { margin:0; height:100%; }
-                iframe { width:100%; height:100%; border:none; }
-            </style>
-        </head>
-        <body>
-            <iframe src="${iframe.src}" allow="fullscreen"></iframe>
-        </body>
-        </html>
-    `);
-    newTab.document.close();
-    
-    // Optionally request fullscreen from the new tab
-    newTab.document.body.requestFullscreen?.().catch(() => {});
+
+    // Try opening in a new tab first
+    try {
+        const newTab = window.open('', '_blank');
+        newTab.document.write(`
+            <html>
+            <head>
+                <title>Fullscreen View</title>
+                <style>
+                    html, body { margin:0; height:100%; }
+                    iframe { width:100%; height:100%; border:none; }
+                </style>
+            </head>
+            <body>
+                <iframe src="${iframe.src}" allow="fullscreen"></iframe>
+            </body>
+            </html>
+        `);
+        newTab.document.close();
+        newTab.document.body.requestFullscreen?.().catch(() => { throw 'fullscreen failed'; });
+        return; // Success, exit function
+    } catch {
+        // Fallback fullscreen on the same page
+        createOverlayFullscreen(iframe);
+    }
+}
+
+function createOverlayFullscreen(iframe) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'iframeFullscreenOverlay';
+    Object.assign(overlay.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100vw',
+        height: '100vh',
+        background: '#000',
+        zIndex: '9999',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    });
+
+    // Clone iframe so original stays in place
+    const fullscreenIframe = iframe.cloneNode(true);
+    Object.assign(fullscreenIframe.style, {
+        width: '100%',
+        height: '100%',
+        border: 'none'
+    });
+
+    overlay.appendChild(fullscreenIframe);
+    document.body.appendChild(overlay);
+
+    // Close on Escape
+    function closeOverlay(e) {
+        if (e.key === 'Escape') {
+            overlay.remove();
+            document.removeEventListener('keydown', closeOverlay);
+        }
+    }
+    document.addEventListener('keydown', closeOverlay);
 }
 
 
