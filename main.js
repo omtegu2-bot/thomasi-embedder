@@ -106,10 +106,32 @@ function renderBookmarks(bookmarks) {
 
 /* FULLSCREEN */
 function toggleFullscreen() {
-  const container = document.getElementById('iframeContainer');
-  if(!document.fullscreenElement) container.requestFullscreen?.();
-  else document.exitFullscreen?.();
+    const iframe = document.getElementById('embeddedSite');
+    
+    // Open in a new blank tab for fullscreen
+    const newTab = window.open('', '_blank');
+    
+    // Inject the iframe full page
+    newTab.document.write(`
+        <html>
+        <head>
+            <title>Fullscreen View</title>
+            <style>
+                html, body { margin:0; height:100%; }
+                iframe { width:100%; height:100%; border:none; }
+            </style>
+        </head>
+        <body>
+            <iframe src="${iframe.src}" allow="fullscreen"></iframe>
+        </body>
+        </html>
+    `);
+    newTab.document.close();
+    
+    // Optionally request fullscreen from the new tab
+    newTab.document.body.requestFullscreen?.().catch(() => {});
 }
+
 
 /* SETTINGS MODAL LOGIC */
 const settingsBtn = document.getElementById("settingsBtn");
