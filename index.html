@@ -1,227 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta charset="UTF-8">
+  <title>Trigonometry Made Simple</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trig Made Simple</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-.site-footer {
-    background-color: #f2f2f2;
-    border-top: 1px solid #ddd;
-    padding: 24px 16px;
-    margin-top: 60px;
-    font-size: 0.9rem;
-    color: #555;
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f6f6f6;
+      color: #222;
+    }
+
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 24px auto;
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+footer {
+  margin-top: 48px;
+  padding: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.footer-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+footer a {
+  color: #4CAF50;
+  text-decoration: none;
+  margin: 0 4px;
 }
 
-.footer-title {
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #333;
+footer a:hover {
+  text-decoration: underline;
 }
 
-.footer-links {
-    margin: 8px 0;
-}
+    label {
+      display: block;
+      margin-top: 16px;
+    }
 
-.footer-links a {
-    color: #4CAF50;
-    text-decoration: none;
-    margin: 0 4px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-.footer-meta {
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: #777;
-}
-
-        /* iframe styles */
-        #embed-frame {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none; /* hide initially */
-            z-index: 9999;
-        }
-        #close-btn {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 10000;
-            background: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-        }
-    </style>
+    input {
+      padding: 6px;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Trigonometry Made Simple</h1>
-    </header>
-    <main>
-        <h2>What is Trigonometry?</h2>
-        <p>Trigonometry is a branch of mathematics that studies the relationships between the angles and sides of triangles, especially right-angled triangles.</p>
+  <header>
+    <h1>Trigonometry Made Simple</h1>
+    <p>Basic ideas and a simple calculator</p>
+  </header>
 
-        <h2>Basic Functions</h2>
-        <ul>
-            <li><strong>Sine (sin):</strong> Opposite side ÷ Hypotenuse</li>
-            <li><strong>Cosine (cos):</strong> Adjacent side ÷ Hypotenuse</li>
-            <li><strong>Tangent (tan):</strong> Opposite side ÷ Adjacent side</li>
-        </ul>
+  <main>
+    <h2>What is Trigonometry?</h2>
+    <p>
+      Trigonometry studies the relationships between angles and sides of triangles,
+      especially right triangles.
+    </p>
 
-        <h2>Right Triangle Example</h2>
-        <p>For a triangle with angle θ:</p>
-        <ul>
-            <li>sin(θ) = length of side opposite θ ÷ hypotenuse</li>
-            <li>cos(θ) = length of side adjacent to θ ÷ hypotenuse</li>
-            <li>tan(θ) = length of side opposite θ ÷ side adjacent to θ</li>
-        </ul>
-        <h2>Inverse Functions</h2>
-<p>Sometimes you know the ratio and want the angle:</p>
-<ul>
-    <li>θ = arcsin(opposite ÷ hypotenuse)</li>
-    <li>θ = arccos(adjacent ÷ hypotenuse)</li>
-    <li>θ = arctan(opposite ÷ adjacent)</li>
-</ul>
-<h2>Applications of Trigonometry</h2>
-<ul>
-    <li>Physics: calculating projectile motion</li>
-    <li>Engineering: designing ramps or bridges</li>
-    <li>Computer Graphics: rotating objects, calculating angles</li>
-    <li>Music: sound waves and frequencies (sinusoids)</li>
-</ul>
-<label>Angle (degrees): <input type="number" id="angle" value="30"></label>
-<p>sin(θ) = <span id="sine"></span></p>
-<p>cos(θ) = <span id="cosine"></span></p>
-<p>tan(θ) = <span id="tangent"></span></p>
+    <h2>Basic Functions</h2>
+    <ul>
+      <li>Sine (sin) = opposite ÷ hypotenuse</li>
+      <li>Cosine (cos) = adjacent ÷ hypotenuse</li>
+      <li>Tangent (tan) = opposite ÷ adjacent</li>
+    </ul>
 
-<script>
-const angleInput = document.getElementById('angle');
-const sineOutput = document.getElementById('sine');
-const cosineOutput = document.getElementById('cosine');
-const tangentOutput = document.getElementById('tangent');
+    <h2>Calculator</h2>
+    <label>
+      Angle (degrees):
+      <input type="number" id="angle" value="30">
+    </label>
 
-function updateTrig() {
-    let rad = angleInput.value * Math.PI / 180;
-    sineOutput.textContent = Math.sin(rad).toFixed(2);
-    cosineOutput.textContent = Math.cos(rad).toFixed(2);
-    tangentOutput.textContent = Math.tan(rad).toFixed(2);
-}
+    <p>sin(θ): <span id="sine"></span></p>
+    <p>cos(θ): <span id="cosine"></span></p>
+    <p>tan(θ): <span id="tangent"></span></p>
 
-angleInput.addEventListener('input', updateTrig);
-updateTrig();
-</script>
+    <h2>Applications</h2>
+    <ul>
+      <li>Physics and engineering</li>
+      <li>Computer graphics</li>
+      <li>Sound and wave analysis</li>
+    </ul>
+  </main>
+<footer>
+  <div>
+    <strong>Trig Made Simple</strong>
+  </div>
 
-        <h2>Fun Fact</h2>
-        <p>Trigonometry isn't just for triangles, it’s used in physics, engineering, computer graphics, and even music! (From what I've heard)</p>
-    </main>
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-title">
-            Trig Made Simple
-        </div>
+  <div>
+    <a href="embedder.html">About</a>
+    •
+    <a href="credits.html">Credits</a>
+    •
+    <a href="contact.html">Contact</a>
+        •
+    <a href="memorial.html">Memorial</a>
+  </div>
 
-        <div class="footer-links">
-            <button onclick="openEmbedder()">About Us</button>
-
-<script>
-function openEmbedder() {
-  const win = window.open('about:blank', '_blank');
-
-  win.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <title>Embedder</title>
-      <style>
-        html, body {
-          margin: 0;
-          width: 100%;
-          height: 100%;
-        }
-        iframe {
-          border: none;
-          width: 100%;
-          height: 100%;
-        }
-      </style>
-    </head>
-    <body>
-      <iframe src="embedder.html" allowfullscreen></iframe>
-    </body>
-    </html>
-  `);
-}
-</script>
-
-            <a href="credits.html">Credits</a>
-            <span>•</span>
-            <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="footer-meta">
-            © 2025 — Educational use only  
-            <br>
-            No data is collected on this site.
-        </div>
-    </div>
+  <div>
+    © 2025 — Educational use only<br>
+    No data is collected
+  </div>
 </footer>
 
 
-    <!-- iframe and close button -->
-<iframe id="embed-frame" src="embedder.html" allowfullscreen></iframe>
+  <script>
+    const angleInput = document.getElementById("angle");
+    const sineOut = document.getElementById("sine");
+    const cosineOut = document.getElementById("cosine");
+    const tangentOut = document.getElementById("tangent");
 
-    <div id="close-btn" onclick="closeEmbed()">Close</div>
+    function update() {
+      const radians = angleInput.value * Math.PI / 180;
+      sineOut.textContent = Math.sin(radians).toFixed(3);
+      cosineOut.textContent = Math.cos(radians).toFixed(3);
+      tangentOut.textContent = Math.tan(radians).toFixed(3);
+    }
 
-    <script>
-        function openEmbed() {
-            document.getElementById('embed-frame').style.display = 'block';
-            document.getElementById('close-btn').style.display = 'block';
-        }
-
-        function closeEmbed() {
-            document.getElementById('embed-frame').style.display = 'none';
-            document.getElementById('close-btn').style.display = 'none';
-        }
-    </script>
+    angleInput.addEventListener("input", update);
+    update();
+  </script>
 </body>
 </html>

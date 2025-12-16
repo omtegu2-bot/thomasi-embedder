@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trig Made Simple</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+.site-footer {
+    background-color: #f2f2f2;
+    border-top: 1px solid #ddd;
+    padding: 24px 16px;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.footer-links {
+    margin: 8px 0;
+}
+
+.footer-links a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-meta {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+        /* iframe styles */
+        #embed-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none; /* hide initially */
+            z-index: 9999;
+        }
+        #close-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10000;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trigonometry Made Simple</h1>
+    </header>
+    <main>
+
+<h1>A Hopeful Memorial to the Codepen</h1>
+<p>It all began simply on February 2nd, 2025. A tiny embedder was born, just a few lines of code on a Codepen, designed to experiment and explore. At first, it was humble, functional, a sandbox for ideas, but every creation tells a story, and this one was only getting started.
+By September 31st(?) 2025, the embedder had grown. Quicklinks were added, the settings menu emerged, and the interface received a fresh coat of polish. The update was a response not just to creativity, but to competition, Xander had taken code, and Omtegu responded with refinement, style, and determination.
+December arrived like a storm of productivity. On December 6th, 2025, borders were rounded, colors coded, and the embedder reached V1.2, a visual overhaul of organized, playful design. Just a few days later, December 9th, V1.2.1 introduced modifiable text headers, drop shadows, and even the first three Metroid games embedded within the page. That same day, V1.2.2 fixed rendering issues in Dark Mode and Dark Purple themes, and V1.2.2.1 added glowing hover effects and subtle enhancements throughout the menus. The embedder was alive, dynamic, and unmistakably Omtegu’s.
+December 10th brought V1.3, a reimagining of layout and effects. Every corner of the site was touched, updated, and improved. Later that night, a low-performance mode appeared buggy, yes, but it reflected the relentless push to make the project accessible and polished.
+Then came the day marked in memory: December 12th, 2025, known as the “Dark Day.” The Codepen was blocked, cutting off the project from its home. But the block was not the end it became a moment of reflection. Poor programming practices could finally be fixed, and the site would live again, stronger and more thoughtful.
+By December 15th, a search engine had been added, and an attempt to host on a personal domain was made. School firewalls intervened within an hour, citing the “About:Blank injection,” but it was another spark of ingenuity: a flare in the dark that highlighted the creativity and persistence behind the project.
+And so the journey continues. The roadmap remains ambitious: an ALEKS-like interactive mode, an account system to see friends online, achievements unlocking new themes and fonts, and ever-expanding CSS effects. The project has outgrown its original home, but the spirit of the Codepen, the space where ideas lived continues to live on.</p>
+    </main>
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-title">
+            Trig Made Simple
+        </div>
+
+        <div class="footer-links">
+            <a href="embedder.html">About</a>
+            <span>•</span>
+            <a href="credits.html">Credits</a>
+            <span>•</span>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-meta">
+            © 2025 — Educational use only  
+            <br>
+            No data is collected on this site.
+        </div>
+    </div>
+</footer>
+
+
+    <!-- iframe and close button -->
+<iframe id="embed-frame" src="embedder.html" allowfullscreen></iframe>
+
+    <div id="close-btn" onclick="closeEmbed()">Close</div>
+
+    <script>
+        function openEmbed() {
+            document.getElementById('embed-frame').style.display = 'block';
+            document.getElementById('close-btn').style.display = 'block';
+        }
+
+        function closeEmbed() {
+            document.getElementById('embed-frame').style.display = 'none';
+            document.getElementById('close-btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
