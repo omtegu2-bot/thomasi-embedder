@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Account API Frontend</title>
+<style>
+body { font-family: sans-serif; margin: 20px; }
+section { margin-bottom: 30px; }
+input { margin: 5px 0; }
+#chat { border: 1px solid #ccc; padding: 10px; height: 200px; overflow-y: scroll; }
+.friend { margin-bottom: 5px; }
+.pending { color: orange; }
+.accepted { color: green; }
+</style>
+</head>
+<body>
+
+<section id="auth-section">
+<h1>Login / Signup</h1>
+<input id="username" placeholder="Username" />
+<input id="password" type="password" placeholder="Password" />
+<button onclick="signup()">Signup</button>
+<button onclick="login()">Login</button>
+<p id="auth-msg"></p>
+</section>
+
+<section id="friends-section" style="display:none;">
+<h2>Friends</h2>
+<input id="friendId" placeholder="Friend ID" />
+<button onclick="sendFriend()">Send Friend Request</button>
+<button onclick="acceptFriend()">Accept Friend Request</button>
+<div id="friends-list"></div>
+</section>
+
+<section id="chat-section" style="display:none;">
+<h2>Chat</h2>
+<div id="chat"></div>
+<input id="msg" placeholder="Message" />
+<button onclick="sendMessage()">Send</button>
+</section>
+
+<script>
+let userId = '';
+let ws;
+let friends = {};
+
+async function signup() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const res = await fetch('/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password})
+    });
+
+    document.getElementById('auth-msg').innerText = await res.text();
+}
+
+async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const res = await fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password})
+    });
+
+    const text = await res.text();
+    if (res.ok) {
+        userId = text.split('ID: ')[1];
+        document.getElementById('auth-section').style.display = 'none';
+        document.getElementById('friends-section').style.display = 'block';
+        document.getElementById('chat-section').style.display = 'block';
+        connectWs();
+        fetchFriends();
+    } else {
+        document.getElementById('auth-msg').innerText = text;
+    }
+}
+
+async function sendFriend() {
+    const friendId = document.getElementById('friendId').value;
+    await fetch('/friend-request', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({from_user: userId, to_user: friendId})
+    });
+    alert('Friend request sent!');
+    fetchFriends();
+}
+
+async function acceptFriend() {
+    const friendId = document.getElementById('friendId').value;
+    await fetch('/friend-accept', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({from_user: friendId, to_user: userId})
+    });
+    alert('Friend request accepted!');
+    fetchFriends();
+}
+
+async function fetchFriends() {
+    // Simple friend fetching using the DB I think I need a new endpoint damn
+    const res = await fetch(`/friends/${userId}`);
+    const data = await res.json();
+    friends = {};
+    const container = document.getElementById('friends-list');
+    container.innerHTML = '';
+    data.forEach(f => {
+        friends[f.friend_id] = f.status;
+        const div = document.createElement('div');
+        div.className = 'friend ' + f.status;
+        div.innerText = `${f.friend_id} (${f.status})`;
+        container.appendChild(div);
+    });
+}
+
+function connectWs() {
+    ws = new WebSocket(`ws://127.0.0.1:8080/ws/${userId}`);
+    ws.onmessage = (event) => {
+        const chat = document.getElementById('chat');
+        chat.innerHTML += `<p>${event.data}</p>`;
+        chat.scrollTop = chat.scrollHeight;
+        new Notification('New message', { body: event.data });
+    };
+}
+
+function sendMessage() {
+    const msg = document.getElementById('msg').value;
+    ws.send(msg);
+}
+
+// Request permission for notifications
+if (Notification.permission !== 'granted') {
+    Notification.requestPermission();
+}
+</script>
+
+</body>
+</html>
