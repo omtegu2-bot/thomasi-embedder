@@ -5,7 +5,34 @@ async function loadGameList() {
   console.log("JSON loaded:", data);
   return data;
 }
+const SITE_PREFIX = "https://studying.work.gd";
 
+function normalizeURL(url) {
+  if (!url || typeof url !== "string") return null;
+
+  url = url.trim();
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  if (url.startsWith("/")) {
+    return SITE_PREFIX + url;
+  }
+
+  return "https://" + url;
+}
+
+function normalizeCategory(category) {
+  if (!category) return "game";
+
+  const c = category.toLowerCase();
+
+  if (c === "other" || c === "misc") return "misc";
+  if (c.includes("thomasi")) return "thomas";
+
+  return c;
+}
 
 
 
@@ -34,17 +61,21 @@ function loadFromInput() {
 }
 
 function loadURL(url) {
-  const fullUrl = url.startsWith('http') ? url : `https://${url}`;
+  const fullUrl = normalizeURL(url);
+  if (!fullUrl) return;
+
   document.getElementById('embeddedSite').src = fullUrl;
 
-  // Save to history
-  let history = JSON.parse(localStorage.getItem("embedHistory")||"[]");
+  let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
   history.unshift(fullUrl);
+
   const settings = getSettings();
   history = history.slice(0, settings.historyLength);
+
   localStorage.setItem("embedHistory", JSON.stringify(history));
   renderHistory();
 }
+
 
 function renderHistory() {
   const settings = getSettings();
@@ -60,31 +91,107 @@ function renderHistory() {
   });
 }
 
+let currentPage = 1;
+const itemsPerPage = 6;
+let linksData = [];       
+let currentLinks = [];    
+
 function renderQuickLinks(links) {
-    console.log("renderQuickLinks called");
+  linksData = links;
+  currentLinks = linksData;
+  currentPage = 1;
+  renderPage();
+}
 
-    console.log("renderQuickLinks received:", links);
-
-    
+function renderPage() {
   const grid = document.querySelector("#linkGrid .grid");
   grid.innerHTML = "";
 
-  links.forEach(link => {
+  const searchTerm = document.querySelector("#linkSearch").value.toLowerCase();
+  let linksToShow = currentLinks;
+
+  if (searchTerm) {
+    // Show all matching results, ignore paging
+    linksToShow = linksData.filter(link =>
+      (link.name && link.name.toLowerCase().includes(searchTerm)) ||
+      (link.description && link.description.toLowerCase().includes(searchTerm)) ||
+      (link.category && link.category.toLowerCase().includes(searchTerm))
+    );
+  } else {
+    // Normal paging
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    linksToShow = currentLinks.slice(start, end);
+  }
+
+  linksToShow.forEach((link, i) => {
+    const url = normalizeURL(link.url);
+    if (!url) return;
+
     const tile = document.createElement("div");
-    tile.className = "tile " + link.category;
+    tile.className = "tile " + normalizeCategory(link.category) + (link.featured ? " featured" : "");
 
     tile.innerHTML = `
-      <img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(link.url).hostname}">
-      <p class="link-name">${link.name}</p>
-      <p class="link-description">${link.description}</p>
+      <img src="https://www.google.com/s2/favicons?sz=64&domain=${safeHostname(url)}">
+      <p class="link-name">${link.name || "Untitled"}</p>
+      <p class="link-description">${link.description || ""}</p>
     `;
 
-    tile.onclick = () => loadURL(link.url);
+    tile.onclick = () => loadURL(url);
     grid.appendChild(tile);
   });
+
+  updatePagination(!searchTerm); // only show pagination if no search
 }
 
+function updatePagination(show = true) {
+  const pageInfo = document.querySelector("#pageInfo");
+  const totalPages = Math.ceil(currentLinks.length / itemsPerPage);
 
+  if (!show) {
+    pageInfo.textContent = `Showing search results`;
+    document.querySelector("#prevPage").style.display = "none";
+    document.querySelector("#nextPage").style.display = "none";
+    return;
+  }
+
+  document.querySelector("#prevPage").style.display = "inline-block";
+  document.querySelector("#nextPage").style.display = "inline-block";
+
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  document.querySelector("#prevPage").disabled = currentPage === 1;
+  document.querySelector("#nextPage").disabled = currentPage === totalPages;
+}
+
+document.querySelector("#prevPage").onclick = () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderPage();
+  }
+};
+
+document.querySelector("#nextPage").onclick = () => {
+  const totalPages = Math.ceil(currentLinks.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPage();
+  }
+};
+
+// Trigger search live
+document.querySelector("#linkSearch").addEventListener("input", () => renderPage());
+
+
+
+
+
+function safeHostname(url) {
+  try {
+    return new URL(normalizeURL(url)).hostname;
+  } catch {
+    return "example.com";
+  }
+}
 
 
 function renderBookmarks(bookmarks) {
