@@ -1,3 +1,17 @@
+const sessionId = crypto.randomUUID();
+const ANALYTICS_ENDPOINT = "http://localhost:3000";
+const startTime = Date.now();
+sendEvent("session_start");
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    sendEvent("session_end", {
+      durationMs: Date.now() - startTime,
+    });
+  }
+});
+
+
 async function loadGameList() {
   const res = await fetch("games.json");
   if (!res.ok) throw new Error("Failed to load game list");
@@ -12,16 +26,21 @@ function normalizeURL(url) {
 
   url = url.trim();
 
-  if (url.startsWith("http://") || url.startsWith("https://")) {
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+
+  try {
+    new URL(url);
     return url;
+  } catch {
+
   }
 
-  if (url.startsWith("/")) {
-    return SITE_PREFIX + url;
-  }
 
-  return "https://" + url;
+  if (url.startsWith("/")) return SITE_PREFIX + url;
+
+  return SITE_PREFIX + "/" + url;
 }
+
 
 function normalizeCategory(category) {
   if (!category) return "game";
@@ -61,9 +80,11 @@ function loadFromInput() {
 }
 
 function loadURL(url) {
-  const fullUrl = normalizeURL(url);
-  if (!fullUrl) return;
 
+  const fullUrl = normalizeURL(url);
+  console.log("Loading URL:", fullUrl);
+  if (!fullUrl) return;
+  sendEvent("load_url", { url });
   document.getElementById('embeddedSite').src = fullUrl;
 
   let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
@@ -103,6 +124,21 @@ function renderQuickLinks(links) {
   renderPage();
 }
 
+async function getFavicon(url) {
+  const hostname = safeHostname(url);
+  const normalized = normalizeURL(url);
+
+  const directFavicon = `${normalized.replace(/\/$/, "")}/favicon.ico`;
+  try {
+    const res = await fetch(directFavicon, { method: "HEAD" });
+    if (res.ok) return directFavicon;
+  } catch {
+
+  }
+
+  return `https://www.google.com/s2/favicons?sz=64&domain=${hostname}`;
+}
+
 function renderPage() {
   const grid = document.querySelector("#linkGrid .grid");
   grid.innerHTML = "";
@@ -111,20 +147,19 @@ function renderPage() {
   let linksToShow = currentLinks;
 
   if (searchTerm) {
-    // Show all matching results, ignore paging
     linksToShow = linksData.filter(link =>
       (link.name && link.name.toLowerCase().includes(searchTerm)) ||
       (link.description && link.description.toLowerCase().includes(searchTerm)) ||
       (link.category && link.category.toLowerCase().includes(searchTerm))
     );
   } else {
-    // Normal paging
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     linksToShow = currentLinks.slice(start, end);
   }
 
-  linksToShow.forEach((link, i) => {
+  // Create tiles with placeholder favicon first
+  linksToShow.forEach(link => {
     const url = normalizeURL(link.url);
     if (!url) return;
 
@@ -132,17 +167,24 @@ function renderPage() {
     tile.className = "tile " + normalizeCategory(link.category) + (link.featured ? " featured" : "");
 
     tile.innerHTML = `
-      <img src="https://www.google.com/s2/favicons?sz=64&domain=${safeHostname(url)}">
+      <img src="fallback.png" alt="favicon">
       <p class="link-name">${link.name || "Untitled"}</p>
       <p class="link-description">${link.description || ""}</p>
     `;
 
     tile.onclick = () => loadURL(url);
     grid.appendChild(tile);
+
+    // Replace favicon asynchronously
+    getFavicon(url).then(faviconUrl => {
+      const img = tile.querySelector("img");
+      if (img) img.src = faviconUrl;
+    });
   });
 
-  updatePagination(!searchTerm); // only show pagination if no search
+  updatePagination(!searchTerm);
 }
+
 
 function updatePagination(show = true) {
   const pageInfo = document.querySelector("#pageInfo");
@@ -332,6 +374,21 @@ function loadEngine() {
   const frame = document.getElementById('engineFrame');
   frame.src = 'search.html'; // path to your engine page
   container.style.display = 'block';
+}
+function sendEvent(type, data = {}) {
+  const payload = {
+    type,
+    sessionId,
+    timestamp: Date.now(),
+    ...data,
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(payload)],
+    { type: "application/json" }
+  );
+
+  navigator.sendBeacon(ANALYTICS_ENDPOINT, blob);
 }
 
 

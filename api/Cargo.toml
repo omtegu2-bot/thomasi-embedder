@@ -1,19 +1,14 @@
 [package]
-name = "rust_account_api"
+name = "rust_anal_api_delectable"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-actix-web = "4"
-actix-web-actors = "4"
-actix = "0.13"
+axum = "0.6"
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-sqlx = { version = "0.8", features = ["sqlite", "macros", "runtime-tokio-native-tls"] }
-argon2 = "0.4.0"
-uuid = { version = "1.4", features = ["v4"] }
-tokio = { version = "1", features = ["full"] }
-rand = "0.8"
+itertools = "0.14.0"
 
 
 
