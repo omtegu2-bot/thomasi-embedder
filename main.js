@@ -113,7 +113,7 @@ function renderHistory() {
 }
 
 let currentPage = 1;
-const itemsPerPage = 6;
+const itemsPerPage = 600;
 let linksData = [];       
 let currentLinks = [];    
 
@@ -192,17 +192,11 @@ function updatePagination(show = true) {
 
   if (!show) {
     pageInfo.textContent = `Showing search results`;
-    document.querySelector("#prevPage").style.display = "none";
-    document.querySelector("#nextPage").style.display = "none";
+
     return;
   }
 
-  document.querySelector("#prevPage").style.display = "inline-block";
-  document.querySelector("#nextPage").style.display = "inline-block";
 
-  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-  document.querySelector("#prevPage").disabled = currentPage === 1;
-  document.querySelector("#nextPage").disabled = currentPage === totalPages;
 }
 
 document.querySelector("#prevPage").onclick = () => {
@@ -372,7 +366,7 @@ function applyLowEndMode(enabled) {
 function loadEngine() {
   const container = document.getElementById('engineContainer');
   const frame = document.getElementById('engineFrame');
-  frame.src = 'search.html'; // path to your engine page
+  frame.src = 'search.html'; 
   container.style.display = 'block';
 }
 function sendEvent(type, data = {}) {
@@ -390,6 +384,10 @@ function sendEvent(type, data = {}) {
 
   navigator.sendBeacon(ANALYTICS_ENDPOINT, blob);
 }
+document.querySelector("#linkSearch").addEventListener("input", () => {
+  currentPage = 1; // reset page
+  renderPage();
+});
 
 
 /* INITIALIZATION */
