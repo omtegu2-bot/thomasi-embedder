@@ -113,7 +113,7 @@ function renderHistory() {
 }
 
 let currentPage = 1;
-const itemsPerPage = 600;
+const itemsPerPage = 20;
 let linksData = [];       
 let currentLinks = [];    
 
@@ -136,7 +136,7 @@ async function getFavicon(url) {
 
   }
 
-  return `https://www.google.com/s2/favicons?sz=64&domain=${hostname}`;
+  return `https://www.google.com/s2/yfavicons?sz=64&domain=${hostname}`;
 }
 
 function renderPage() {
