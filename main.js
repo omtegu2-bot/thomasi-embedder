@@ -19,7 +19,7 @@ async function loadGameList() {
   console.log("JSON loaded:", data);
   return data;
 }
-const SITE_PREFIX = "https://studying.work.gd";
+const SITE_PREFIX = "https://lkarch.org/omtegu/games/";
 
 function normalizeURL(url) {
   if (!url || typeof url !== "string") return null;
