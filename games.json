@@ -3,6 +3,30 @@
   "updated": "2025-12-18",
   "items": [
     {
+      "name": "Wikipedia",
+      "url": "https://wikipedia.org",
+      "category": "featured",
+      "description": "People you should read this more."
+    },
+      {
+    "name": "Hollow Knight",
+    "url": "https://lkarch.org/hollow-knight/",
+    "category": "featured",
+    "description": "It may not be silksong, but it is hollow knight."
+  },
+  {
+    "name": "Celeste",
+    "url": "https://lkarch.org/celeste/",
+    "category": "featured",
+    "description": "2d pixel platformer"
+  },
+    {
+    "name": "Kodub (Polytrack)",
+    "url": "https://www.kodub.com/",
+    "category": "featured",
+    "description": "A simple, fun game portal. Features Polytrack!"
+  },
+    {
       "name": "Infinite Mario",
       "url": "/pages/mario/main.html",
       "category": "game",
@@ -1452,14 +1476,14 @@
       "name": "GooberDash",
       "url": "https://gooberdash.winterpixel.io/",
       "category": "featured",
-      "description": "A fast-paced endless runner where you control a character dodging obstacles and collecting items to achieve the highest score possible."
+      "description": "A fast-paced platformer with community made levels. Dash and jump across levels and become the last one standing."
       
     },
     {
       "name": "Thomas 32x",
       "url": "https://html-classic.itch.zone/html/15749771/thms/index.html",
       "category": "featured",
-      "description": "Control a bean"
+      "description": "The first full release of a 3D game made by the creator of this site. Control a bean and collect coffee mugs across 7 accessible areas!"
     },
     {
       "name": "RaycasterV4",
@@ -1468,10 +1492,10 @@
       "description": "Only really impressive if you reazlie this was made in scratch. Then it's amazing."
     },
     {
-      "name": "Super Metroid",
+      "name": "Super-Metroid",
       "url": "pages/supermetroid/index.html",
-      "category": "game",
-      "description": "ASuper Metroid is a landmark 1994 Super Nintendo action-adventure game known for pioneering the \"Metroidvania\" genre, featuring non-linear exploration of Planet Zebes as bounty hunter Samus Aran, acquiring power-ups to unlock new areas, and building a rich, atmospheric world through minimalist storytelling, challenging level design, and iconic music."
+      "category": "featured",
+      "description": "Super Metroid is a landmark 1994 Super Nintendo action-adventure game known for pioneering the \"Metroidvania\" genre, featuring non-linear exploration of Planet Zebes as bounty hunter Samus Aran, acquiring power-ups to unlock new areas, and building a rich, atmospheric world through minimalist storytelling, challenging level design, and iconic music."
     },
     {
       "name": "Metroid II",

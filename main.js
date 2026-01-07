@@ -167,7 +167,7 @@ function renderPage() {
     tile.className = "tile " + normalizeCategory(link.category) + (link.featured ? " featured" : "");
 
     tile.innerHTML = `
-      <img src="fallback.png" alt="favicon">
+      <img src="fallback.png" alt="">
       <p class="link-name">${link.name || "Untitled"}</p>
       <p class="link-description">${link.description || ""}</p>
     `;
