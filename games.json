@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2025-12-18",
+  "updated": "2026-1-6",
   "items": [
     {
       "name": "Wikipedia",
@@ -9,7 +9,7 @@
       "description": "People you should read this more."
     },
       {
-    "name": "Hollow Knight",
+    "name": "Hollow-Knight",
     "url": "https://lkarch.org/hollow-knight/",
     "category": "featured",
     "description": "It may not be silksong, but it is hollow knight."
@@ -18,14 +18,9 @@
     "name": "Celeste",
     "url": "https://lkarch.org/celeste/",
     "category": "featured",
-    "description": "2d pixel platformer"
+    "description": "relatable 2d pixel platformer"
   },
-    {
-    "name": "Kodub (Polytrack)",
-    "url": "https://www.kodub.com/",
-    "category": "featured",
-    "description": "A simple, fun game portal. Features Polytrack!"
-  },
+
     {
       "name": "Infinite Mario",
       "url": "/pages/mario/main.html",
@@ -1514,6 +1509,12 @@
       "url": "pages/cma/index.html",
       "category": "misc",
       "description": "Play Clash Royale and other mobile games on this website"
-    }
+    },
+        {
+    "name": "Kodub",
+    "url": "https://www.kodub.com/",
+    "category": "featured",
+    "description": "A simple, fun game portal. Features Polytrack!"
+  }
   ]
 }
