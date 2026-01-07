@@ -5,451 +5,451 @@
     {
       "name": "Infinite Mario",
       "url": "/pages/mario/main.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An endless platformer featuring Mario navigating through randomly generated levels with progressively increasing difficulty, jumping over obstacles and enemies."
     },
     {
       "name": "Geometry Dash",
       "url": "/pages/geodash/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A rhythm-based platformer where a geometric cube auto-runs through obstacle courses, requiring precise timing to jump at exact moments to the beat of the soundtrack."
     },
     {
       "name": "Breakout",
       "url": "/pages/breakout/index.html",
-      "category": "arcade",
+      "category": "game",
       "description": "A classic brick-breaking game where a paddle bounces a ball to destroy colored blocks at the top of the screen while avoiding losing the ball."
     },
     {
       "name": "Pacman",
       "url": "/pages/pac/index.html",
-      "category": "arcade",
+      "category": "game",
       "description": "Navigate a maze as Pacman, eating pellets while avoiding colorful ghosts that chase you, with power-ups available to temporarily turn the tables and eat the ghosts."
     },
     {
       "name": "Evil Glitch",
       "url": "/pages/EvilGlitch/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "2D arcade shoot 'em up with a retro, 80s-inspired aesthetic, where players defend their world from an invasion of interdimensional glitches"
     },
     {
       "name": "Getting Over It Multiplayer",
       "url": "/pages/goi/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A cooperative multiplayer climbing game where players work together using a hammer to scale an enormous mountain filled with tricky obstacles and environmental hazards."
     },
     {
       "name": "Terraria",
       "url": "/pages/terraria/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A 2D sandbox adventure game combining exploration, mining, and combat where you build structures, collect resources, and battle bosses in a vast underground world."
     },
     {
       "name": "FNAF 1",
       "url": "/pages/fnaf1/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "Survive five nights as a security guard at an abandoned animatronic pizzeria, monitoring cameras and doors to keep terrifying robots from entering your office."
     },
     {
       "name": "FNAF 2",
       "url": "/pages/fnaf2/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "Return to another location with updated animatronics, now requiring you to wear a mask and manage both camera systems and audio lures in your fight for survival."
     },
     {
       "name": "FNAF 3",
       "url": "/pages/fnaf3/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "The game shifts focus to managing a haunted attraction with broken animatronics and audio systems, requiring puzzle-solving alongside traditional survival mechanics."
     },
     {
       "name": "FNAF 4",
       "url": "/pages/fnaf4/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "Experience a young child's nightmare as animatronics prowl your house; use strategically placed doors and listen for audio cues to survive each terrifying night."
     },
     {
       "name": "FNAF Ultimate Custom Night",
       "url": "/pages/fnafucn/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "Face an ultimate gauntlet combining animatronics from across the FNAF series with fully customizable AI difficulty levels for the ultimate survival challenge."
     },
     {
       "name": "Diablo",
       "url": "/pages/diablo/index.html",
-      "category": "rpg",
+      "category": "game",
       "description": "An isometric dungeon crawler featuring real-time combat, loot collection, and increasingly difficult enemies as you descend through catacombs to face the lord of darkness."
     },
     {
       "name": "Takeover",
       "url": "/pages/takover/index.html",
-      "category": "io",
+      "category": "game",
       "description": "An io game where your goal is to takeover every player on the map. Eat to grow, and touch other players to convert them."
     },
     {
       "name": "1D Game",
       "url": "/pages/1D-Game/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A minimalist gameplay experience set in one dimension where you navigate a maze while defending yourself from a monster."
     },
     {
       "name": "Retro Bowl",
       "url": "/pages/retro-bowl/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A retro-styled American football management game combining simple pixel graphics with strategic team building, play-calling, and on-field execution."
     },
     {
       "name": "Rooftop Snipers",
       "url": "/pages/rooftopsnipers/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A physics-based multiplayer duel game where two characters stand on rooftops with limited ammunition, aiming to knock each other off with sniper rifle shots."
     },
     {
       "name": "Tunnel Rush",
       "url": "/pages/tunnel-rush/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A fast-paced 3D racing game where you navigate through an ever-narrowing tunnel at high speed, dodging walls and obstacles to survive as long as possible."
     },
     {
       "name": "Doge Miner",
       "url": "/pages/doge-miner/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "A humorous incremental clicker game featuring the iconic Doge meme, mining for resources and progressively purchasing upgrades to expand your operation."
     },
     {
       "name": "World's Hardest Game",
       "url": "/pages/worldhardgame/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "An intentionally punishing puzzle platformer with brutal difficulty, requiring split-second timing and perfect execution to navigate intricate obstacle patterns."
     },
     {
       "name": "Basketball Stars",
       "url": "/pages/basketballstars/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A competitive sports game featuring fast-paced basketball matches with realistic physics, allowing you to shoot, dribble, and battle opponents one-on-one."
     },
     {
       "name": "Backflip",
       "url": "/pages/backflip/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A 3D diving and parkour game where you perform acrobatic stunts and backflips while navigating through challenging courses and avoiding hazards."
     },
     {
       "name": "Cookie Clicker",
       "url": "/pages/cookie-clicker/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An addictive idle game where you click cookies to accumulate currency and purchase generators and upgrades in an exponentially expanding economic system."
     },
     {
       "name": "Battle For Gondor",
       "url": "/pages/batforgondor/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A tower defense game inspired by Lord of the Rings where you strategically place defenses to stop waves of enemies from breaching your fortress walls."
     },
     {
       "name": "Gimme the Airpod",
       "url": "/pages/gimmetheairpod/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A humorous two players game where you throw an axe at each other to steal the airpod."
     },
     {
       "name": "Factory Balls",
       "url": "/pages/factoryballs/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A puzzle game where you manipulate factory equipment to paint, dip, and shape balls to match target designs shown at the end of each assembly line."
     },
     {
       "name": "Subway Surfers",
       "url": "/pages/subwaysurfers/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "An endless runner set in subway tunnels where you evade guards and trains, collecting coins and power-ups while navigating between tracks at increasing speeds."
     },
     {
       "name": "Getaway Shootout",
       "url": "/pages/getawayshootout/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A chaotic multiplayer shooter where you battle opponents across a destructible wild west town, grabbing weapons and using environmental hazards to achieve victory."
     },
     {
       "name": "Balloons TD",
       "url": "/pages/balloonstd/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A strategic tower defense game where you place monkey towers to pop waves of colorful balloons, unlocking increasingly powerful defenses and abilities."
     },
     {
       "name": "Balloons TD 2",
       "url": "/pages/balloonstd2/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "The sequel expands on tower defense mechanics with more tower types, complex balloon mechanics, and deeper strategic options for challenging maps."
     },
     {
       "name": "Minecraft",
       "url": "/pages/Eaglercraft/Eaglercraft.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A 3D sandbox game where players explore a world made of blocks to gather resources, build structures, and survive."
     },
     {
       "name": "Celeste",
       "url": "/pages/Celeste/celeste.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A challenging pixel-art platformer following a climber ascending a mountain filled with perilous jumps, wall-slides, and dash mechanics with an emotional narrative."
     },
     {
       "name": "Slope",
       "url": "/pages/Slope/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "An addictive 3D endless runner where a ball rolls down a neon-lit slope, requiring quick reflexes to dodge barriers and stay on the narrow path."
     },
     {
       "name": "Portal",
       "url": "/pages/portal/game.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A physics-based puzzle-platformer where you use a portal gun to create interconnected wormholes, solving environmental puzzles to escape test chambers."
     },
     {
       "name": "Pokemon Unbound",
       "url": "/pages/PokemonUnbound/index.html",
-      "category": "rpg",
+      "category": "game",
       "description": "A fan-made Pokemon game featuring enhanced graphics, new mechanics, expanded pokedex entries, and a challenging campaign with competitive gym battles and legendary encounters."
     },
     {
       "name": "Vex 4",
       "url": "/pages/vex4/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A fast-paced platformer requiring precise timing and button combinations to navigate deadly spike-filled corridors and challenging acrobatic sequences."
     },
     {
       "name": "Vex 5",
       "url": "/pages/vex5/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The fifth installment introduces new mechanics and platform types while maintaining brutal difficulty, demanding mastery of complex movement combinations and split-second timing."
     },
     {
       "name": "Vex 6",
       "url": "/pages/vex6/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The latest Vex game expands upon the series with additional levels, refined controls, and increasingly creative obstacle designs that test your platforming expertise."
     },
     {
       "name": "Fnaf 6: Pizza Simulator",
       "url": "/pages/fnafps/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "A business simulation meets survival horror where you manage a pizzeria while dealing with animatronic threats, balancing profit with security concerns."
     },
     {
       "name": "Sonic the Hedgehog 3",
       "url": "/pages/sonic3/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A classic Genesis-era platformer featuring Sonic's signature speed-based gameplay, loop-de-loops, and competitive boss battles across varied themed zones."
     },
     {
       "name": "Mortal Kombat 3",
       "url": "/pages/MortalKombat3/index.html",
-      "category": "fighting",
+      "category": "game",
       "description": "A brutal 2D fighting game featuring a diverse roster of martial artists with signature finishing moves and a dark cyberpunk-influenced storyline campaign."
     },
     {
       "name": "Fnaf World",
       "url": "/pages/fnafw/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "A turn-based RPG spin-off featuring animatronic characters in a colorful world, combining JRPG mechanics with the FNAF universe and quirky humor."
     },
     {
       "name": "Super Meatboy",
       "url": "/pages/Meatboy/game.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An infamously difficult platformer where you guide a sentient cube of meat through blood-soaked levels filled with buzz saws and other gruesome obstacles."
     },
     {
-      "name": "2048",
+      "name": "game",
       "url": "/pages/2048/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A mathematical puzzle game where you slide numbered tiles to combine them and reach the elusive 2048 tile through strategic placement and planning."
     },
     {
       "name": "The Impossible Quiz",
       "url": "/pages/impossiblequiz/game.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A mind-bending trivia game with trick questions, absurd logic puzzles, and unexpected mechanics that subvert traditional quiz game conventions."
     },
     {
       "name": "Hollow Knight",
       "url": "/pages/hollow-knight-main/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A metroidvania featuring a silent knight exploring an interconnected underground kingdom, battling hostile creatures and unraveling the mysteries of a fallen civilization."
     },
     {
       "name": "Super Smash Bros",
       "url": "/pages/SSB/game.html",
-      "category": "fighting",
+      "category": "game",
       "description": "A multiplayer fighting game featuring iconic Nintendo characters battling on various stages, combining accessible controls with competitive depth and platform-specific mechanics."
     },
     {
       "name": "Balatro",
       "url": "/pages/belatro/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A roguelike deck-building game combining poker hand mechanics with strategic card synergies, requiring careful synergy planning across multiple runs."
     },
     {
       "name": "Undertale",
       "url": "pages/undertale/undertale.html",
-      "category": "rpg",
+      "category": "game",
       "description": "A narrative-driven RPG where your choices determine the story's outcome, featuring bullet-hell combat, memorable characters, and philosophical themes about pacifism versus violence."
     },
     {
       "name": "Deltarune",
       "url": "pages/deltarune/index.html",
-      "category": "rpg",
+      "category": "game",
       "description": "A spiritual successor to Undertale featuring new characters in a different world, maintaining the same innovative bullet-dodging combat system and player-choice narrative framework."
     },
     {
       "name": "Moto X3M",
       "url": "pages/motox3m/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A stunt motorcycle racing game where you perform tricks and flips while navigating obstacle-filled tracks, managing speed and air time to complete levels."
     },
     {
       "name": "Sonic & Knuckles",
       "url": "pages/Sonic&Knuckles/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A Genesis classic where Sonic and Knuckles race to stop a villain, featuring Knuckles' unique climbing and gliding abilities alongside Sonic's speed-based platforming."
     },
     {
       "name": "Tanuki Sunset",
       "url": "pages/tsunset/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A zen-like driving game where a tanuki cruises through beautiful voxel landscapes at sunset, focusing on relaxation and artistic presentation over competition."
     },
     {
       "name": "10 Minutes Till Dawn",
       "url": "/pages/10-minutes-till-dawn/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A roguelike survival shooter where you defend against waves of enemies for ten minutes, collecting upgrades and power-ups to increase your arsenal and survivability."
     },
     {
       "name": "1v1 LOL",
       "url": "/pages/1v1-lol/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A competitive building and shooting game inspired by battle royales, where you construct structures while engaging in fast-paced combat against other players."
     },
     {
       "name": "Abandoned",
       "url": "/pages/abandoned/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "A psychological horror exploration game set in a desolate environment, focusing on atmosphere and storytelling as you uncover mysteries through environmental clues."
     },
     {
       "name": "A Dark Room",
       "url": "/pages/adarkroom/index.html",
-      "category": "rpg",
+      "category": "game",
       "description": "A minimalist text-based adventure where you start in darkness and gradually build a civilization through strategic decisions and resource management in a post-apocalyptic setting."
     },
     {
       "name": "Ages of Conflict",
       "url": "/pages/ages-of-conflict/index.html",
-      "category": "simulation",
+      "category": "misc",
       "description": "A real-time strategy game spanning multiple historical eras, where you build bases, train units, and engage in tactical warfare across various battlefields and civilizations."
     },
     {
       "name": "Amidst the Sky",
       "url": "/pages/amidst-the-sky/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A peaceful exploration game set among clouds and floating islands, emphasizing discovery and environmental storytelling over combat or time pressure."
     },
     {
       "name": "Another Gentleman's Adventure",
       "url": "/pages/another-gentlemans-adventure/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A whimsical pixel-art platformer following a gentleman's quest through fantastical lands, combining humor with challenging level design and secret discoveries."
     },
     {
       "name": "Awesome Tanks 2",
       "url": "/pages/awesome-tanks-2/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A tank-based strategy shooter featuring level-based campaigns where you upgrade weapons and armor, destroying enemy bases while protecting your tank from incoming fire."
     },
     {
       "name": "Awesome Tanks",
       "url": "/pages/awesome-tanks/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A classic tank combat game where you destroy enemy bases and vehicles, earning upgrades through progression to increase firepower and defensive capabilities."
     },
     {
       "name": "Babel Tower",
       "url": "/pages/babel-tower/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "A tower-building puzzle game where you stack blocks to construct increasingly tall structures, managing balance and gravity to avoid toppling."
     },
     {
       "name": "Basket Random",
       "url": "/pages/basket-random/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A two player game full of chaos. Players tilt back and forth, so you need to time your jumps correctly!"
     },
     {
       "name": "BitLife",
       "url": "/pages/bit-life/index.html",
-      "category": "simulation",
+      "category": "misc",
       "description": "A text-based life simulation where you make decisions that shape an entire virtual life from birth to death, exploring careers, relationships, and life outcomes."
     },
     {
       "name": "Boxing Random",
       "url": "/pages/boxing-random/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A two player game full of chaos. Players tilt back and forth, so you need to time your jumps correctly!"
     },
     {
       "name": "Chrome Dino",
       "url": "/pages/chrome-dino/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "Google's offline dinosaur game where a T-Rex runs across a desert landscape, jumping over cacti and ducking under pterodactyls with increasing speed."
     },
     {
       "name": "Clicker Heroes",
       "url": "/pages/clicker-heroes-updated/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An incremental RPG combining idle mechanics with active clicking, where you hire heroes and purchase upgrades to defeat increasingly powerful monsters and bosses."
     },
     {
       "name": "Conway's Game of Life",
       "url": "/pages/conways-game-of-life/index.html",
-      "category": "simulation",
+      "category": "misc",
       "description": "A cellular automaton simulation based on mathematical rules, where you set initial patterns and watch complex emergent behaviors evolve autonomously."
     },
     {
       "name": "Core Ball",
       "url": "/pages/core-ball/index.html",
-      "category": "timing",
+      "category": "game",
       "description": "A simple but fun game of timing where you shoot lines into a rotating ball. If you hit an empty space, you score points. Hit a line and it's game over!"
     },
     {
       "name": "Crossy Road",
       "url": "/pages/crossy-road/index.html",
-      "category": "timing",
+      "category": "game",
       "description": "An endless arcade-style game where you navigate a character across roads, rivers, and railways, collecting coins while avoiding traffic and hazards in voxel environments."
     },
     {
       "name": "Cut the Rope",
       "url": "/pages/cut-the-rope/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A physics-based puzzle game where you cut ropes holding candy to feed it to a hungry monster, using momentum and timing to overcome various obstacles."
     },
     {
       "name": "Dadish",
       "url": "/pages/dadish/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A charming platformer starring a radish father searching for his kidnapped children, featuring gentle gameplay and humorous dialogue throughout colorful levels."
     },
     {
       "name": "Dadish 2",
       "url": "/pages/dadish-2/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The sequel continues the radish father's adventure with new worlds and challenges, introducing expanded mechanics while maintaining the heartwarming family-focused narrative."
     },
     {
       "name": "Dadish 3",
       "url": "/pages/dadish-3/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The third installment expands the platforming experience with additional abilities and zones, deepening the story of the vegetable family reunion with new obstacles."
     },
     {
@@ -461,991 +461,991 @@
     {
       "name": "Drift Boss",
       "url": "/pages/drift-boss/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A minimalist driving game focused on drifting mechanics, where you must carfuly drift around bend after bend, trying to get a high score"
     },
     {
       "name": "Drive Mad",
       "url": "/pages/drive-mad/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A stunt driving game with ragdoll physics where vehicles navigate treacherous obstacle courses, requiring precise control to avoid flipping and crashing."
     },
     {
       "name": "Duck Life 4",
       "url": "/pages/duck-life-4/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A duck training and racing game where you raise a duck through mini-games to develop running, flying, swimming, and climbing skills before competitive races."
     },
     {
       "name": "Dune",
       "url": "/pages/dune/index.html",
-      "category": "arcade",
+      "category": "game",
       "description": "A physics-based arcade game where you launch a ball over sand dunes, timing your jumps to land smoothly and maintain momentum to achieve the highest possible score."
     },
     {
       "name": "Evowars",
       "url": "/pages/evowars/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer IO game where you fight opponents with a huge sword, collecting orbs to increase your size and evolve your character to become the largest and most dominant on the map."
     },
     {
       "name": "Fireboy and Watergirl",
       "url": "/pages/fireboy-and-watergirl/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A cooperative puzzle platformer featuring a fire character and water character navigating temples, using their elemental properties to solve environmental challenges."
     },
     {
       "name": "Fireboy and Watergirl 2",
       "url": "/pages/fireboy-and-watergirl-2/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The sequel expands temple exploration with new mechanics and puzzles, requiring coordinated teamwork between the two elemental characters across elaborate levels."
     },
     {
       "name": "Fireboy and Watergirl 3",
       "url": "/pages/fireboy-and-watergirl-3/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "The third installment introduces ice-based puzzles alongside fire and water mechanics, adding complexity to cooperative gameplay with frozen obstacles and pathways."
     },
     {
       "name": "Fireboy and Watergirl 4",
       "url": "/pages/fireboy-and-watergirl-4/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "Continuing the series with additional elemental mechanics and challenging puzzles combining fire, water, and new environmental elements across interconnected rooms."
     },
     {
       "name": "Flappy Bird",
       "url": "/pages/flappy-bird/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A deceptively simple yet addictive game where a bird flaps through gaps between pipes, requiring precise timing to avoid obstacles and achieve high scores."
     },
     {
       "name": "FNAF Sister Location",
       "url": "/pages/fnafsl/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "A Five Nights at Freddy's spin-off set in an underground facility where you manage vents and animatronics using a controlled AI system while uncovering dark secrets."
     },
     {
       "name": "Friday Night Funkin'",
       "url": "/pages/friday-night-funkin/index.html",
-      "category": "rhythm",
+      "category": "misc",
       "description": "A rhythm game where you engage in rap battles against various opponents, hitting the correct key prompts to the beat while following a compelling narrative."
     },
     {
       "name": "Gons.io",
       "url": "/pages/gons-io/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer shooter game where players fight in arenas collecting weapons and power-ups while competing for dominance in fast-paced combat encounters."
     },
     {
       "name": "Gun Spin",
       "url": "/pages/gunspin/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A physics-based gun-spinning and shooting game where you perform trick spins with firearms and engage in target practice with realistic ballistic mechanics."
     },
     {
       "name": "Hextris",
       "url": "/pages/hextris/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A hexagon-based puzzle game combining block-stacking mechanics with rotating fields, requiring strategic placement to clear pieces and prevent grid overflow."
     },
     {
       "name": "Idle Breakout",
       "url": "/pages/idle-breakout/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An idle game merging classic Breakout brick-breaking with incremental progression, where you accumulate resources to purchase upgrades and unlock new capabilities."
     },
     {
       "name": "Incremancer",
       "url": "/pages/incremancer/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An incremental magic-themed game where you cast spells and accumulate mana to purchase progressively powerful magical abilities and multipliers."
     },
     {
       "name": "Maptroid",
       "url": "/pages/maptroid/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A fan-made Metroid-style game featuring exploration of an interconnected world, item collection, and combat against hostile creatures in sci-fi environments."
     },
     {
       "name": "Mario Game",
       "url": "/pages/mario-game/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A classic-style Super Mario platformer with familiar level design, power-ups, and enemies, offering nostalgic side-scrolling action and challenging jumps."
     },
     {
       "name": "Monkey Mart",
       "url": "/pages/monkey-mart/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A business simulation where you manage a convenience store operated by monkeys, stocking shelves and serving customers to build profit and expand your shop."
     },
     {
       "name": "N-Gon",
       "url": "/pages/n-gon/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A minimalist action game where you control a polygon defending against waves of incoming shapes, using rotation and strategic positioning to survive."
     },
     {
       "name": "N-Step Steve Part 1",
       "url": "/pages/n-step-steve-part-1/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A quirky platformer following Steve through surreal levels with creative obstacle design and whimsical humor, emphasizing exploration and puzzle-solving."
     },
     {
       "name": "N-Step Steve Part 2",
       "url": "/pages/n-step-steve-part-2/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "The sequel continues Steve's absurdist adventure with expanded worlds, new mechanics, and increasingly bizarre challenges that defy conventional platformer logic."
     },
     {
       "name": "OvO",
       "url": "/pages/ovo/2.0.2alpha/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A minimalist parkour platformer featuring precise movement mechanics, where you navigate tight spaces using wall jumps, slides, and momentum to overcome intricate challenges."
     },
     {
       "name": "Particle Clicker",
       "url": "/pages/particle-clicker/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An educational incremental game where you click particles and purchase upgrades to unlock new elements and subatomic research, teaching physics concepts through gameplay."
     },
     {
       "name": "P-Craft",
       "url": "/pages/pcraft/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A crafting and building simulation inspired by Minecraft where you gather resources, construct structures, and manage your creative survival world in 2D."
     },
     {
       "name": "Planet Life",
       "url": "/pages/planet-life/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A cellular simulation game where you terraform planets and manage ecosystems, watching civilizations develop through strategic planetary adjustments and environmental changes."
     },
     {
       "name": "Precision Client",
       "url": "/pages/precision-client/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A Minecraft client that allows more features"
     },
     {
       "name": "Progress Knight",
       "url": "/pages/progress-knight/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An idle RPG combining active combat with incremental progression, where your knight battles increasingly powerful enemies while earning experience through grinding and upgrades."
     },
     {
       "name": "Pull of War",
       "url": "/pages/pull-of-war/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A stragetic war game where you manage forces and other things to win the war"
     },
     {
       "name": "Reach the Core",
       "url": "/pages/reach-the-core/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A drilling adventure game where you burrow deeper into Earth's layers, overcoming obstacles and discovering geological features while managing your drilling equipment."
     },
     {
       "name": "Restless Wing Syndrome",
       "url": "/pages/restless-wing-syndrome/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A unique gameplay experience exploring a surreal condition through interactive mechanics, combining storytelling with unconventional controls and philosophical themes."
     },
     {
       "name": "Rift Shift",
       "url": "/pages/rift-shift/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A puzzle platformer featuring dimension-shifting mechanics where you phase between alternate realities to navigate impossible spaces and solve environmental challenges."
     },
     {
       "name": "Rookie Bowman",
       "url": "/pages/rookie-bowman/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "An archery action game where you fire arrows at targets with trajectory-based mechanics, competing for accuracy and high scores across varying difficulty levels."
     },
     {
       "name": "Run 3",
       "url": "/pages/run-3/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "An endless running platformer set in space tunnels with gravity-defying mechanics, where characters can run on walls and ceilings to navigate impossible geometries."
     },
     {
       "name": "Sandspiel",
       "url": "/pages/sandspiel/index.html",
-      "category": "simulation",
+      "category": "misc",
       "description": "A physics sandbox where you create landscapes and watch particle interactions, mixing sand, water, lava, and other elements to observe emergent behaviors and build structures."
     },
     {
       "name": "Scuba Bear",
       "url": "/pages/scuba-bear/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An underwater exploration game following a bear collecting treasure and navigating ocean hazards, combining adventure elements with puzzle-solving and resource collection."
     },
     {
       "name": "Smart Ball",
       "url": "/pages/smart-ball/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A puzzle game where a ball intelligently navigates mazes and obstacles, requiring you to guide its pathfinding through clever puzzle design and strategic positioning."
     },
     {
       "name": "Smash Karts",
       "url": "/pages/smash-karts/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer kart racing game combining arcade racing with power-ups and collision-based combat, where strategy and speed determine victory in chaotic tracks."
     },
     {
       "name": "Stickman Hook",
       "url": "/pages/stickman-hook/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A physics-based swinging game where a stickman uses grappling hooks to traverse obstacle courses, requiring momentum management and precise timing to swing between platforms."
     },
     {
       "name": "Subway Surfers NY",
       "url": "/pages/subway-surfers-ny/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "The New York edition of the endless runner where you dodge trains in subway tunnels, collecting power-ups and completing missions unique to the urban setting."
     },
     {
       "name": "Temple Run 2",
       "url": "/pages/temple-run-2/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "An endless running adventure through exotic temple ruins and jungles, dodging obstacles and collecting coins while being chased by supernatural guardians."
     },
     {
       "name": "The Final Earth",
       "url": "/pages/the-final-earth/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A city-building simulation where you construct civilization on a desolate planet, managing population, resources, and infrastructure to ensure survival and prosperity."
     },
     {
       "name": "There is No Game",
       "url": "/pages/there-is-no-game/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A meta-narrative puzzle game that deconstructs gaming conventions, featuring cryptic puzzles, hidden mechanics, and a mysterious story revealed through unconventional gameplay."
     },
     {
       "name": "Time Shooter",
       "url": "/pages/time-shooter/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A unique shooter where time is a manipulable resource, allowing you to slow, reverse, or skip moments to dodge bullets and eliminate enemies with creative temporal tactics."
     },
     {
       "name": "Time Shooter 3",
       "url": "/pages/time-shooter-3/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "The third installment expands time manipulation mechanics with additional abilities, introducing complex puzzle-combat hybrids where temporal strategy is essential for survival."
     },
     {
       "name": "Tiny Fishing",
       "url": "/pages/tiny-fishing/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A relaxing fishing idle game where you cast lines, catch fish, and upgrade your gear to explore deeper waters and unlock new species in a peaceful progression system."
     },
     {
       "name": "Trace",
       "url": "/pages/trace/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A minimalist puzzle game where you draw paths or patterns to complete objectives, requiring spatial reasoning and creative thinking to solve each level's unique challenges."
     },
     {
       "name": "Two Ball 3D",
       "url": "/pages/two-ball-3d/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A 3D physics puzzle game where you control two balls simultaneously through intricate mazes, requiring coordination and timing to reach both goal zones."
     },
     {
       "name": "Web Osu",
       "url": "/pages/web-osu/index.html",
-      "category": "rhythm",
+      "category": "misc",
       "description": "A browser-based rhythm game inspired by Osu, where you click, hold, and spin to the beat of music, featuring multiple difficulty levels and custom beatmaps."
     },
     {
       "name": "X Trench Run",
       "url": "/pages/x-trench-run/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A high-speed space trench runner inspired by classic arcade games, requiring precise navigation through narrow corridors while avoiding laser fire and obstacles."
     },
     {
       "name": "Yohoho",
       "url": "/pages/yohoho/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A pirate-themed io game where you kill other players to grow."
     },
     {
       "name": "Henry Stickman: Breaking the Bank",
       "url": "/pages/hscBreakBank/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "An interactive comedy adventure where stick figure Henry attempts an elaborate bank heist, with multiple choice branches determining the comedic outcome of his schemes."
     },
     {
       "name": "Henry Stickman: Escape the Prison",
       "url": "/pages/hscEscapePrison/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "Henry faces prison escape challenges through humorous interactive scenarios, choosing different methods and solutions that lead to wildly different comedic endings and failures."
     },
     {
       "name": "Henry Stickman: Fleeing the Complex",
       "url": "/pages/hscFleeComplex/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "An action-comedy adventure where Henry escapes from a government facility, making rapid choices that determine success or hilarious failure through absurdist scenarios."
     },
     {
       "name": "Henry Stickman: Infiltrate the Airship",
       "url": "/pages/hscInfiltrateAirship/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "Henry infiltrates a fortified airship for a comedic heist, navigating stealth sections and making multiple choice decisions that lead to various absurd consequences."
     },
     {
       "name": "Henry Stickman: Steal the Diamond",
       "url": "/pages/hscStealDiamond/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "The first Henry Stickman adventure where he attempts to steal a diamond, with branching paths and comedic failures that introduce the series' signature humor and absurdity."
     },
     {
       "name": "Polytrack",
       "url": "/pages/polytrack/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A minimalist racing game featuring geometric shapes racing on abstract tracks, emphasizing precision driving and quick reflexes through stylized visuals and tight controls."
     },
     {
       "name": "Grey-Box Testing",
       "url": "/pages/gbt/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A parcour game with too many bugs!"
     },
     {
       "name": "1",
       "url": "/pages/1/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "2048, but backwards! You start with the 2048 tile and combine tiles to reach 1. A unique twist on the classic sliding puzzle game."
     },
     {
       "name": "1v1 Space",
       "url": "/pages/1v1space/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A dueling shooter set in space where two players engage in one-on-one combat with directional shooting and movement, requiring positioning and reflexes."
     },
     {
       "name": "9007199254740992",
       "url": "/pages/9007199254740992/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "An 8x8 2048-inspired game where you combine numbers to reach the 9007199254740992 tile"
     },
     {
       "name": "Achievement Unlocked",
       "url": "/pages/achievementunlocked/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A clever meta-game where you unlock absurd achievements by performing mundane tasks, playfully satirizing achievement systems found in modern video games."
     },
     {
       "name": "Adrenaline Challenge",
       "url": "/pages/adrenalinechallenge/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "An intense action game testing reflexes and endurance, featuring escalating difficulty and rapid-fire challenges designed to push players to their limits."
     },
     {
       "name": "Among Us",
       "url": "/pages/among-us/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A social deduction game where players work together on a spaceship while one or more imposters sabotage progress, requiring discussion and deduction to identify traitors."
     },
     {
       "name": "Avalanche",
       "url": "/pages/avalanche/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An endless game where you progress upwards away from hot lava as blocks fall from above. Don't get crushed, and avoid the rising lava!"
     },
     {
       "name": "The Backrooms",
       "url": "/pages/backrooms/index.html",
-      "category": "horror",
+      "category": "game",
       "description": "A horror exploration game based on internet creepypasta, navigating endless maze-like corporate spaces filled with existential dread and mysterious entities."
     },
     {
       "name": "Big Red Button",
       "url": "/pages/bigredbutton/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A humorous clicker game centered on pressing a comically large red button, with escalating consequences and absurd outcomes based on how many times you press it."
     },
     {
       "name": "Black Knight",
       "url": "/pages/blackknight/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An action game featuring a dark warrior character battling enemies through levels, combining combat mechanics with exploration and upgrade systems."
     },
     {
       "name": "Bloxors",
       "url": "/pages/bloxors/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A block-sliding puzzle game where you navigate rectangular blocks through mazes, requiring strategic positioning and pattern recognition to reach goal squares."
     },
     {
       "name": "Boxhead 2Play",
       "url": "/pages/boxhead2play/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A cooperative two-player shooter where boxheaded characters fight waves of zombies in enclosed arenas, combining arcade action with strategic teamwork."
     },
     {
       "name": "Big Tower Tiny Square",
       "url": "/pages/btts/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A challenging platformer where a tiny square ascends an enormous tower filled with geometric obstacles and precision-timing challenges across numerous levels."
     },
     {
       "name": "Cannon Basketball 4",
       "url": "/pages/cannon-basketball-4/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A physics-based basketball puzzle game where you aim cannons to shoot balls into hoops, managing trajectory and power across increasingly complex level designs."
     },
     {
       "name": "Canyon Defense",
       "url": "/pages/canyondefense/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A tower defense game set in canyon landscapes where you strategically place defensive towers to repel waves of enemies attempting to traverse your territory."
     },
     {
       "name": "Cell Machine",
       "url": "/pages/cell-machine/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A puzzle game where you construct cellular machines using modular components, creating automated systems to process inputs and produce outputs through logical design."
     },
     {
       "name": "Champion Archer",
       "url": "/pages/championarcher/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "An archery competition game where you aim and fire arrows at targets with varying difficulty, managing wind resistance and distance for accurate shots."
     },
     {
       "name": "Circlo",
       "url": "/pages/circlo/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A circular puzzle game where you navigate geometric shapes through rotating rings and barriers, requiring timing and spatial awareness to progress through levels."
     },
     {
       "name": "Connect 3",
       "url": "/pages/connect3/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A match-three puzzle game where you connect colored tiles in groups of three or more, clearing pieces and cascading new ones in strategic tile manipulation gameplay."
     },
     {
       "name": "Craftmine",
       "url": "/pages/craftmine/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "A 2d version of minecraft, with a touch of terraria. Mine resources, craft items, and build structures in a pixelated sandbox world."
     },
     {
       "name": "Creative Kill Chamber",
       "url": "/pages/creativekillchamber/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A puzzle game emphasizing creative problem-solving where you eliminate targets using environmental hazards and physics to find unconventional kill methods."
     },
     {
       "name": "CSGo Clicker",
       "url": "/pages/csgo-clicker/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "A Counter-Strike themed idle clicker where you earn in-game currency, purchase weapons and upgrades, and progress through weapon tiers and upgrades."
     },
     {
       "name": "Cut the Rope - Holiday Gift",
       "url": "/pages/ctr-holiday/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A holiday-themed sequel to Cut the Rope featuring festive levels and new mechanics, maintaining the physics-puzzle gameplay with seasonal challenges and obstacles."
     },
     {
       "name": "Cut the Rope - Time Travel",
       "url": "/pages/ctr-tr/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A time-traveling puzzle adventure where you cut ropes to feed the monster across different eras, introducing time-manipulation mechanics alongside classic rope physics."
     },
     {
       "name": "Cubefield",
       "url": "/pages/cubefield/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A 3D dodging game where you navigate a ship through an endless field of approaching cubes at high speed, requiring quick reflexes and spatial awareness."
     },
     {
       "name": "Cupcake 2048",
       "url": "/pages/cupcake2048/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "A themed variation of 2048 featuring cupcakes and desserts instead of numbers, combining sliding tile mechanics with a food-based aesthetic."
     },
     {
       "name": "Deal or No Deal",
       "url": "/pages/deal-or-no-deal/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A game show simulator based on the television series where you open cases and negotiate with a banker to secure the best possible deal or jackpot."
     },
     {
       "name": "Death Run 3D",
       "url": "/pages/death-run-3d/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A 3d tunnel game where you must avoid constatnly changing barriers while moving with the music"
     },
     {
       "name": "Defend the Tank",
       "url": "/pages/defend-the-tank/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A tower defense game where you protect a central tank from incoming waves of enemies, upgrading defenses and managing resources to survive increasingly difficult attacks."
     },
     {
       "name": "Doge 2048",
       "url": "/pages/doge2048/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "A 2048 variant featuring the popular Doge meme dog, sliding tiles and combining memes to reach the highest Doge tile through strategic number manipulation."
     },
     {
       "name": "Double Wires",
       "url": "/pages/doublewires/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A precision platformer where you play like spiderman swinging through the world."
     },
     {
       "name": "Draw the Hill",
       "url": "/pages/draw-the-hill/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A creative physics game where you draw terrain and structures for a vehicle to navigate, testing your designs as the car drives across your creations."
     },
     {
       "name": "Duck Life",
       "url": "/pages/ducklife1/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "The original duck training game where you develop a duckling through mini-games to prepare it for competitive racing, building speed and endurance attributes."
     },
     {
       "name": "Duck Life 2",
       "url": "/pages/ducklife2/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "The sequel expands duck training with additional attributes and more diverse mini-games, offering deeper progression and more competitive racing challenges."
     },
     {
       "name": "Duck Life 3",
       "url": "/pages/ducklife3/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "The third installment adds new environments and training types, featuring expanded gameplay with travel mechanics and more varied racing and competition scenarios."
     },
     {
       "name": "Edge Not Found",
       "url": "/pages/edgenotfound/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A philosophical puzzle game exploring impossible geometry and spatial paradoxes, where you navigate environments that defy conventional logic and physics."
     },
     {
       "name": "Elastic Man",
       "url": "/pages/elasticman/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A quirky physics-based game where you poke and manipulate a stretchy elastic character, watching it react and contort in exaggerated comedic ways."
     },
     {
       "name": "Endless War 3",
       "url": "/pages/endlesswar3/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A strategic turn-based war game where you manage armies and territories, engaging in tactical combat across varied terrains while managing resources and troops."
     },
     {
       "name": "Exo",
       "url": "/pages/exo/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A space game where you have crashed on an unknown planet and must survive from waves of alien invaders"
     },
     {
       "name": "Fake Virus",
       "url": "/pages/fake-virus/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A humorous pranking interface that mimics a computer virus with fake warning messages and comedic alerts, designed to playfully startle users."
     },
     {
       "name": "Flappy 2048",
       "url": "/pages/flappy-2048/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "A hybrid game combining Flappy Bird mechanics with 2048 tile-matching, where you navigate through pipes while collecting and merging numbered tiles."
     },
     {
       "name": "Flash Tetris",
       "url": "/pages/flashtetris/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A classic Tetris implementation featuring falling tetromino blocks that you must arrange and clear, with traditional gravity and line-clearing mechanics."
     },
     {
       "name": "Game Inside a Game",
       "url": "/pages/game-inside/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A meta-narrative puzzle game featuring games within games, with nested levels and reality-bending mechanics that challenge perceptions of game boundaries."
     },
     {
       "name": "Glass City",
       "url": "/pages/glass-city/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "It's open world game where you can explore, use different fire-arms, kill puppets, destroy environment, pick up items (puppets, grenades)  and just have fun."
     },
     {
       "name": "Google Snake",
       "url": "/pages/google-snake/index.html",
-      "category": "arcade",
+      "category": "game",
       "description": "Google's classic Snake game where a growing serpent eats pellets while avoiding walls and itself, with classic arcade gameplay mechanics."
     },
     {
       "name": "Grindcraft",
       "url": "/pages/grindcraft/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "A Minecraft-inspired idle game where you gather resources, craft items, and progress through crafting recipes with an incremental mechanics layer."
     },
     {
       "name": "Hacker Type",
       "url": "/pages/hackertype/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "Pretend you are hacking by typing on your keyboard to make fake hacking show up."
     },
     {
       "name": "Hover Bot Arena",
       "url": "/pages/hba/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A multiplayer robot combat game where hovering bots battle in arenas, using movement and firepower to eliminate opponents in fast-paced deathmatch scenarios."
     },
     {
       "name": "Helicopter",
       "url": "/pages/helicopter/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A classic helicopter arcade game where you navigate a helicopter through narrow corridors, avoiding walls and obstacles at increasing speeds."
     },
     {
       "name": "Hex Empire",
       "url": "/pages/hexempire/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A turn-based hexagonal strategy game where you build an empire, manage resources, and engage in tactical warfare across hexagonal grid territories."
     },
     {
       "name": "HexGL",
       "url": "/pages/HexGL/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A 3D racing game through hexagonal tunnels at high speed, featuring neon aesthetics and futuristic track designs with responsive flight mechanics."
     },
     {
       "name": "Idle Shark",
       "url": "/pages/idle-shark/index.html",
-      "category": "clicker",
+      "category": "game",
       "description": "An ocean-themed idle game where you control a shark collecting fish and upgrading abilities, managing a growing aquatic empire through progression."
     },
     {
       "name": "Interactive Buddy",
       "url": "/pages/interactivebuddy/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A digital pet simulator where you interact with an animated buddy character, clicking to poke, tickle, and perform actions triggering comedic reactions."
     },
     {
       "name": "Just One Boss",
       "url": "/pages/just-one-boss/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A boss-focused action game featuring intense one-on-one battles against powerful opponents, emphasizing skill-based combat and pattern recognition."
     },
     {
       "name": "Kitten Cannon",
       "url": "/pages/kittencannon/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A physics-based distance game where you launch kittens from a cannon across landscapes, trying to achieve maximum distance with strategic power and angle adjustment."
     },
     {
       "name": "Krunker.io",
       "url": "https://krunker.io/",
-      "category": "shooter",
+      "category": "game",
       "description": "A fast-paced multiplayer first-person shooter with simple graphics and responsive controls, featuring various game modes and weapon classes for competitive play."
     },
     {
       "name": "Learn to Fly",
       "url": "/pages/learntofly/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A penguin flight simulator where you launch yourself down icy slopes to achieve maximum distance, purchasing upgrades to increase speed and flight duration."
     },
     {
       "name": "Matrix Rampage",
       "url": "/pages/matrixrampage/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "An action game inspired by The Matrix featuring slow-motion combat, bullet-dodging mechanics, and martial arts-style melee combat against waves of enemies."
     },
     {
       "name": "Meme 2048",
       "url": "/pages/meme2048/index.html",
-      "category": "2048",
+      "category": "game",
       "description": "A 2048 variant featuring internet memes instead of numbers, sliding and combining viral content to progress toward the highest meme tile."
     },
     {
       "name": "Minecraft Classic",
       "url": "/pages/minecraft-classic/index.html",
-      "category": "sandbox",
+      "category": "game",
       "description": "The original browser-based Minecraft in creative mode where you freely build and destroy blocks in an infinite world without survival mechanics."
     },
     {
       "name": "Minesweeper",
       "url": "/pages/minesweeper/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "The classic puzzle game where you uncover hidden mines on a grid using numerical clues, requiring logic and deduction to identify safe tiles."
     },
     {
       "name": "Mini Putt",
       "url": "/pages/miniputt/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "A mini golf game featuring creative hole designs, power-ups, and obstacles, challenging you to sink putts with precise angle and power control."
     },
     {
       "name": "Missiles",
       "url": "/pages/missiles/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A quick paced tunel game where you must aim yourself correctly so you don't hit the wall"
     },
     {
       "name": "MotoX3M Pool",
       "url": "/pages/motox3m-pool/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A water-themed stunt motorcycle game where you perform tricks and flips while riding on water and navigating pool-based obstacle courses with aquatic hazards."
     },
     {
       "name": "MotoX3M Spooky",
       "url": "/pages/motox3m-spooky/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A Halloween-themed stunt motorcycle game featuring spooky environments, ghostly obstacles, and eerie atmospheres while maintaining the signature trick and flip mechanics."
     },
     {
       "name": "MotoX3M Winter",
       "url": "/pages/motox3m-winter/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A winter-themed motorcycle stunt game with snowy landscapes, icy surfaces, and cold-weather obstacles testing your balance and timing across frozen terrain."
     },
     {
       "name": "NS Shaft",
       "url": "/pages/ns-shaft/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A vertical shaft descent game where you navigate downward through rotating obstacles and challenges, requiring precise timing to avoid hazards while descending."
     },
     {
       "name": "Om Bounce",
       "url": "/pages/om-bounce/index.html",
-      "category": "rhythm",
+      "category": "misc",
       "description": "A rhythmic bouncing game where you tap to the beat, bouncing obstacles in sync with music to progress through levels with evolving soundtracks."
     },
     {
       "name": "Pandemic 2",
       "url": "/pages/pandemic2/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A strategy simulation where you create and spread a plague across the world, managing infection rates while avoiding detection and cure development."
     },
     {
       "name": "Papa's Pizzaria",
       "url": "/pages/papaspizzaria/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A time-management restaurant simulation where you take pizza orders, prepare pizzas with custom toppings, and serve customers while managing a growing business."
     },
     {
       "name": "Paper.io 2",
       "url": "/pages/paperio2/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A territorial conquest game where you trace lines to claim map areas, competing against other players while protecting your border from being cut."
     },
     {
       "name": "Papery Planes",
       "url": "/pages/papery-planes/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A paper airplane flying game where you fold and customize planes, then guide them through obstacle courses and competitions with physics-based flight mechanics."
     },
     {
       "name": "PolyBranch",
       "url": "/pages/polybranch/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A polygon-based puzzle platformer where geometric shapes navigate branching paths, requiring strategic routing through increasingly complex level designs."
     },
     {
       "name": "Push the Square",
       "url": "/pages/push-the-square/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A physics puzzle game where you push a square through obstacle courses using momentum and strategic pushing to reach the goal without losing control."
     },
     {
       "name": "Push Your Luck",
       "url": "/pages/push-your-luck/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A gambling-style risk-reward game where you decide when to cash out or push for higher rewards, testing your courage and decision-making under pressure."
     },
     {
       "name": "Rolly Vortex",
       "url": "/pages/rolly-vortex/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A tunnel-rolling arcade game where a ball rolls through rotating vortex tunnels, requiring quick reflexes to avoid obstacles and maintain constant rolling momentum."
     },
     {
       "name": "Sand Game",
       "url": "/pages/sand-game/index.html",
-      "category": "simulation",
+      "category": "misc",
       "description": "A particle sandbox simulation where you paint different materials like sand, water, and fire, observing realistic physics and chemical reactions between elements."
     },
     {
       "name": "Super Mario 64",
       "url": "/pages/sm64/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "An emulated classic 3D platformer where Mario explores expansive castle worlds, collecting stars through diverse objectives, jumping puzzles, and creative level design."
     },
     {
       "name": "Smoking Barrels",
       "url": "/pages/smokingbarrels/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A western-themed top-down shooter where you eliminate waves of gunslinging enemies, managing limited ammunition while taking cover behind barrels and structures."
     },
     {
       "name": "Snow Battle",
       "url": "/pages/snowbattle/index.html",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer snowball fight game where you throw snowballs at opponents in winter landscapes, combining physics-based projectiles with competitive arena combat."
     },
     {
       "name": "Soldier Legend",
       "url": "/pages/soldier-legend/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A military action game where you command soldiers through combat scenarios, managing unit positioning and firepower to complete tactical objectives and missions."
     },
     {
       "name": "Sort the Court",
       "url": "/pages/sort-the-court/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A roguelike card deck game where you make judicial decisions as a ruler, with each choice affecting your kingdom and determining your ultimate fate and ending."
     },
     {
       "name": "Soundboard",
       "url": "/pages/soundboard/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A digital soundboard application featuring viral audio clips and meme sounds that you can trigger and layer for comedic effect and sound mixing."
     },
     {
       "name": "Stack",
       "url": "/pages/stack/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A minimalist arcade game where you stack blocks on top of each other, trying to reach maximum height while avoiding tipping over or falling off."
     },
     {
       "name": "Stack Bump 3D",
       "url": "/pages/stack-bump-3d/index.html",
-      "category": "endless",
+      "category": "game",
       "description": "A 3D block-stacking game where you build towers while bumping into obstacles, maintaining balance as structures grow taller with physics-based wobbling."
     },
     {
       "name": "Stick War",
       "url": "/pages/stickwar/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A strategy action game featuring stick figure armies battling across terrain, building units and structures while commanding troops in real-time tactical combat."
     },
     {
       "name": "Storm the House 2",
       "url": "/pages/stormthehouse2/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A tower defense game where you defend a house from waves of attackers, purchasing weapons and upgrades to fortify your defenses and survive onslaught."
     },
     {
       "name": "Superhot",
       "url": "/pages/superhot/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A time-manipulation first-person shooter where time moves only when you move, allowing strategic planning and stylish combat scenarios against waves of enemies."
     },
     {
       "name": "Swerve",
       "url": "/pages/swerve/index.html",
-      "category": "racing",
+      "category": "game",
       "description": "A minimalist reflex game where you swerve a character to avoid incoming obstacles, testing reaction time with progressively increasing difficulty and speed."
     },
     {
       "name": "Tactical Assassin",
       "url": "/pages/tacticalassasin2/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A sniper strategy game where you analyze scenes, identify targets, and execute eliminations with precision timing and careful tactical positioning."
     },
     {
       "name": "Tank Trouble 2",
       "url": "/pages/tank-trouble-2/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A two-player tank battle game with maze arenas, ricocheting bullets, and power-ups, emphasizing strategic positioning and angle calculation for shots."
     },
     {
       "name": "The Battle",
       "url": "/pages/thebattle/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A turn-based strategy game featuring opposing forces battling across terrain, where you deploy units and plan attacks to overcome enemy positions and armies."
     },
     {
       "name": "The Heist",
       "url": "/pages/theheist/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A planning and execution puzzle game where you orchestrate a heist, deciding routes and timing for completing the theft while avoiding guards and security."
     },
     {
       "name": "This is the Only Level",
       "url": "/pages/thisistheonlylevel/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "A clever one-level platformer where game elements rearrange between attempts, using the same space in creative ways to create seemingly infinite challenges."
     },
     {
       "name": "Toss the Turtle",
       "url": "/pages/tosstheturtle/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A physics-based distance game where you launch a turtle across landscapes, purchasing upgrades and adjusting launch angles to achieve maximum flight distance."
     },
     {
       "name": "Tube Jumpers",
       "url": "/pages/tube-jumpers/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "A cooperative platformer where characters jump through connected tubes and pipes, timing synchronized jumps to navigate obstacle-filled tunnel networks together."
     },
     {
       "name": "TV Static",
       "url": "/pages/tv-static/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "An experimental audiovisual experience simulating analog television static with interactive elements, creating a surreal and atmospheric multimedia installation."
     },
     {
       "name": "Webretro",
       "url": "/pages/webretro-local/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A retro game emulator allowing you to play classic arcade and console games through a browser interface with save functionality and controller support."
     },
     {
       "name": "Wolfenstein 3D",
       "url": "/pages/wolf3d/index.html",
-      "category": "shooter",
+      "category": "game",
       "description": "A classic first-person shooter where you navigate castle levels eliminating enemies, collecting weapons and treasures while avoiding guard encounters."
     },
     {
       "name": "Wordle",
       "url": "/pages/wordle/index.html",
-      "category": "puzzle",
+      "category": "misc",
       "description": "A word-guessing puzzle game where you deduce a hidden word through strategic guesses, receiving color-coded feedback on letter positions and correctness."
     },
     {
       "name": "World's Hardest Game 2",
       "url": "/pages/worlds-hardest-game-2/index.html",
-      "category": "strategy",
+      "category": "game",
       "description": "The sequel to the punishing platformer, featuring even more brutal obstacle patterns, faster enemies, and tighter puzzle designs demanding extreme precision and patience."
     },
     {
       "name": "Chat GPT",
       "url": "pages/gpt/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "A web-based interface to interact with the Chat GPT language model, allowing users to input prompts and receive AI-generated text responses in real-time."
     },
     {
       "name": "Duck Life: Treasure Hunt",
       "url": "pages/dlth/index.html",
-      "category": "sports",
+      "category": "game",
       "description": "An adventurous duck training game where you explore islands, find treasures, and train your duck with mini-games to enhance its abilities for competitive"
     },
     {
       "name": "Hexanaut",
       "url": "https://hexanaut.io/",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer strategy game where you control hexagonal tiles to capture territory and outmaneuver opponents in real-time battles."
     },
     {
       "name": "Defly.io",
       "url": "https://defly.io/",
-      "category": "io",
+      "category": "game",
       "description": "A multiplayer aerial combat game where you pilot a plane, capture zones, and engage in dogfights with other players in a dynamic arena."
     },
     {
       "name": "ZombsRoyale.io",
       "url": "https://zombs.io",
-      "category": "io",
+      "category": "game",
       "description": "A 2D battle royale game where you scavenge for weapons, build structures, and fight to be the last player standing in a shrinking arena."
     },
     {
@@ -1470,25 +1470,25 @@
     {
       "name": "Super Metroid",
       "url": "pages/supermetroid/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "ASuper Metroid is a landmark 1994 Super Nintendo action-adventure game known for pioneering the \"Metroidvania\" genre, featuring non-linear exploration of Planet Zebes as bounty hunter Samus Aran, acquiring power-ups to unlock new areas, and building a rich, atmospheric world through minimalist storytelling, challenging level design, and iconic music."
     },
     {
       "name": "Metroid II",
       "url": "pages/metroidII/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "Metroid II: Return of Samus follows bounty hunter Samus Aran on the hostile planet SR388, tasked with exterminating the entire Metroid species"
     },
     {
       "name": "Metroid",
       "url": "pages/metroid/index.html",
-      "category": "platformer",
+      "category": "game",
       "description": "Metroid is a classic 1986 action-adventure game where players control Samus Aran on planet Zebes, exploring interconnected areas, battling alien creatures, and acquiring power-ups to enhance abilities and access new regions, pioneering the 'Metroidvania' genre with its non-linear gameplay and atmospheric design."
     },
     {
       "name": "CloudMoon",
       "url": "pages/cma/index.html",
-      "category": "other",
+      "category": "misc",
       "description": "Play Clash Royale and other mobile games on this website"
     }
   ]
