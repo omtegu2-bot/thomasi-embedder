@@ -388,6 +388,39 @@ document.querySelector("#linkSearch").addEventListener("input", () => {
   currentPage = 1; // reset page
   renderPage();
 });
+function featuredImagePath(item) {
+  if (item.image) return `/images/${item.image}`;
+
+ 
+  const slug = item.name.toLowerCase().replace(/\s+/g, "-");
+  return `/images/${slug}.png`;
+}
+
+function renderFeatured(items) {
+  const container = document.getElementById("featuredCarousel");
+  if (!container) return;
+
+  const featured = items.filter(i => normalizeCategory(i.category) === "featured");
+
+  container.innerHTML = "";
+
+  featured.forEach(item => {
+    const url = normalizeURL(item.url);
+    if (!url) return;
+
+    const card = document.createElement("div");
+    card.className = "carousel-item";
+
+    card.innerHTML = `
+      <img src="${featuredImagePath(item)}" alt="${item.name}">
+      <h3>${item.name}</h3>
+      <p>${item.description || ""}</p>
+    `;
+
+    card.onclick = () => loadURL(url);
+    container.appendChild(card);
+  });
+}
 
 
 /* INITIALIZATION */
@@ -400,6 +433,7 @@ window.onload = async () => {
 
   const data = await loadGameList();
   renderQuickLinks(data.items);
+  renderFeatured(data.items);
 };
 
   /* if(s.audioWarning) alert("⚠️ Warning: you may have your audio turned on, please remember to turn it down joker."); */
