@@ -303,7 +303,20 @@ li {
   width: 100%;
   cursor: pointer;
 }
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 90;
 
+  background: linear-gradient(
+    180deg,
+    rgba(106, 109, 122, 0.85),
+    rgba(18,21,33,0.95)
+  );
+
+  border-top: 1px solid var(--border);
+  padding: 10px 16px;
+}
 .hidden {
   display: none;
 }
