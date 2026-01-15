@@ -396,12 +396,12 @@ document.querySelector("#linkSearch").addEventListener("input", () => {
   renderPage();
 });
 function featuredImagePath(item) {
-  if (item.image) return `/images/${item.image}`;
+  if (item.image) return SITE_PREFIX + "/images/" + item.image;
 
- 
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
-  return `/images/${slug}.png`;
+  return SITE_PREFIX + "/images/" + slug + ".png";
 }
+
 
 function renderFeatured(items) {
   const container = document.getElementById("featuredCarousel");
