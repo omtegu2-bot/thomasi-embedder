@@ -409,7 +409,7 @@ function renderFeatured(items) {
     if (!url) return;
 
     const card = document.createElement("div");
-    card.className = "carousel-item";
+    card.className = "tile carousel-item";
 
     card.innerHTML = `
       <img src="${featuredImagePath(item)}" alt="${item.name}">
