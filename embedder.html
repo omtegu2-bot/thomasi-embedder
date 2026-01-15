@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Website Embedder — Thomasi</title>
 
-<link rel="stylesheet" href="beta.css">
+
 
 </head>
 
@@ -167,15 +167,50 @@ LINK: https://tinyurl.com/h4zhkjmu
   </div>
 </div>
 
-<<<<<<< HEAD
-<script src="data.js"></script>
-<script src="main.js"></script>
-<div id="ipreferfeet" class="sticky-footer">  <p>We collect user data using Microsoft Clarity!</p></div>
-=======
+
 <script src="data.js?v=" + Date.now()></script>
 <script src="main.js?v=" + Date.now()></script>
+<div id="ipreferfeet" class="sticky-footer">  <p>We collect user data using Microsoft Clarity!</p></div>
 
->>>>>>> 90efeb9be2be3e5488c309fe9205908c833e37d2
+
+<div id="betaPopup" class="beta-popup hidden">
+  <p><strong>Try the beta?</strong></p>
+  <button id="enableBeta">Enable Beta</button>
+  <button id="dismissBeta">Dismiss</button>
+</div>
+<link id="themeStylesheet" rel="stylesheet" href="styles.css">
+<script>
+const popup = document.getElementById("betaPopup");
+const dismissBtn = document.getElementById("dismissBeta");
+const enableBtn = document.getElementById("enableBeta");
+const stylesheet = document.getElementById("themeStylesheet");
+
+// Load saved state
+const popupDismissed = localStorage.getItem("betaPopupDismissed");
+const betaEnabled = localStorage.getItem("betaEnabled");
+
+if (betaEnabled === "true") {
+  stylesheet.href = "beta.css";
+}
+
+
+if (!popupDismissed && betaEnabled !== "true") {
+  popup.classList.remove("hidden");
+}
+
+
+dismissBtn.addEventListener("click", () => {
+  localStorage.setItem("betaPopupDismissed", "true");
+  popup.classList.add("hidden");
+});
+
+// Enable beta
+enableBtn.addEventListener("click", () => {
+  stylesheet.href = "beta.css";
+  localStorage.setItem("betaEnabled", "true");
+  popup.classList.add("hidden");
+});
+</script>
 </body>
-  
+
 </html>

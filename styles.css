@@ -284,6 +284,29 @@ li {
   overflow: hidden;
     border-radius: 32px;
 }
+.beta-popup {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--bg, #111);
+  color: #fff;
+  border: 1px solid #444;
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 9999;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.beta-popup button {
+  margin-top: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
 
 .glow-on-hover::before {
   content: '';
