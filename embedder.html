@@ -13,7 +13,7 @@
   const beta = localStorage.getItem("betaEnabled") === "true";
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = beta ? "/beta.css" : "/styles.css";
+  link.href = beta ? "omtegu/beta.css" : "/styles.css";
   document.head.appendChild(link);
 })();
 </script>
