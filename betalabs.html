@@ -1,0 +1,159 @@
+<section id="betalabs">
+    <link id="themeStylesheet" rel="stylesheet" href="beta.css">
+  <header>
+    <h1>Beta Labs</h1>
+    <p>Preview in-progress features. Expect rough edges.</p>
+    <div class="actions">
+      <button id="stableBtn">Return to Site</button>
+      <button id="betaToggleBtn"></button>
+    </div>
+  </header>
+
+  <section>
+    <h2>Active Experiment</h2>
+    <div class="card active">
+      <h3>Site Visual Overhaul</h3>
+      <p>A full CSS redesign of the site.</p>
+      <span class="badge live">STYLE • LIVE</span>
+      <label class="toggle">
+        <input type="checkbox" id="cssExperimentToggle">
+        <span></span>
+      </label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Upcoming Experiments</h2>
+    <!-- cards with disabled toggles -->
+  </section>
+</section>
+<script>
+(function () {
+  const STORAGE_KEY = "betaEnabled";
+
+  const betaToggle = document.getElementById("cssExperimentToggle");
+  const stableBtn = document.getElementById("stableBtn");
+  const betaToggleBtn = document.getElementById("betaToggleBtn");
+
+  const isBeta = localStorage.getItem(STORAGE_KEY) === "true";
+
+  // Sync UI on load
+  if (betaToggle) betaToggle.checked = isBeta;
+  if (betaToggleBtn) {
+    betaToggleBtn.textContent = isBeta ? "Beta Enabled" : "Enable Beta";
+  }
+
+  // Toggle beta CSS
+  betaToggle?.addEventListener("change", () => {
+    if (betaToggle.checked) {
+      localStorage.setItem(STORAGE_KEY, "true");
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+    location.reload(); 
+  });
+
+
+  betaToggleBtn?.addEventListener("click", () => {
+    localStorage.setItem(STORAGE_KEY, isBeta ? "false" : "true");
+    if (!isBeta) localStorage.setItem(STORAGE_KEY, "true");
+    else localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  });
+
+ 
+  stableBtn?.addEventListener("click", () => {
+ 
+    window.location.href = "/embedder.html";
+  });
+})();
+</script>
+
+<style>
+    #betalabs {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+}
+
+#betalabs header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#betalabs .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+#betalabs section {
+  margin-top: 2.5rem;
+}
+
+.card {
+  background: var(--card-bg, #111);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.card.active {
+  outline: 2px solid #3cff96;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  opacity: 0.85;
+}
+
+.badge.live {
+  background: #3cff96;
+  color: #000;
+}
+.toggle {
+  position: relative;
+  width: 46px;
+  height: 26px;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle span {
+  position: absolute;
+  inset: 0;
+  background: #444;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle span::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + span {
+  background: #3cff96;
+}
+
+.toggle input:checked + span::before {
+  transform: translateX(20px);
+}
+
+</style>

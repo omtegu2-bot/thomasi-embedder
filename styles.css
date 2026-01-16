@@ -317,6 +317,60 @@ li {
   border-top: 1px solid var(--border);
   padding: 10px 16px;
 }
+.beta-popup {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 1rem;
+  z-index: 10000;
+  width: 220px;
+}
+
+.beta-popup .actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.beta-popup button,
+.beta-popup .beta-link {
+  flex: 1;
+  font-size: 0.8rem;
+  padding: 0.4rem;
+}
+
+.beta-popup .beta-link {
+  text-align: center;
+  text-decoration: none;
+  background: #3cff96;
+  color: #000;
+  border-radius: 6px;
+}
+
+.beta-bubble {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #3cff96;
+  color: #000;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.hidden {
+  display: none;
+}
+
 .hidden {
   display: none;
 }
