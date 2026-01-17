@@ -13,7 +13,7 @@
   const beta = localStorage.getItem("betaEnabled") === "true";
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = beta ? "omtegu/beta.css" : "/styles.css";
+  link.href = beta ? "beta.css" : "styles.css";
   document.head.appendChild(link);
 })();
 </script>
@@ -187,7 +187,7 @@ LINK: https://tinyurl.com/h4zhkjmu
 <div id="betaPopup" class="beta-popup hidden">
   <p><strong>Try the beta?</strong></p>
   <div class="actions">
-    <a href="/betalabs.html" class="beta-link">Open Beta Labs</a>
+    <a href="betalabs.html" class="beta-link">Open Beta Labs</a>
     <button id="dismissBeta">Dismiss</button>
   </div>
 </div>
