@@ -430,17 +430,6 @@ function renderFeatured(items) {
 }
 
 
-document.addEventListener("mousemove", (e) => {
-  document.body.style.setProperty(
-    "--mx",
-    (e.clientX / innerWidth) * 100 + "%"
-  );
-  document.body.style.setProperty(
-    "--my",
-    (e.clientY / innerHeight) * 100 + "%"
-  );
-});
-
 
 
 

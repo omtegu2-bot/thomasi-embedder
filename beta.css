@@ -420,53 +420,8 @@ button:hover {
 .iframe-container {
   min-height: 400px;
 }
-body {
-  --mx: 50%;
-  --my: 50%;
 
-  margin: 0;
-  min-height: 100vh;
 
-  background: linear-gradient(
-    180deg,
-    rgba(18,21,33,0.95),
-    rgba(18,21,33,0.85)
-  );
 
-  position: relative;
-  overflow: hidden;
-}
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      700px circle at var(--mx) var(--my),
-      color-mix(in srgb, var(--accent) 25%, transparent),
-      color-mix(in srgb, var(--accent) 15%, transparent) 30%,
-      color-mix(in srgb, var(--accent) 8%, transparent) 45%,
-      transparent 65%
-    );
-
-  transition: background-position 0.12s linear;
-}
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      900px circle at calc(var(--mx) + 4%) calc(var(--my) + 4%),
-      color-mix(in srgb, var(--accent-2) 18%, transparent),
-      transparent 60%
-    );
-
-  opacity: 0.6;
-}
 
