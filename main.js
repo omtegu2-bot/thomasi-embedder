@@ -396,10 +396,10 @@ document.querySelector("#linkSearch").addEventListener("input", () => {
   renderPage();
 });
 function featuredImagePath(item) {
-  if (item.image) return SITE_PREFIX + "/images/" + item.image;
+  if (item.image) return SITE_PREFIX + "images/" + item.image;
 
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
-  return SITE_PREFIX + "/images/" + slug + ".png";
+  return SITE_PREFIX + "images/" + slug + ".png";
 }
 
 
