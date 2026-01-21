@@ -19,6 +19,74 @@
         <input type="checkbox" id="cssExperimentToggle">
         <span></span>
       </label>
+      
+    </div>
+    <div class="card active">
+      <h3>Cover Page</h3>
+      <p>A way to coverup the page, please remember to add https:// before your URL.
+        <label>
+  Cover page URL:
+  <input id="coverInput" placeholder="https://wikipedia.org">
+</label>
+
+<button id="setCover">Set cover</button>
+<button id="clearCover">Clear cover</button>
+
+<p id="status"></p>
+
+<script>
+  const input = document.getElementById("coverInput");
+  const status = document.getElementById("status");
+
+  document.getElementById("setCover").onclick = async () => {
+    const url = input.value.trim();
+    if (!url) return;
+
+    const embeddable = await testEmbeddable(url);
+    if (!embeddable) {
+      status.textContent = "That page cannot be embedded.";
+      return;
+    }
+
+    localStorage.setItem("coverPage", url);
+    status.textContent = "Cover page saved.";
+  };
+
+  document.getElementById("clearCover").onclick = () => {
+    localStorage.removeItem("coverPage");
+    status.textContent = "Cover page cleared.";
+  };
+
+  async function testEmbeddable(url) {
+    return new Promise((resolve) => {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+
+      iframe.onload = () => {
+        document.body.removeChild(iframe);
+        resolve(true);
+      };
+
+      iframe.onerror = () => {
+        document.body.removeChild(iframe);
+        resolve(false);
+      };
+
+      document.body.appendChild(iframe);
+
+      // fallback timeout
+      setTimeout(() => {
+        if (document.body.contains(iframe)) {
+          document.body.removeChild(iframe);
+          resolve(false);
+        }
+      }, 3000);
+    });
+  }
+</script>
+
+      </p>
     </div>
   </section>
 
