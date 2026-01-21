@@ -155,5 +155,82 @@ footer a:hover {
     angleInput.addEventListener("input", update);
     update();
   </script>
+  <script>  
+  const coverPage = localStorage.getItem("coverPage");
+
+  const EMBED_URL = "embedder.html";
+
+  let embedFrame = null;
+
+
+  function createEmbedFrame() {
+    embedFrame = document.createElement("iframe");
+    embedFrame.src = "about:blank";
+    embedFrame.style.position = "fixed";
+    embedFrame.style.top = "0";
+    embedFrame.style.left = "0";
+    embedFrame.style.width = "100vw";
+    embedFrame.style.height = "100vh";
+    embedFrame.style.border = "none";
+    embedFrame.style.zIndex = "10000";
+    embedFrame.style.display = "none";
+    embedFrame.style.background = "black";
+
+    document.body.appendChild(embedFrame);
+  }
+
+
+  function openEmbedder() {
+    if (!embedFrame) createEmbedFrame();
+
+    embedFrame.style.display = "block";
+
+    // Only load once
+    if (embedFrame.dataset.loaded) return;
+
+    const doc = embedFrame.contentDocument;
+    doc.open();
+    doc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body style="margin:0">
+          <iframe src="${EMBED_URL}"
+            style="border:none;width:100vw;height:100vh">
+          </iframe>
+        </body>
+      </html>
+    `);
+    doc.close();
+
+    embedFrame.dataset.loaded = "true";
+  }
+  if (coverPage) {
+    const cover = document.createElement("iframe");
+    cover.src = coverPage;
+    cover.style.position = "fixed";
+    cover.style.top = "0";
+    cover.style.left = "0";
+    cover.style.width = "100vw";
+    cover.style.height = "100vh";
+    cover.style.border = "none";
+    cover.style.zIndex = "9999";
+    cover.style.background = "white";
+
+    document.body.appendChild(cover);
+  }
+
+
+  // TILDE KEY LISTENER
+
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Backquote") {
+      openEmbedder();
+    }
+  });
+</script>
+
 </body>
 </html>
