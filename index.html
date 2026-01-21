@@ -227,9 +227,32 @@ footer a:hover {
 
   document.addEventListener("keydown", (e) => {
     if (e.code === "Backquote") {
-      openEmbedder();
+      openBlank();
     }
   });
+    function openBlank() {
+  const win = window.open("", "_blank"); // creates about:blank under your origin
+
+  if (!win) return; // popup blocked
+
+  win.document.open();
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Embedder</title>
+      </head>
+      <body style="margin:0">
+        <iframe src="embedder.html"
+          style="border:none;width:100vw;height:100vh">
+        </iframe>
+      </body>
+    </html>
+  `);
+  win.document.close();
+}
+
 </script>
 
 </body>
