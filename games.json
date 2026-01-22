@@ -20,7 +20,25 @@
     "category": "featured",
     "description": "relatable 2d pixel platformer"
   },
-
+    {
+      "name": "Slope",
+      "url": "/pages/Slope/index.html",
+      "category": "game",
+      "description": "An addictive 3D endless runner where a ball rolls down a neon-lit slope, requiring quick reflexes to dodge barriers and stay on the narrow path."
+    },
+        {
+      "name": "GooberDash",
+      "url": "https://gooberdash.winterpixel.io/",
+      "category": "featured",
+      "description": "A fast-paced platformer with community made levels. Dash and jump across levels and become the last one standing."
+      
+    },
+        {
+      "name": "Chat GPT",
+      "url": "pages/gpt/index.html",
+      "category": "misc",
+      "description": "A web-based interface to interact with the Chat GPT language model, allowing users to input prompts and receive AI-generated text responses in real-time."
+    },
     {
       "name": "Infinite Mario",
       "url": "/pages/mario/main.html",
@@ -213,12 +231,7 @@
       "category": "game",
       "description": "A challenging pixel-art platformer following a climber ascending a mountain filled with perilous jumps, wall-slides, and dash mechanics with an emotional narrative."
     },
-    {
-      "name": "Slope",
-      "url": "/pages/Slope/index.html",
-      "category": "game",
-      "description": "An addictive 3D endless runner where a ball rolls down a neon-lit slope, requiring quick reflexes to dodge barriers and stay on the narrow path."
-    },
+
     {
       "name": "Portal",
       "url": "/pages/portal/game.html",
@@ -1437,12 +1450,7 @@
       "category": "game",
       "description": "The sequel to the punishing platformer, featuring even more brutal obstacle patterns, faster enemies, and tighter puzzle designs demanding extreme precision and patience."
     },
-    {
-      "name": "Chat GPT",
-      "url": "pages/gpt/index.html",
-      "category": "misc",
-      "description": "A web-based interface to interact with the Chat GPT language model, allowing users to input prompts and receive AI-generated text responses in real-time."
-    },
+
     {
       "name": "Duck Life: Treasure Hunt",
       "url": "pages/dlth/index.html",
@@ -1467,13 +1475,7 @@
       "category": "game",
       "description": "A 2D battle royale game where you scavenge for weapons, build structures, and fight to be the last player standing in a shrinking arena."
     },
-    {
-      "name": "GooberDash",
-      "url": "https://gooberdash.winterpixel.io/",
-      "category": "featured",
-      "description": "A fast-paced platformer with community made levels. Dash and jump across levels and become the last one standing."
-      
-    },
+
     {
       "name": "Thomas 32x",
       "url": "https://html-classic.itch.zone/html/15749771/thms/index.html",
