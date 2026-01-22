@@ -16,8 +16,8 @@
   --shadow: 0 8px 24px rgba(0,0,0,0.45);
 
   /* Layout */
-  --radius: 14px;
-  --radius-sm: 10px;
+  --radius: 12px;
+  --radius-sm: 8px;
   --pad: 14px;
 }
 html, body {
