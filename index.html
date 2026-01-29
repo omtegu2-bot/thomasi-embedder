@@ -24,111 +24,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #f6f6f6;
-      color: #222;
-    }
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f6f6f6;
+  color: #222;
+}
 
-    header {
-      background: #4CAF50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header {
+  background: #e0e0e0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
 
-    main {
-      max-width: 800px;
-      margin: 24px auto;
-      background: white;
-      padding: 24px;
-      border-radius: 8px;
-    }
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.lesson-section,
+.example-box,
+.interactive-box {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.example-box {
+  background: #fafafa;
+}
+
+.interactive-box input {
+  margin: 5px;
+}
 
 footer {
-  margin-top: 48px;
-  padding: 24px;
+  background: #ddd;
+  font-size: 0.9em;
+  padding: 15px;
   text-align: center;
-  font-size: 0.85rem;
-  color: #666;
 }
 
-footer a {
-  color: #4CAF50;
-  text-decoration: none;
-  margin: 0 4px;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-    label {
-      display: block;
-      margin-top: 16px;
-    }
-
-    input {
-      padding: 6px;
-      font-size: 1rem;
-      margin-top: 4px;
-    }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Trig</h1>
-    <p>Basic ideas and a simple calculator</p>
-  </header>
 
-  <main>
-    <h2>What is Trigonometry?</h2>
+<header>
+  <h1>Rounding and Error Analysis</h1>
+  <p class="subtitle">Educational Reference • Numerical Precision</p>
+</header>
+
+<main>
+
+  <section class="lesson-section">
+    <h2>1. What Is Rounding?</h2>
     <p>
-      Trigonometry studies the relationships between angles and sides of triangles,
-      especially right triangles.
+      Rounding is the process of replacing a number with an approximate value
+      that has fewer digits while remaining close to the original number.
     </p>
+  </section>
 
-    <h2>Basic Functions</h2>
+  <section class="example-box">
+    <h3>Example</h3>
+    <p>
+      The number 3.746 rounded to two decimal places becomes 3.75.
+    </p>
+  </section>
+
+  <section class="lesson-section">
+    <h2>2. Types of Rounding</h2>
     <ul>
-      <li>Sine (sin) = opposite ÷ hypotenuse</li>
-      <li>Cosine (cos) = adjacent ÷ hypotenuse</li>
-      <li>Tangent (tan) = opposite ÷ adjacent</li>
+      <li>Round half up</li>
+      <li>Truncation</li>
+      <li>Floor and ceiling</li>
     </ul>
+  </section>
 
-    <h2>Calculator</h2>
+  <section class="interactive-box">
+    <h3>Interactive: Rounding Sandbox</h3>
+
     <label>
-      Angle (degrees):
-      <input type="number" id="angle" value="30">
+      Number:
+      <input type="number" step="any" id="numInput" value="3.746">
     </label>
 
-    <p>sin(θ): <span id="sine"></span></p>
-    <p>cos(θ): <span id="cosine"></span></p>
-    <p>tan(θ): <span id="tangent"></span></p>
+    <label>
+      Decimal places:
+      <input type="number" id="placeInput" value="2" min="0">
+    </label>
 
-    <h2>Applications</h2>
-    <ul>
-      <li>Physics and engineering</li>
-      <li>Computer graphics</li>
-      <li>Sound and wave analysis</li>
-    </ul>
-  </main>
+    <button onclick="roundValue()">Round</button>
+
+    <p id="output">Result: —</p>
+  </section>
+    <section class="lesson-section">
+<table style="">
+  <thead>
+    <tr>
+      <th>Calculator / Environment</th>
+      <th>Type of Representation</th>
+      <th>Typical Precision Notes</th>
+      <th>How It Rounds / Displays</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>TI-83 Plus</strong></td>
+      <td>BCD floating point (base-10 coded representation) (<a href="https://stackoverflow.com/questions/33924358/ti-basic-numeric-standard " title="TI Basic Numeric Standard - calculator - Stack Overflow">Stack Overflow</a>)</td>
+      <td>~14 significant digits stored; typically displays up to 10 digits (<a href="https://cs.stackexchange.com/questions/135346/what-is-the-machine-epsilon-and-number-of-mantissa-bits-for-ti-83 " title="floating point - What is the machine epsilon and number of mantissa bits for TI-83? - Computer Science Stack Exchange">Computer Science Stack Exchange</a>)</td>
+      <td>Rounds to displayed digits but has hidden extra precision; internal rounding routines round to final display length (<a href="https://education.ti.com/html/eguides/discontinued/computer-software/EN/SDK-TI-83-System-Routines_EN.pdf " title="[PDF] TI-83 Plus System Routines - TI Education Technology">Texas Instruments Education</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>TI-30XS MultiView</strong></td>
+      <td>Scientific calculator using a decimal floating storage (base-10) (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
+      <td>Internally more digits than displayed; display settings from 0–9 decimals (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
+      <td>Always rounds display to the selected number of places; internal result may keep extra precision (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>Desmos Calculator (web)</strong></td>
+      <td>Initially binary floating point; newer versions use exact rational representation for many operations (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
+      <td>Modern Desmos will store many decimals as exact rational (numerator/denominator) where possible (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
+      <td>Tries to match human expectations (e.g., <code>0.1+0.2=0.3</code>) when exact rational is possible (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>WolframAlpha (software)</strong></td>
+      <td>Arbitrary precision arithmetic on demand (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
+      <td>Can compute real numbers to as many digits as requested (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
+      <td>No rounding by default; exact results until you ask for an approximate decimal (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>Casio scientific models</strong></td>
+      <td>Many consumer Casios use decimal or BCD formats with fixed precision (often ~10 digits) (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
+      <td>Display ~10 digits, but internal mantissa can be slightly different depending on model (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
+      <td>Rounds based on number of displayed digits; internal and display rounding sometimes differ (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>HP Classic Scientific (e.g., HP-35)</strong></td>
+      <td>Decimal floating point in BCD (common in older HPs) (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
+      <td>~10 decimal mantissa digits, with some precision for stack calculations (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
+      <td>Rounds to display, uses internal stack and floating decimal representation (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
+    </tr>
+    <tr>
+      <td><strong>Typical CPU floating-point (like in Chrome, Python)</strong></td>
+      <td>IEEE 754 binary floating point (base-2) (<a href="https://en.wikipedia.org/wiki/IEEE_754 " title="IEEE 754">Wikipedia</a>)</td>
+      <td>~53 binary bits of precision (≈ 15–17 decimal digits) (<a href="https://en.wikipedia.org/wiki/IEEE_754 " title="IEEE 754">Wikipedia</a>)</td>
+      <td>Rounds at each operation; may show “0.30000000000000004” for <code>0.1+0.2</code> if fully displayed (<a href="https://toxigon.com/floating-point-arithmetic " title="Why Your Calculator Sometimes Lies to You - Toxigon">Toxigon</a>)</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+</main>
+
 <footer>
   <div>
-    <strong>Trig Made Simple</strong>
+    <strong></strong>
   </div>
 
   <div>
     <a href="about:blank" onclick="this.href='embedder.html';">
-  About Us
-</a>
-
+      About Us
+    </a>
     •
     <a href="credits.html">Credits</a>
     •
     <a href="contact.html">Contact</a>
-        •
+    •
     <a href="memorial.html">M   emorial</a>
   </div>
 
@@ -138,19 +202,16 @@ footer a:hover {
   </div>
 </footer>
 
+<script>
+function roundValue() {
+  const num = Number(document.getElementById("numInput").value);
+  const places = Number(document.getElementById("placeInput").value);
+  const factor = Math.pow(10, places);
+  const result = Math.round(num * factor) / factor;
+  document.getElementById("output").textContent =
+    "Result: " + result;
+}
 
-  <script>
-    const angleInput = document.getElementById("angle");
-    const sineOut = document.getElementById("sine");
-    const cosineOut = document.getElementById("cosine");
-    const tangentOut = document.getElementById("tangent");
-
-    function update() {
-      const radians = angleInput.value * Math.PI / 180;
-      sineOut.textContent = Math.sin(radians).toFixed(3);
-      cosineOut.textContent = Math.cos(radians).toFixed(3);
-      tangentOut.textContent = Math.tan(radians).toFixed(3);
-    }
 
     angleInput.addEventListener("input", update);
     update();
