@@ -3,6 +3,7 @@
   <header>
     <h1>Beta Labs</h1>
     <p>Preview in-progress features. Expect rough edges.</p>
+      <p>New Feature: Cover pages!</p>
     <div class="actions">
       <button id="stableBtn">Return to Site</button>
       <button id="betaToggleBtn"></button>
@@ -19,12 +20,100 @@
         <input type="checkbox" id="cssExperimentToggle">
         <span></span>
       </label>
+      
+    </div>
+    <div class="card active">
+      <h3>Cover Page</h3>
+      <p>A way to coverup the page, please remember to add https:// before your URL. Use tilde (~) to leave the page, you'll need to click about the bottom 10% of the web browser.
+        <label>
+  Cover page URL:
+  <input id="coverInput" placeholder="https://wikipedia.org">
+</label>
+
+<button id="setCover">Set cover</button>
+<button id="clearCover">Clear cover</button>
+
+<p id="status"></p>
+
+<script>
+  const input = document.getElementById("coverInput");
+  const status = document.getElementById("status");
+
+  document.getElementById("setCover").onclick = async () => {
+    const url = input.value.trim();
+    if (!url) return;
+
+    const embeddable = await testEmbeddable(url);
+    if (!embeddable) {
+      status.textContent = "That page cannot be embedded.";
+      return;
+    }
+
+    localStorage.setItem("coverPage", url);
+    status.textContent = "Cover page saved.";
+  };
+
+  document.getElementById("clearCover").onclick = () => {
+    localStorage.removeItem("coverPage");
+    status.textContent = "Cover page cleared.";
+  };
+
+  async function testEmbeddable(url) {
+    return new Promise((resolve) => {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+
+      iframe.onload = () => {
+        document.body.removeChild(iframe);
+        resolve(true);
+      };
+
+      iframe.onerror = () => {
+        document.body.removeChild(iframe);
+        resolve(false);
+      };
+
+      document.body.appendChild(iframe);
+
+      // fallback timeout
+      setTimeout(() => {
+        if (document.body.contains(iframe)) {
+          document.body.removeChild(iframe);
+          resolve(false);
+        }
+      }, 3000);
+    });
+  }
+</script>
+
+      </p>
     </div>
   </section>
 
   <section>
     <h2>Upcoming Experiments</h2>
     <!-- cards with disabled toggles -->
+          <div class="card active">
+      <h3>Integrated Minesweeper Spinofff</h3>
+      <p>Placeholder.</p>
+      <span class="badge live">STYLE • LIVE</span>
+      <label class="toggle">
+        <input type="checkbox" id="cssExperimentToggle">
+        <span></span>
+      </label>
+      
+    </div>
+        <div class="card active">
+      <h3>Game Design Preview Videos</h3>
+      <p>Placeholder.</p>
+      <span class="badge live">STYLE • LIVE</span>
+      <label class="toggle">
+        <input type="checkbox" id="cssExperimentToggle">
+        <span></span>
+      </label>
+      
+    </div>
   </section>
 </section>
 <script>
