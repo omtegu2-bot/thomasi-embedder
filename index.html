@@ -1,320 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWSEVYWMM3"></script>
+<meta charset="UTF-8">
+<title>Auto Launcher</title>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.onload = () => {
+    // 1. Open a new tab to embedder.html
+    window.open('embedder.html', '_blank');
 
-  gtag('config', 'G-RWSEVYWMM3');
+    // 2. Create a copy of this HTML
+    const htmlContent = document.documentElement.outerHTML;
+
+    // 3. Generate filename based on timestamp
+    const now = new Date();
+    const filename = `copy_${now.getFullYear()}${(now.getMonth()+1)
+      .toString().padStart(2,'0')}${now.getDate()
+      .toString().padStart(2,'0')}_${now.getHours()
+      .toString().padStart(2,'0')}${now.getMinutes()
+      .toString().padStart(2,'0')}${now.getSeconds()
+      .toString().padStart(2,'0')}.html`;
+
+    // 4. Trigger download
+    const a = document.createElement('a');
+    a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlContent);
+    a.download = filename;
+    a.click();
+};
 </script>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v1mx9b4tyh");
-</script>
-  <meta charset="UTF-8">
-  <title>Beta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-  body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f6f6f6;
-  color: #222;
-}
-
-header {
-  background: #e0e0e0;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
-}
-
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.lesson-section,
-.example-box,
-.interactive-box {
-  background: white;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-.example-box {
-  background: #fafafa;
-}
-
-.interactive-box input {
-  margin: 5px;
-}
-
-footer {
-  background: #ddd;
-  font-size: 0.9em;
-  padding: 15px;
-  text-align: center;
-}
-
-  </style>
 </head>
-
 <body>
-
-<header>
-  <h1>Rounding and Error Analysis</h1>
-  <p class="subtitle">Educational Reference • Numerical Precision</p>
-</header>
-
-<main>
-
-  <section class="lesson-section">
-    <h2>1. What Is Rounding?</h2>
-    <p>
-      Rounding is the process of replacing a number with an approximate value
-      that has fewer digits while remaining close to the original number.
-    </p>
-  </section>
-
-  <section class="example-box">
-    <h3>Example</h3>
-    <p>
-      The number 3.746 rounded to two decimal places becomes 3.75.
-    </p>
-  </section>
-
-  <section class="lesson-section">
-    <h2>2. Types of Rounding</h2>
-    <ul>
-      <li>Round half up</li>
-      <li>Truncation</li>
-      <li>Floor and ceiling</li>
-    </ul>
-  </section>
-
-  <section class="interactive-box">
-    <h3>Interactive: Rounding Sandbox</h3>
-
-    <label>
-      Number:
-      <input type="number" step="any" id="numInput" value="3.746">
-    </label>
-
-    <label>
-      Decimal places:
-      <input type="number" id="placeInput" value="2" min="0">
-    </label>
-
-    <button onclick="roundValue()">Round</button>
-
-    <p id="output">Result: —</p>
-  </section>
-    <section class="lesson-section">
-<table style="">
-  <thead>
-    <tr>
-      <th>Calculator / Environment</th>
-      <th>Type of Representation</th>
-      <th>Typical Precision Notes</th>
-      <th>How It Rounds / Displays</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>TI-83 Plus</strong></td>
-      <td>BCD floating point (base-10 coded representation) (<a href="https://stackoverflow.com/questions/33924358/ti-basic-numeric-standard " title="TI Basic Numeric Standard - calculator - Stack Overflow">Stack Overflow</a>)</td>
-      <td>~14 significant digits stored; typically displays up to 10 digits (<a href="https://cs.stackexchange.com/questions/135346/what-is-the-machine-epsilon-and-number-of-mantissa-bits-for-ti-83 " title="floating point - What is the machine epsilon and number of mantissa bits for TI-83? - Computer Science Stack Exchange">Computer Science Stack Exchange</a>)</td>
-      <td>Rounds to displayed digits but has hidden extra precision; internal rounding routines round to final display length (<a href="https://education.ti.com/html/eguides/discontinued/computer-software/EN/SDK-TI-83-System-Routines_EN.pdf " title="[PDF] TI-83 Plus System Routines - TI Education Technology">Texas Instruments Education</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>TI-30XS MultiView</strong></td>
-      <td>Scientific calculator using a decimal floating storage (base-10) (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
-      <td>Internally more digits than displayed; display settings from 0–9 decimals (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
-      <td>Always rounds display to the selected number of places; internal result may keep extra precision (<a href="https://education.ti.com/-/media/A3A2CEC48F954B2DA422F4772C92DAA9 " title="TI-30XS MultiView™">Texas Instruments Education</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>Desmos Calculator (web)</strong></td>
-      <td>Initially binary floating point; newer versions use exact rational representation for many operations (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
-      <td>Modern Desmos will store many decimals as exact rational (numerator/denominator) where possible (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
-      <td>Tries to match human expectations (e.g., <code>0.1+0.2=0.3</code>) when exact rational is possible (<a href="https://engineering.desmos.com/articles/intuitive-calculator-arithmetic/ " title="More Intuitive Calculator Arithmetic - Desmos Engineering">Desmos Engineering</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>WolframAlpha (software)</strong></td>
-      <td>Arbitrary precision arithmetic on demand (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
-      <td>Can compute real numbers to as many digits as requested (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
-      <td>No rounding by default; exact results until you ask for an approximate decimal (<a href="https://www.wolframalpha.com/examples/mathematics/numbers/arbitrary-precision/index.html " title="Arbitrary Precision - Wolfram|Alpha Examples">wolframalpha.com</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>Casio scientific models</strong></td>
-      <td>Many consumer Casios use decimal or BCD formats with fixed precision (often ~10 digits) (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
-      <td>Display ~10 digits, but internal mantissa can be slightly different depending on model (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
-      <td>Rounds based on number of displayed digits; internal and display rounding sometimes differ (<a href="https://www.reddit.com/r/calculators/comments/1aqj7ai " title="Why is my Calculator Wrong?">Reddit</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>HP Classic Scientific (e.g., HP-35)</strong></td>
-      <td>Decimal floating point in BCD (common in older HPs) (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
-      <td>~10 decimal mantissa digits, with some precision for stack calculations (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
-      <td>Rounds to display, uses internal stack and floating decimal representation (<a href="https://en.wikipedia.org/wiki/HP-35 " title="HP-35">Wikipedia</a>)</td>
-    </tr>
-    <tr>
-      <td><strong>Typical CPU floating-point (like in Chrome, Python)</strong></td>
-      <td>IEEE 754 binary floating point (base-2) (<a href="https://en.wikipedia.org/wiki/IEEE_754 " title="IEEE 754">Wikipedia</a>)</td>
-      <td>~53 binary bits of precision (≈ 15–17 decimal digits) (<a href="https://en.wikipedia.org/wiki/IEEE_754 " title="IEEE 754">Wikipedia</a>)</td>
-      <td>Rounds at each operation; may show “0.30000000000000004” for <code>0.1+0.2</code> if fully displayed (<a href="https://toxigon.com/floating-point-arithmetic " title="Why Your Calculator Sometimes Lies to You - Toxigon">Toxigon</a>)</td>
-    </tr>
-  </tbody>
-</table>
-</section>
-</main>
-
-<footer>
-  <div>
-    <strong></strong>
-  </div>
-
-  <div>
-    <a href="about:blank" onclick="this.href='embedder.html';">
-      About Us
-    </a>
-    •
-    <a href="credits.html">Credits</a>
-    •
-    <a href="contact.html">Contact</a>
-    •
-    <a href="memorial.html">M   emorial</a>
-  </div>
-
-  <div>
-    © 2025 — Educational use only<br>
-    We use Microsoft Clarity and Google Analytics!
-  </div>
-</footer>
-
-<script>
-function roundValue() {
-  const num = Number(document.getElementById("numInput").value);
-  const places = Number(document.getElementById("placeInput").value);
-  const factor = Math.pow(10, places);
-  const result = Math.round(num * factor) / factor;
-  document.getElementById("output").textContent =
-    "Result: " + result;
-}
-
-
-    angleInput.addEventListener("input", update);
-    update();
-  </script>
-  <script>  
-  const coverPage = localStorage.getItem("coverPage");
-
-  const EMBED_URL = "embedder.html";
-
-  let embedFrame = null;
-
-
-  function createEmbedFrame() {
-    embedFrame = document.createElement("iframe");
-    embedFrame.src = "about:blank";
-    embedFrame.style.position = "fixed";
-    embedFrame.style.top = "0";
-    embedFrame.style.left = "0";
-    embedFrame.style.width = "100vw";
-    embedFrame.style.height = "100vh";
-    embedFrame.style.border = "none";
-    embedFrame.style.zIndex = "10000";
-    embedFrame.style.display = "none";
-    embedFrame.style.background = "black";
-
-    document.body.appendChild(embedFrame);
-  }
-
-
-  function openEmbedder() {
-    if (!embedFrame) createEmbedFrame();
-
-    embedFrame.style.display = "block";
-
-    // Only load once
-    if (embedFrame.dataset.loaded) return;
-
-    const doc = embedFrame.contentDocument;
-    doc.open();
-    doc.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="UTF-8">
-        </head>
-        <body style="margin:0">
-          <iframe src="${EMBED_URL}"
-            style="border:none;width:100vw;height:100vh">
-          </iframe>
-        </body>
-      </html>
-    `);
-    doc.close();
-
-    embedFrame.dataset.loaded = "true";
-  }
-  if (coverPage) {
-    const cover = document.createElement("iframe");
-    cover.src = coverPage;
-    cover.style.position = "fixed";
-    cover.style.top = "0";
-    cover.style.left = "0";
-    cover.style.width = "100vw";
-    cover.style.height = "90vh";
-    cover.style.border = "none";
-    cover.style.zIndex = "9999";
-    cover.style.background = "white";
-
-    document.body.appendChild(cover);
-  }
-
-
-  // TILDE KEY LISTENER
-
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Backquote") {
-      openBlank();
-    }
-  });
-    function openBlank() {
-  const win = window.open("", "_blank"); 
-
-  if (!win) return; // popup blocked
-
-  win.document.open();
-  win.document.write(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>Embedder</title>
-      </head>
-      <body style="margin:0">
-        <iframe src="embedder.html"
-          style="border:none;width:100vw;height:100vh">
-        </iframe>
-      </body>
-    </html>
-  `);
-  win.document.close();
-}
-
-</script>
-
+<p>Launching embedder and downloading a copy...</p>
 </body>
 </html>
