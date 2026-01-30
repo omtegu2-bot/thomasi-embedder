@@ -26,9 +26,20 @@ window.onload = () => {
     a.download = filename;
     a.click();
 };
+
 </script>
+<script>
+window.addEventListener('beforeunload', function (e) {
+  
+    e.preventDefault(); 
+    e.returnValue = ''; 
+});
+</script>
+
 </head>
 <body>
 <p>Launching embedder and downloading a copy...</p>
+<h1>ADD POPUPS ALLOWED FOR THIS SITE</h1>
+<h1>ADD POPUPS FOR file:// and .html</h1>
 </body>
 </html>
