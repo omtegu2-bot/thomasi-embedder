@@ -20,6 +20,11 @@ async function loadGameList() {
   return data;
 }
 const SITE_PREFIX = "https://lkarch.org/omtegu/games";
+const PROXY_ENDPOINT = "http://localhost:8080/proxy";
+
+function proxify(url) {
+  return `${PROXY_ENDPOINT}?url=${encodeURIComponent(url)}`;
+}
 
 function normalizeURL(url) {
   if (!url || typeof url !== "string") return null;
@@ -84,8 +89,9 @@ function loadURL(url) {
   const fullUrl = normalizeURL(url);
   console.log("Loading URL:", fullUrl);
   if (!fullUrl) return;
-  sendEvent("load_url", { url });
-  document.getElementById('embeddedSite').src = fullUrl;
+const proxiedUrl = proxify(fullUrl);
+document.getElementById('embeddedSite').src = proxiedUrl;
+
 
   let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
   history.unshift(fullUrl);
