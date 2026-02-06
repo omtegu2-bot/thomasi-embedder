@@ -20,7 +20,7 @@ async function loadGameList() {
   return data;
 }
 const SITE_PREFIX = "https://lkarch.org/omtegu/games";
-const PROXY_ENDPOINT = "http://localhost:8080/proxy";
+const PROXY_ENDPOINT = "http://omtegu.duckdns.org:8080/proxy";
 
 function proxify(url) {
   return `${PROXY_ENDPOINT}?url=${encodeURIComponent(url)}`;
