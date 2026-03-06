@@ -89,8 +89,7 @@ function loadURL(url) {
   const fullUrl = normalizeURL(url);
   console.log("Loading URL:", fullUrl);
   if (!fullUrl) return;
-const proxiedUrl = proxify(fullUrl);
-document.getElementById('embeddedSite').src = proxiedUrl;
+document.getElementById('embeddedSite').src = fullUrl;
 
 
   let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
