@@ -19,7 +19,7 @@
 </script>
 <script>
 (function () {
-  const beta = localStorage.getItem("betaEnabled") === "true";
+  const beta = localStorage.getItem("betaEnabled") !== "true";
   const link = document.createElement("link");
   link.rel = "stylesheet";
   link.href = beta ? "beta.css" : "styles.css";
@@ -48,6 +48,9 @@
 <div class="banner-container">
     <p class="flashing-text animated-glow">
     Please turn down your volume! The alert was removed!
+  </p>
+     <p class="flashing-text animated-glow">
+    Betalabs design can be toggled off in betalabs.
   </p>
     </div>
 
@@ -137,7 +140,7 @@
      <p>Jan 21st 2026 fixed cover page to only use 90% of the screen, click the bottom to leave. Good update to make things work.</p>
      <p>Jan 28th 2026 the site got blocked on finals days of all things, and my USERNAME got blocked, you can't even search Omtegu!</p>
      <p>3/9/2026 added the site to a spreadsheet, development will be restarted.</p>
-          <p>3/27/2026 Tweaked page layout to improve site ease of use.</p>
+          <p>3/27/2026 Tweaked page layout to improve site ease of use. Betalabs made default design, old design moved to a toggle.</p>
      </p></p><h2>Roadmap</h2>
 <p>Soon an ALEKS mode will be added, a keybind will open an ALEKS-like screen that will be (marginally) interactable. This is no longer relevant and may be removed</p>
   <p>Account system may be added in the future to allow you to see other online "friends" and they can see the link you're on.</p>
