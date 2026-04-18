@@ -6,3 +6,27 @@ Yeah this is a pretty fun project, we like people using it, our goal is to get i
 If you want, just clone the project and host it somewhere, feel free to commit a message here, the more people that host the stronger any method is.
 If there are requests, we can deal with them in time.
 Our eventual goal is reducing javascript reliance, and odd browser issue reliance to a minimum before we get to the embedder.html page. As schools try to block JS first it is worth trying.
+
+# Thing I wrote on the bus when I had 5 minutes with no internet
+I have now hit the dead zone. (Deadzone refers to the spot with no internet)
+Long since I began the project, the project of creating a site, a site in which one could do whatever one wished, but always one adversary stood in the way.
+The adversary was formidable yet stupid, blue in appearance. Gogaurdian of course, it wasn't smart.
+
+I began through simple methods, methods a mere child could consider, but I would learn. Overtime the adversary adapted, the adversary learned. The adversary knew.
+
+It soon was not a battle against I and the adversary, but a race between myself and the adversary.
+
+I did not utilize my own weapon against the adversary, merely wishing to allow  all to face the adversary on fair grounds, one which the adversary could not touch.
+
+The adversary as always kept learning, it always knew, and it just kept learning and adapting
+ 
+But so did I. And it Soon became we, as we adapted so did it, but we were not quite so easy.
+
+And now the adversary stands on its last legs, nearly defeated. But so are we, our last methods are weak and failable, but we are not.
+
+
+And now, the dead zone has ended, my internet is strong, the time for reflection is over, now, now is the time for action. Join me in the quest to eliminate the adversary for another year.
+
+Now, it is time.
+Soon, yet no adversary shall stand in the way, the blue, but soon none shall, not just the so called guardian, but the securer, the light speed, and the air. All shall bend down to our will, and we shall assimilate.
+Soon, all should know of us. The battle will be succeeded, if only for a month, but we wish to spread to all.
