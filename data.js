@@ -1,6 +1,7 @@
 const DEFAULT_SETTINGS = {
   historyLength: 10,
   theme: "light",
+  lowEndMode:false,
   audioWarning: true,
   bookmarks: ["", "", ""]
 };
