@@ -104,7 +104,38 @@ padding-top: 10vh;
     font-size: 0.9rem;
     position: relative;
 }
+#helpBtn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #60a5fa;
+  background: #050505;
+  color: #c084fc;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+}
 
+#helpPanel {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  width: 220px;
+  padding: 12px;
+  background: #050505;
+  border: 1px solid #60a5fa;
+  border-radius: 10px;
+  color: #c084fc;
+  font-size: 0.9rem;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
 
 .contact-box::before {
     content: "";
@@ -120,11 +151,27 @@ padding-top: 10vh;
         </head>
 
         <body>
+            <button id="helpBtn">?</button>
             <div class="container">
                 ${buttonsHTML}
             </div>
 
             <script>
+                const helpBtn = win.document.getElementById("helpBtn");
+const helpPanel = win.document.getElementById("helpPanel");
+
+helpBtn.onclick = () => {
+    helpPanel.classList.toggle("hidden");
+};
+
+win.document.addEventListener("keydown", (e) => {
+    if (e.key === "?") {
+        helpPanel.classList.toggle("hidden");
+    }
+    if (e.key === "Escape") {
+        helpPanel.classList.add("hidden");
+    }
+});
                 function loadSite(url) {
                     var win = window.open('about:blank', '_blank');
                     win.document.body.style.margin = '0';
@@ -149,6 +196,12 @@ padding-top: 10vh;
                         <div>darkshadowhouse479@gmail.com - Emotional support and testing</div>
                         <div>Join the discord at https://discord.gg/yTAcznBkrN </div>
     </div>
+</div>
+<div id="helpPanel" class="hidden">
+  <h3>Keybinds</h3>
+  <p><b>Click</b> - Open site</p>
+  <p><b>alt+tab</b> - Change tab to a new window</p>
+  <p><b>ctrl+tab</b> - Change to a new window.</p>
 </div>
         </body>
         </html>
