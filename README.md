@@ -40,13 +40,14 @@ Nullframe is brand new to programming but they are highly intelligent and also h
 Cablelitefr isn't brand new however his abilities mostly extend to CSS, hopefully he can learn but my faith isn't high. He has been involved in the feedback on visual design and project direction since day one and is intelligent but lazy. He has much better musical and visual talent then I do.\
 Darkhouseshadowmaster is emotional support and is constantly ready to respond to the call.\
 # Acceptable conditions that when all are fulfilled will lead to official cease of development
-1. - Phones and earbuds should be considered an actual offense and should be confinscated if used, ideally beginning of day\
-2. - Unblocking of Github, Codepen, and Youtube\
-3. - Reduction of out of class filtering\
-4. - Councelors should read the actual issue before comitting to calling a student, my friend got flagged as having depression because he googled dimenntia\
-5. - AP Computer Science should be reinstated as a proper class instead of just being avaliable as a signup, no teacher is actually avaliable for that class.\
-6. - Proper computer classes, the number of people that can't right click or use file explorer is astounding\
-7. - Remove the orbitnote extension nobody likes it.\
-8. - Chromebooks should at least have 8gb of ram, and teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding\
-9. - Can district IT please just send all of the devs an email?\
+1. - Phones and earbuds should be considered an actual offense and should be confinscated if used, ideally beginning of day
+2. - Unblocking of Github, Codepen, and Youtube
+3. - Reduction of out of class filtering
+4. - Councelors should read the actual issue before comitting to calling a student, my friend got flagged as having depression because he googled dimenntia
+5. - AP Computer Science should be reinstated as a proper class instead of just being avaliable as a signup, no teacher is actually avaliable for that class.
+6. - Proper computer classes, the number of people that can't right click or use file explorer is astounding
+7. - Remove the orbitnote extension nobody likes it.
+8. - Chromebooks should at least have 8gb of ram, and teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
+9. - Can district IT please just send all of the devs an email?
 10. - Please turn down the volume of assemblies, I don't need assemblies that stay at 100db the whole assembly.
+11. - Return the ability to relocate and autohide the chromebook taskbar.
