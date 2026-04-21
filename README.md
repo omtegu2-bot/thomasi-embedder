@@ -1,5 +1,6 @@
 # thomasi-embedder
 I like embedding things, this embeds things well.
+tl;dr We are a group of high schoolers at NKHS in Poulsbo, WA. We enjoy finding loopholes in our schools filtering agent, GoGuardian. We have had ups and downs, but our newest method has been tested by students at CalTech and is unstoppable
 # Mission Statement
 The Thomasi-Embedder is made with the purpose of delievering a taste of the internet to those in a restricted environment like a school.
 Yeah this is a pretty fun project, we like people using it, our goal is to get it working under Securly after we get a tester, improve Goguardian evade tech, and research into ways to make this work on all systems. If you can help, please commit! None of the developers even use the site for anything beyond the rare blocked wikipedia article or manga excursion or really needing super metroid in school. We will soon be adding even more content, and we intend to fix any block, and you can lead your school district all around the chain. Start from codepen and see how long they take.
@@ -39,6 +40,8 @@ There is another user who doesn't currently have a credited email due to his onl
 Nullframe is brand new to programming but they are highly intelligent and also have the time and dedication to learn. Their goal is to learn and to make internet archive always accessible on the project, and they've been involved very early on. They're prepared to learn and I'm prepared to help them.\
 Cablelitefr isn't brand new however his abilities mostly extend to CSS, hopefully he can learn but my faith isn't high. He has been involved in the feedback on visual design and project direction since day one and is intelligent but lazy. He has much better musical and visual talent then I do.\
 Darkhouseshadowmaster is emotional support and is constantly ready to respond to the call.\
+#The CalTech Test
+One of our friends had his buddies at caltech analyze the entire launcher script (soon to be uploaded to github) and site as a whole, and beyond easily repairable damages that would take but an hour to fix, the site would only be blocked by removing a browser. It was analyzed on a VM emulating one of our chromebooks, and also on other VMS and environments, and utilizing AI assistance after humans did all they could.
 # Acceptable conditions that when all are fulfilled will lead to official cease of development
 1. - Phones and earbuds should be considered an actual offense and should be confinscated if used, ideally beginning of day
 2. - Unblocking of Github, Codepen, and Youtube
