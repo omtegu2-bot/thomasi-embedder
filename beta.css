@@ -64,9 +64,9 @@ html, body {
 
 .tile:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgba(124,140,255,0.4);
+  border-color: rgba(212, 0, 255, 0.4);
   box-shadow:
-    0 0 0 1px rgba(124,140,255,0.2),
+    0 0 0 1px rgba(45, 65, 219, 0.2),
     0 12px 30px rgba(0,0,0,0.6),
     var(--glow);
 }
@@ -291,8 +291,8 @@ button:hover {
 
   background: linear-gradient(
     180deg,
-    rgba(18,21,33,0.95),
-    rgba(18,21,33,0.85)
+    rgba(42, 65, 168, 0.95),
+    rgba(0, 0, 0, 0.85)
   );
 
   border: 1px solid var(--border);
