@@ -12,8 +12,8 @@
 
   /* Effects */
   --border: rgba(255,255,255,0.08);
-  --glow: 0 0 12px rgba(124,140,255,0.35);
-  --shadow: 0 8px 24px rgba(0,0,0,0.45);
+  --glow: 0 0 12px rgb(98, 0, 255);
+  --shadow: 0 8px 24px rgb(0, 38, 255);
 
   /* Layout */
   --radius: 12px;
