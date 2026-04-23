@@ -50,7 +50,8 @@ One of our friends had his buddies at caltech analyze the entire launcher script
 5. - AP Computer Science should be reinstated as a proper class instead of just being avaliable as a signup, no teacher is actually avaliable for that class.
 6. - Proper computer classes, the number of people that can't right click or use file explorer is astounding
 7. - Remove the orbitnote extension nobody likes it.
-8. - Chromebooks should at least have 8gb of ram, and teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
+8. - Chromebooks should at least have 8gb of ram as certain teachers expect far more performance or tabs open than our chromebooks can provide.
 9. - Can district IT please just send all of the devs an email?
 10. - Please turn down the volume of assemblies, I don't need assemblies that stay at 100db the whole assembly.
 11. - Return the ability to relocate and autohide the chromebook taskbar.
+12. - Teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
