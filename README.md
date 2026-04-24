@@ -1,6 +1,6 @@
 # thomasi-embedder
 I like embedding things, this embeds things well.
-tl;dr We are a group of high schoolers at NKHS in Poulsbo, WA. We enjoy finding loopholes in our schools filtering agent, GoGuardian. We have had ups and downs, but our newest method has been tested by students at CalTech and is unstoppable
+tl;dr We are a group of high schoolers at NKHS in Poulsbo, WA. We enjoy finding loopholes in our schools filtering agent, GoGuardian. We have had ups and downs, but our newest method has been tested by students at CalTech and is nearly unstoppable without serious declination of general chromebook usability.
 # Mission Statement
 The Thomasi-Embedder is made with the purpose of delievering a taste of the internet to those in a restricted environment like a school.
 Yeah this is a pretty fun project, we like people using it, our goal is to get it working under Securly after we get a tester, improve Goguardian evade tech, and research into ways to make this work on all systems. If you can help, please commit! None of the developers even use the site for anything beyond the rare blocked wikipedia article or manga excursion or really needing super metroid in school. We will soon be adding even more content, and we intend to fix any block, and you can lead your school district all around the chain. Start from codepen and see how long they take.
