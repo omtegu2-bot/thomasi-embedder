@@ -84,7 +84,7 @@ function loadFromInput() {
   if(url) loadURL(url);
 }
 
-const SCRAMJET_ENDPOINT = "http://192.168.0.11:8080/scramjet";
+const SCRAMJET_ENDPOINT = "http://proxy.omtegu.duckdns.org/scramjet";
 
 function scramjetURL(url) {
   const fullUrl = normalizeURL(url);
