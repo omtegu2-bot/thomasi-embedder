@@ -84,24 +84,16 @@ function loadFromInput() {
   if(url) loadURL(url);
 }
 
-const SCRAMJET_ENDPOINT = "http://proxy.omtegu.duckdns.org/scramjet";
-
-function scramjetURL(url) {
-  const fullUrl = normalizeURL(url);
-  if (!fullUrl) return null;
-
-  return `${SCRAMJET_ENDPOINT}/${encodeURIComponent(fullUrl)}`;
-}
 function loadURL(url) {
-  const proxied = scramjetURL(url);
-  console.log("Loading via Scramjet:", proxied);
 
-  if (!proxied) return;
+  const fullUrl = normalizeURL(url);
+  console.log("Loading URL:", fullUrl);
+  if (!fullUrl) return;
+document.getElementById('embeddedSite').src = fullUrl;
 
-  document.getElementById('embeddedSite').src = proxied;
 
   let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
-  history.unshift(proxied);
+  history.unshift(fullUrl);
 
   const settings = getSettings();
   history = history.slice(0, settings.historyLength);
@@ -109,6 +101,7 @@ function loadURL(url) {
   localStorage.setItem("embedHistory", JSON.stringify(history));
   renderHistory();
 }
+
 
 function renderHistory() {
   const settings = getSettings();
