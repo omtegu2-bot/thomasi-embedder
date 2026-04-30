@@ -84,16 +84,24 @@ function loadFromInput() {
   if(url) loadURL(url);
 }
 
-function loadURL(url) {
+const SCRAMJET_ENDPOINT = "http://192.168.0.11:8080/scramjet";
 
+function scramjetURL(url) {
   const fullUrl = normalizeURL(url);
-  console.log("Loading URL:", fullUrl);
-  if (!fullUrl) return;
-document.getElementById('embeddedSite').src = fullUrl;
+  if (!fullUrl) return null;
 
+  return `${SCRAMJET_ENDPOINT}/${encodeURIComponent(fullUrl)}`;
+}
+function loadURL(url) {
+  const proxied = scramjetURL(url);
+  console.log("Loading via Scramjet:", proxied);
+
+  if (!proxied) return;
+
+  document.getElementById('embeddedSite').src = proxied;
 
   let history = JSON.parse(localStorage.getItem("embedHistory") || "[]");
-  history.unshift(fullUrl);
+  history.unshift(proxied);
 
   const settings = getSettings();
   history = history.slice(0, settings.historyLength);
@@ -101,7 +109,6 @@ document.getElementById('embeddedSite').src = fullUrl;
   localStorage.setItem("embedHistory", JSON.stringify(history));
   renderHistory();
 }
-
 
 function renderHistory() {
   const settings = getSettings();
