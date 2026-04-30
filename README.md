@@ -1,6 +1,6 @@
 # thomasi-embedder
 I like embedding things, this embeds things well.
-tl;dr We are a group of high schoolers at NKHS in Poulsbo, WA. We enjoy finding loopholes in our schools filtering agent, GoGuardian. We have had ups and downs, but our newest method has been tested by students at CalTech and is unstoppable
+tl;dr We are a group of high schoolers at NKHS in Poulsbo, WA. We enjoy finding loopholes in our schools filtering agent, GoGuardian. We have had ups and downs, but our newest method has been tested by students at CalTech and is nearly unstoppable without serious declination of general chromebook usability.
 # Mission Statement
 The Thomasi-Embedder is made with the purpose of delievering a taste of the internet to those in a restricted environment like a school.
 Yeah this is a pretty fun project, we like people using it, our goal is to get it working under Securly after we get a tester, improve Goguardian evade tech, and research into ways to make this work on all systems. If you can help, please commit! None of the developers even use the site for anything beyond the rare blocked wikipedia article or manga excursion or really needing super metroid in school. We will soon be adding even more content, and we intend to fix any block, and you can lead your school district all around the chain. Start from codepen and see how long they take.
@@ -50,7 +50,8 @@ One of our friends had his buddies at caltech analyze the entire launcher script
 5. - AP Computer Science should be reinstated as a proper class instead of just being avaliable as a signup, no teacher is actually avaliable for that class.
 6. - Proper computer classes, the number of people that can't right click or use file explorer is astounding
 7. - Remove the orbitnote extension nobody likes it.
-8. - Chromebooks should at least have 8gb of ram, and teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
+8. - Chromebooks should at least have 8gb of ram as certain teachers expect far more performance or tabs open than our chromebooks can provide.
 9. - Can district IT please just send all of the devs an email?
 10. - Please turn down the volume of assemblies, I don't need assemblies that stay at 100db the whole assembly.
 11. - Return the ability to relocate and autohide the chromebook taskbar.
+12. - Teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
