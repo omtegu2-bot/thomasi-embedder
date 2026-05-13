@@ -55,3 +55,5 @@ One of our friends had his buddies at caltech analyze the entire launcher script
 10. - Please turn down the volume of assemblies, I don't need assemblies that stay at 100db the whole assembly.
 11. - Return the ability to relocate and autohide the chromebook taskbar.
 12. - Teachers shouldn't be allowed to set a global tab limit for chromebooks, the amount of lost work that would have been restored if they used a normal scene is astounding
+# Technical Details
+The embedder uses a combo of iframes, soon proxies, and embeds, about:blank and other trusted contexts in order to advance into an unprotected environment.
